@@ -1,0 +1,18 @@
+48 GrOWth, 011,71)C, Analysis and Visualization Using R t their parameter estimates i;,aiis tha time values (that is. orthogonal), which il will be
+independent. '44111 1,111.11SfOrinatiOrl of natural poly-Orthogonal polynomials are just a ii. .-;pecified range (time window) and nomials. 
+This transformation 1.(,(11.11,1.eis inec,:use the centering is specific to the order. The range needs to be specific( )1 (olynoinials in Figure 3.4 would no values of 20 or -10. 
+The time lvin(low. - the part icular orthogona p , . longer be uncorrelated if t hey were ex all tended to time values of the terms need to be orthogonal t* ol will create an order 
+needs to be specified because a o_ to all of the other terms. Conveniei , , ltly the R func ion P Y e and order. 
+Practically, the main orthogonal polynomial for a specified i:taon gchoose 
+the range and order before implication of this is that one nee s or order (for example, analyzing running the analysis and changing the range from the initial step of creatino, a smaller 
+time window) requires re-starting f the orthogonal polynomial time terms. 
+
+Natural and orthogonal polynomial terms have the same shapes, but the hem slightly different interpreta-centering 
+of orthogonal polynomials gives t cor-dons compared to natural polynomials. 
+
+A particularly important difference concerns the intercept term. For natural polynomials, the intercept term 
+corresponds to the y-intercept; that is, the outcome value when the predictor value is 0. In many cases, this is a baseline value, which may be of special the-oretical importance. 
+
+For example, in the the previous chapter's brain injury recovery study example, the fact that there was no significant group effect on the intercept indicated that the two groups were (approximately) 
+equally This is important because severely impaired before administration of the drug. it means that the differences in recovery rate cannot be attributed to initial whether listeners use 
+context in-severity. Conversely, studies that examine formation to predict or anticip ate words during language comprehension may specifically predict baseline differences (e.g., Ban, Gann, & Pierce, 20111. ' For orthogonal polynomials, the intercept term corresponds to the overall averag difference , which can also be a useful measure. T . o concretely demonstrate the , Figure 3.5 shows the brain injury recovery example from the pre vious chapter,  with   arrows indicating the natural and orthogonal intercepts. The model predictions intercept terms co are   exactly   the same for natural  for the overall   pattern   a   - and orthogonal versions, ions, but the int  - peas of the data. In fact, the e    -   comes and to different   as-ithogonal   verse gioup   effect   on the intercept is more than   twice   as   large   for   the o   - it reflects the average   differe   .   ' ion than the natural   version   (3.09 vs. 1.43) because   ' ion of treatme   rice   in severity   between   the two groups across the whole duration the   control and   inate   .,_,_e theoverall mean reaction time differen point. ce In the brain in*   nti, not just at the starting ei   all ave   was   important to know   the   U. intercept, which made natural Jury   recover Y example   it For example   i ,   n   the   visual   search  examples   a   more useful   approach. In   other polynomial cases knowin   I would   esti   ge   (or   .,are_   t a   under   the   curvel   is   more   useful. g   t   -le   ov   - between   t-1,,,,    f, lom the   previous   chaptei.   the orthogonal intercept   w b  t 1 1'1   may be more informative   tirJ" aphasic groups, which 

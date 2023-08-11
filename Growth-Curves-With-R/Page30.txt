@@ -1,0 +1,36 @@
+Growth. Curve Analysis and Visuat14.,,,,-- 
+
+-------------------------
+
+2.3.2 
+
+
+Simplified model formula syntax 
+
+
+
+
+For expository purpose, it was helpful to use a verbose model formula.  11Se mnr for m.1. hut for conv,miclui, ,;,„ hr. hnrtenod tw() way,. 
+
+First. liner will assume an inter, cri form h‘ it Tic( cS8ary to ,pPcify it oliminnty tho int(Teept explicitly (0 can he used 1,, ,,veilitio this dr11111t t°11", that is, force it hoNe 
+volue ()). “1,(1. t }lc %),torisk (*) can be used 1,, -rdi mnin ritf.o, mid <"r) Week + Group + t ITAt t Week : 
+
+Group can be shortenrd Week*Gr0UP. ilv't t sYnt ax for m.1. can 
+be JAN- ...iv coed: m.l_shorter < lmer(DRS Week*Group + (Week Patient data-amant.ex, REMLFALSE) 
+and here is the summary to N-erify that the result is exac v ,4arrif,: 
+
+
+summary(m.1_shorter) Linear mixed model fit by maximum likelihood PlmerModi3 
+
+Formula: DRS - Week * Group + (Week I Patient) Data: amant.ex 
+AIC BIC logLik deviance 619.26 643.35 -301.63 603.26 
+Random effects: Groups Name Variance Std.Dev. Corr Patient (Intercept) 
+3.198 1.788 Week 0.698 0.836 0.45 Residual 1.331 1.154 Number of obs: 150, groups: Patient, 30 
+Fixed effects: 
+(Intercept) Week GroupAmantadine Week:GroupAmantadine 
+Estimate Std. Error t 
+22.059 0.485 -0.700 
+0.221 -1.428 0.737 -0.831 0.336 
+Correlation of Fixed Effects: (Intr) Week GrpAmn Week 0.224 
+GroupAmntdn -0.658 -0.148 Wk:GrpAmntd -0.148 -0.658 0.224 
+value 45.5 -3.2 -1.9 -2,5 

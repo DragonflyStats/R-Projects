@@ -1,0 +1,13 @@
+(PAge 23)
+
+
+FIGURE 2.1 Linear regression schematic: The solid line is the linear regression line for the individual observations illustrated by the points. ,30 is the intercept; fii is the slope. 
+that we ran a study with two conditions: a control condition that will serve as the baseline and an experimental condition that we'll call condition C. 
+Now the Level 2 model of the Level 1 intercept coefficient /3oi will be: 
+= 7oo 7oc • C 
+(2.3) 
+where -yoo is the baseline value of 130i, 70c is the fixed effect (also sometimes called structural effect) of condition C on the intercept, and (oi is the 
+random (also called residual or stochastic) deviation from that baseline for individual i. This Level 2 model does two things. 
+First, it allows condition C to have this isintercept that is different from the baseline intercept. 
+Conceptually, is is roughly like a t-test comparing condition C to the baseline and typ-fically, these are the effects of primary interest. 
+Second, it defines a structure tohr the random variation in the intercept: it says that all observations within e_ set indexed by i should have the same intercept, winch Call differ for other alues ofi. In other words, the random effect structure captures the nested 

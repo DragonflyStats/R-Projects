@@ -1,0 +1,32 @@
+when change over Unix is not lincar 
+, d)rnanlic consistencY is not j-nst, ivii important statistic, 43 ti - oleaos lived for multilevel regression. 
+Anport,n,ni, class of rov,1,,,,,,,i,),, trio(1::::::,():::;gr:yit.. 1 ce ay' c, • , ,. ( a y consist,oni  In I:1(J t,h( .1. is req!,:it:en 1. €,:iression is oi le 1 1 Log '1 . )elr 
+not to be (1vniliiii - 11 ,ent mid 1 he ell,SieSt, way to) nn(101.-;141,11(1 why .,. '1 ly '"(' (IY-polyriorni;11 I( ("-. ' tile 111()(1(d. I li '', " Ifi:,:it(F,riiittlik. 1F):::(11.11 
+Ilt 11114 igiv- c011SiM-oietb .' , .. will he estiinnted by iv 1 'a ehteelesstiiimted parn,ineters will 1)(,, polynorniil (.0(!fr )1)1'41(. regression rrio(lel 
+With a 1( i',,tr ‘vio.it,,;s,t)i:Il'ilZ1,11,1_, collSititellt. hl it 11011-1111('0,1' 1Vg1( ' iiilliCallY 11.() (1:V 11 form, the estiniated parmneters are 
+the paramoers ()r th(,)v(),/j1,.' which are generally not, dynamically consistent,' ('FI:ipt,ir c  fun° ,-:on, 11 tie fun( t.1 • gistic regression is important and how 
+to nse logisti(. hc:A7Ti :1,, whY 1° descri' 
+-----------------------------------------------
+
+3.2.3 Alaking predictions: Fits and forecasts ■Iodels can make two fundamentally different kinds of "predictions": modF I fits within the 
+boundaries of the observed data and model forecasts for 
+what would happen outside of those boundaries. For forecast-type predictions it is critical that the model have a functional form that matches the form of the system that 
+generated the .observed. data. 
+
+If it does not, then its forecasts ;re likely to be wrong. This is precisely the logic of cognitive or computa-tional 
+modeling (as opposed to statistical modeling): build a model that has the hypothesized properties of the system under investigation and conduct simulations of 
+that model to see if it fits the observed data. Critically. mak-ina novel predictions   that is, forecasts for what should happen outside the boundaries of the data that were 
+used to develop the model — is considered the best test of computational models (for a good discussion of computational modeling in cognitive science see McClelland, 2009). 
+
+Computational models are meant to implement theories and theories need to be falsifiable, so making and testing falsifiable predictions is a critical aspect of computational mod-eling. 
+When a computational model's prediction is found to be wrong, this provides critical evidence that the model was wrong, either in theory or in implementation, and is grounds for 
+rejecting that model or at least preferring an alternative (for more discussion of computational model evaluation and rejection see Magnuson, Mirman, & Harris, 2012). 
+Fit-type predictions are more accurately called quantitative descriptions of the observed data because their goal is to summarize the data patterns rather than to make 
+novel (falsifiable) predictions. 
+
+It is useful to have a description of the data that is not tied to a particular theory because the data are always -true," hut a theory 
+can be wrong. For example, imagine that we made some very careful neuroanatomicai measurements buI, then described them entirely within the framework of 
+phrenology (e.g., sizes of the ()rpm of friendship, the Organ of courage, etc.). 
+
+The measurements could luive remained informative doin, be Possible to constrain 
+the logistic function to be dynk-unically consistent, but lIt rfla so is quite difficult and requires fairly complex programming, so it will not be covered 'this book. 

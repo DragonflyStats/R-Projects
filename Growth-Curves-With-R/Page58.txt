@@ -1,0 +1,19 @@
+58 Growth Curve Analysis and Visualization Using R principle extends to statistical i,nalysis methods as well: .provide enough in-- be n.ble to replicate your analysis. formation that 
+another researcher vvoi Common analysis methods like f-tests ANOVAs are so standardized that it can be enough to simply Wilt illy the method. More sophisticated methods possible yariations, so 
+it i.s important like growth curve analysis have many to provide all of the key (let ails or illy nnalysis werhod and results. There ar,, three general categories cal ink)rinat ion that 
+need to Inc, included: general. analysis frarrys!wayortk,h:17y. (1-) 1. The model structure. The some It is importva applied in maw different ways, so it is not enough to 
+used "multilevel modeling" 01' "growth curve.analysis." to clearly describe the functional form, all of the .fixed effects, and t}-1F, random effects structure. 
+
+The basis for the inferential statistics. Readers need to know how you made inferences about your model. 
+That is, what method you used for significance testing. For model comparisons, make sure 
+to clearly describe the models that were compared. For parameter-specific p-values report that the normal approximation was used. 3. Complete model results, not just p-values. 
+
+For model comparisons. report the change in log-likelihood and the degrees of freedom thf, y2 test). For parameter estimates, report the estimates and their stan_ dard errors the t-values are 
+optional because they are just the estimates divided by standard errors). It may also be a good idea to include information about the software used to do the analysis. 
+Here is an example of how these pieces might be combined for the word learning example from section 3.4: Growth curve analysis (Mirman, 2014) was used to analyze the learning of the novel 
+words over the course of 10 training blocks. The overall learning curves were modeled with second-order or-thogonal polynomials and fixed effects of TP on all time terms. 
+The low TP condition was treated as the baselineand parameters were estimated for the high TP condition. The model also included random effects of participants on all time terms. 
+The fixed effects ofTP were added individually and their effects on model fit were evaluated using model comparisons. Improvements in model fit were evaluated using -2 times the change in to 
+likelihood, which is distributed as X2 with degrees of of parameters added. freedom equal to the number 3.0.2 using the lme4paceAll an were carried out in R version ge (version 1.0-5). 
+The effect of TP on (x2(1) 1.55,p 0.2 the intercept did not improve improve model fit (x2(1) — ___ 5.95. = 0 47) model fit qua.odiratic, term (x2(1) 0.358„ 13), nor did the effect of 
+TP on the linear term, ,p 0.55). The effect of TP on the however did • 

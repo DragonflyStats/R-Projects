@@ -1,0 +1,24 @@
+
+,„•.( ,,./, ip ,►I ,m)wili ruilic anaill.sis pret at it in (proportion of varii 25 ince ac-(meaningful) corn , mi inlicuent 1■- 1,,,,,,niiirliii iiii„1, 113" • ) hut II. is only ineallint.W11 in 
+the c coiolt,  rh:It is. \\.(, ,,,tii ;Isi; Nowt her 0(itlin,2; ' ' the ( 1# *i 'd 1' '1' ' - ii; i i \ * " I :11::t.'(:11\1::..til0srftcncl)::-:tp(:trrti os'ottilli(s' celled d il ir-st)11'". , 110(,e. t.t ....„ l),v ;1 sii.;iiilicant amount . '-' I' ., III( 1 I. ) because ti ' lifforPt.' ipro‘t s in :J,,,od nitlo If st (sottiet lines abbreviated Li .• , 1,„ bkow i tense 'values. 'The crit-t' , 100;-vzilites is equal to the log of the rffii,) (,i'a, ' 'll- (--------, LL), which is of twiltis*tie is __,2 times t he change in to (-2 . A of •freedom equal to the n ' ' urber of pararne-iell s ' (ii,;(ri • 'bitted as \:*2 with degrees 1.11T is used to eva uate the effect of ,,,idod to t he model. Notk` that the wllen one model contains t:tirtsii;;g‘ or removing one or more parameters: that is, i.,,,t of the parameters of t lie ot Iter model, which are called nested models. 
+
+There exist other measures of model fit, such as the Akaike information criterion (AIC) and the IBayesian information criterion (BIC) both of which are computed from the lo:_!--likelil loot] \viol :in :1(iiiist nwlit for A ,10 measures can IH, used to compare non-nested parameters. in principle. 
+
+I hese node's. but the difficulty 1., t hat I lit' iiiiiiiiwr (d. free imraineters is not well-ies not clear whether each random defined for multilevel models, sp,,tiii(„11y. it f ( shou1,1 he con,,i(lered .1 free nruneter or effect estimate (i.e., encil value 0 ,) . , , 1 , , . because the 
+random effects are constrained to come from a normal distribution with a mean of 0, only the estimated variance of that distribution is truly a free parameter. 
+For these reasons, we will just use the LRT for model comparisons. 
+
+
+2.3 A simple growth curve analysis 
+
+2.3.1 Effect of amantadine on recovery from brain injury We can now start implementing growth curve analysis using R. 
+This first 09example will use an iilustrative subset of data from a randomized placebo-p_rolIKI study of the effect •of ammo ttline on recovery front brain 
+injury ithatino et al., 2012; thanks to Joseph Giacino, .1ohn Whyte, and their re-wirch tk'arn for sharing these data). 
+
+
+The study tested patients who were in ma"getative or conscious slat.. to 16 weeks after a 
+traumatic ti,4 Following baseline asses,ouvnt, pat lent s were randomly assigned ti"" mitittit adittc placcho for I weeks (withimParticiPants 1113- f 16"to be covered in Chapter .1). 1111, y 
+
+outcome wz1,,, the rate "WWII ♦tectwery over the 4 wtwks ‘.1 11c;it wont . lilt .1111 Ay,ing 7,11Y Settie (1)1iS), which ntngos o '29 ‘‘ '‘oblv` ng &miter dimbillty, D,11 'JAW to 
+Just tweet the ditto st4 mix 4 Ana --miary mint • ex) Pati.st Group Him tO 1UL z ° $ tticibo 185 
+Wei* 

@@ -1,0 +1,23 @@
+18 
+Study maps:320 flat:340 
+Growth Curve Analysis and Visualization value 
+Film d :166 Sa  Threat :156 Neutral:170 Happy :168 
+variable NA1:33° NA2:330 
+Min. 1st Qu. Median Mean 3rd Qu. Max 
+
+0.00 0.00 : 2.00 4.17 6.00 :30.00 
+The (;.unimary shows that there is now a, new column "111(A var.; contain,: the column names (NA1 and NA2) and a column calico -1-abl. ti, contains the negative affect scores. 
+These new column names ar:,valli, tri:.,, -alues but they can be specified in the call to melt to produo, ' thi. (1, ",- rflor,„. ' Phil tive variable willies. Also, since the original data contain only ;1 ' llifrn: if .,(, and ' .4. variables we only need to specify one set (in this example, the .i,, roc%silf, and can let the other variables become the other set b d f " vari,i. ' Y e ault: riolf, "Fibz„) , 
+
+> - melt (affect . subset , id=c ( "Study" , affect .melt <  variable . name= " Test " , value . name="Negative . Af f ect" ) 
+> summary (affect .melt) Negative . Aff ect Study Film Test maps :320 Sad :166 NA1 : 330 Min. : 0.00 flat :340 Threat : 156 NA2 : 330 1st Qu : 0.00 Neutral : 170 Median : 2.00 Happy : 168 Mean : 4.17  3rd Qu.: 6.00 Max. :30.00 
+Now we can use ggplot to plot the data (Figure 1.11): 
+
+> ggplot (affect .melt , aes (Film, Negative . Affect , shape=Tes: stat_summary (fun . data=mean_se , geom="pointrange") scale_shape_manual (values=c (1 , 16)) + theme_bw(base_size=10) 
+
+
+1•5•1 A note on data aggregation i0 per P'11. . d;itj1/4 
+
+Throughout this book we will consider data that have just, one obseo‘ the lowest level of nesting. 
+That is, just one observation ficiP° ntiomte pl oint (per condition, Rj\ nitill' for within-participant manipulations). ' , ways have this kind of structure. 
+In particular, trials lgle i•conbdition, which need to be either aggregated into a s-'1- .Li id vatiorip(er nesting. •S%ilLlavetrfaging across trials) or modeled as an additiot11:1:11 viol, ioral chan i _ Y, le ges (for exam 1 sampling t here are often. ,t,,,, • n 0 . 0, frequency might be much faster 1 erv,t, hut planning and executin p e, an eye- tracker might record eye positawbont 20( g an eye movement typically takes 

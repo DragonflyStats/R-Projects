@@ -1,0 +1,16 @@
+
+0.5-1--I-- 1 2 3 4 5 6 7 8 Block 
+119-rj 10 
+TP 11. Low Ar High 
+FIGURE 3.7 Effect of transitional probability (TP) on novel word learning. 
+learned to match a made-up spoken "word" like pibu with a novel geomet7.: shape. All of these "words" were completely novel and arbitrarily paired with shapes and 
+counterbalanced across participants. 
+There were two shape choices on each trial, so it is not very interesting that accuracy would start around 50%, making the y-intercept not very informative. 
+
+On the other hand. the overall mean accuracy does (partially) reflect faster learning, so the orthog: oral intercept will be more informative. 
+Second, orthogonal polynomials \v1-- make the linear and quadratic terms uncorrelated, so we will be able to In-dependently evaluate the •linear slope 
+and the steepness of the curvature. \\: can use the poly function to create a second-order orthogonal the range of Block:
+ • t Poly(unique(WordLearnEx$13lock) , 2) fN.ro.vvn,Arjef:lieed..t.0 add those orthogonal , ne'vvi varli'abieds by Block. • 01° polynomial ill 
+ 
+ The following command will polynomial values into the reatingt‘ , ot1 ot2 (f. do ,that bY .001 put _ orthogonal time order 1 and orthog 
+

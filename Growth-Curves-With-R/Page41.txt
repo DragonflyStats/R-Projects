@@ -1,0 +1,24 @@
+When change over time is not linear 
+41 
+unlike a polynomial function (e.g., Equation 3.1), the LP function does not look like a multiple linear regression equation. Its non-linearity is not just a matter of having non-linear Time predictor(s), the variables also have non-linear properties. Let's take a closer look at what happens if we try to use this function to model multilevel data. 
+
+0.6 
+
+, 
+
+....,, s ....., ......---  .,.. , .,,,, -". IN . N, ...,„ ,,.,,,,,,,,, 
+
+ry 
+0.0-1 
+500 
+• A \'‘,•\ • ‘17 12‘11::;;\\,' 
+Time (ms) 
+1000 
+-VIa4,,Ultkagq 
+FIGURE 3.3 Consequences of lack of dynamic consistency in the logistic power peak func-tion. 
+The circles are the average of the observed data. 
+The solid black line is the model of those average data. 
+The grey lines are the models of the indi-vidual participants. 
+The dashed line is the curve produced by averaging the parameters from the models of the individual participants. 
+The dashed line does not match the solid line, nor does it reflect the central tendency of the models of the individual participants. 
+The data for this example come from an eye-tracking experiment (Mirmon 4z, Magnuson, 2009) in which the out come measure was the probability of looks (` fixation proportion") to a particular object at each point in time. The black 

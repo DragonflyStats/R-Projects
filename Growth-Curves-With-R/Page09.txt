@@ -1,0 +1,19 @@
+(PAge 9)
+
+Time course data 
+9 be able to visually inspect, it mid to get it, into the right, format. 
+
+The next will introduce a set of tools For visualizing time course data, in R t° sections two describe how to get clan. into the right format for analysis and plotting. and des' 
+
+
+1.4 Visualizing time course data So far. we've been talking about, the challenges of analyzing time couriP data. 
+
+Time course data can also pose challenges for visualization. so it is important to have powerful and easy-to-use tools for graphing. The packi:fp vgplot2 is particularly good for two reasons: 
+(1) the "Grammar of Graphicc approach provides a flexible and powerful framework for visualizing data and 
+(2) sum-mary statistics like means and standard errors can be computed -on the fly.- 
+
+There are many excellent guides and tutorials for ggplot2, so this section will only provide a brief introduction, focusing on time course data. 
+The "Grammar of Graphics" approach is somewhat different from typical graphing frameworks. 
+In programs like Excel or MATLAB®. you specify a set of (x, y) coordinate pairs and the style (color, shape. etc.) of symbols that will be placed at those locations. 
+In ggplot, you first assign variables in your data to properties of the graph. These assignments or mappings are called the aesthetics of your graph. 
+Then you select "geometries.- or georri.9 points, lines, bars, etc.   for those aesthetics. Once you get the hang of this approach, it provides a consistent, easy to manipulate, and intuitive framework for visualizing your data. Here are some examples using the built-in Orange data set, -which contains growth data for 5 orange trees. In this book, each line of R code will begin with a > character, as it would in the R console. You should be able to type or copy the code (without the line-start character) directly into R and run it. In order to use the ggplot2 package, you first need to load it > library(ggplot2) The main function isggp lot, which takes two inputs (function inputs are usually called arguments) . The first input is the data frame that you want to plot; in our case this is Orange. The second input uses the aes function to set up the aesthetic mappings between variables in the data and visual properties of the graph. By default, the first input to aes is mapped to the x-axis and the second •input is mapped to the y-axis (you can zilso specify this explicitly). After that, you need to •specify which aesthetic is being mapped. The code below will produce a simple scatter plot of the Orange data.   cumf erence , shape=Tree) ggplotrange,aeg, )  geom_point The first part 

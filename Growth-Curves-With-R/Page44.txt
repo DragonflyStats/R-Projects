@@ -1,0 +1,28 @@
+44 Growth Curve Analysis and Visualization Using R if they had been in theory-neutral units (like millimeters), but using phreno-logical units meant that i II(' measurements became useless once the 
+theory of phrenology was discredit ed. liet timing to statistical modeling, let's say we physical stimulus magnitude and have some data on the relnt ionship bet well that, Weber's Law holds in this 
+domain, its perceived intensity. I 1 we EMS III 1 1 e then stimulus numiit tide awl Perceived intensity should have a power law re-lationship, so we can fit a power law funct ion and coal )l the Weber 
+constant for this domain. However, if it happens that; Weber's Law does not hold in this domain, t hen the Weber constant is not a useful description of the data. 
+
+Had we would be able to evaluate how 
+well any theory accounts for the data, not just Weber's Law. 
+
+It is also useful to have a quantitative description of the observed data bp_ cause it allowsquantitative comparisons with predictions from 
+different the-ories. Aqualitative description such as "perceived intensity increases with increasing physical stimulus magnitude" is a reasonable starting point, but quickly becomes 
+limited in terms of distinguishing between different accounts.' 
+
+When the full set of the observed data are available for analysis, one can fit multiple theoretical models directly to the observed data 
+in order to obtain a quantitative evaluation (e.g., Oberauer & Klie gl, 2006; Wagenmakers & Far-rell, 2004). 
+
+However, that evaluation would be limited to the particular models (as discussed above), so 
+it would be necessary to make all observed data a a pub_ licly available so that any future proposed theory could be compared to every data set. This kind of data sharing is not the norm (though many 
+argue that it should be), so there remains a need for researchers to desc • rthe their find-ings in a way that is formal enough to allow quantitative corn • pansons with different theoretical modelsd • d an independent of specific theories so the data remain relevant as theories evo ve and new theories emerge. 
+The bottom line is that computational and statistical models serve distinct and complementary roles. 
+
+Statistical models provide descriptions of large data sets in terms of a small set of effects or patterns and quantify those effects or patterns in ways that can be compared against an theoretical account. y Computational models instantiate a particular theory in a way that allows
+concrete testing and making predictions. 
+
+Because they serve complementary roles, statistical and computational models can be combined to form a power-ful two-pronged research strategy: using statistical 
+and using computational models to evaluate theories •against those descripti(v models to describe the data (for examples of such a two-pronged strategy in the domain of spoken word 
+recognition see Mirrnan, Dixon, & Magnuson, 2008; Mirman et al., 2011). 
+
+3.3 Using higher-order polynomials 

@@ -1,0 +1,10 @@
+ca tegancal predict 
+coNTENTS 5.1 Chapter overview .................... .) Coding categorical predictors ........................................................... 
+5.2.1 In simple linear regression ......................................... 
+
+5.9.9 In growth curve analysis .. 5•4 Chapter recap ................................................................................. 
+5.3 Multiple comparisons ............................ 99 5..5 Exercises ................................................ .......... 100 
+
+5.1 Chapter overview 
+This chapter will focus on categorical predictor variables. So far. we have primarily discussed how to model the relationship between a continuouspre-dictor, typically time, and a continuous outcome, such as Disability Rating Scale score. However, like most studies in the psychological and neural sci-ences, the examples have typically also included a categorical predictor that had discrete levels, such as control vs. treatment or high vs. low frequency. For the purposes of regression, categorical variables need to be converted into numeric values. In most statistical software packages, including R. this happens "under the hood" without requiring the analyst to specify how it should be done, but it is important to understand how that conversion is done because it affects the interpretation of the parameter estimates. Section 5.2 will discuss the two most common ways of doing this: treatment or dummy coding, which is the default in R, and sum or deviation coding, which is the most common alternative. analyst \Then a categorical predictor has more than two levels Or conditions, tthe pai_lys.t may wish to compare different pairs, that is, to evaluate multiple suchilvelse Comparisons. Section 5.3 will cover two approaches to conducting the ;°1-11parisons: re-fitting the model after re-coding the predictor and using package to make those •comparisons within a single model. cult c omp 
+85 

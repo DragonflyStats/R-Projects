@@ -1,0 +1,40 @@
+Conceptual overview of grov)11), curve analysis 
+
+plotting model fit 
+
+
+It is always a good idea to plot the model fit with the observed data.
+
+iway .00cl icc-n, 1)1()I. the ili()(0sg 1 ,t • pilwide, -1.1w effect of group on slope 11 i',;iciihood model 
+it s is ,ic improved np)(1(,1 tit ), thi.. (10:"I'It'vn;;, the lit actuall,v was, III paitienhil, it (10,,,n't eirect corresponds to a KcieiltIlic-dily t ;int difforr,ricr, ir tV1. 
+thc 
+very c.,1sy to add mod1(:)11.1ii■isici(/).:\:11)1s::::iv)(1,:,1 (1',11:► 11,;IrIV ji pi yi pi' d`lt:11. t ,.;peCilV ;1 lle\\* ninpping (111()(1('1- fit tod noc't,,erved -allics: the 
+other mappings are automatically inherited) and the ``geom`` to represent the model fit. 
+
+Since the model fit lines don't have a points shape, we can also map Group to the linetype aesthetic so making the lines different between groups. 
+
+We can get, the fitted values for 
+lrner rrior1(.1 by • - the fitted function. ising 
+
+<pre><code> ggplot(amant.ex, aes(Week, DRS, shape=Group)) + 
+stat- summary(fun.data=mean_se, geom="pointrange") stat_summary(aes(y=f itted(m . 1) , iinetype=Group) , fun.y=mean, geom="line") 
+</code></pre>
+----------------------------------------
+
+The model fit in Figure 2.3 appears to be quite good and it specifically seems to capture the difference in rate of recovery between the placebo and amantadine groups. 
+For both groups, the first and last data points are slightly above the line while the middle three points are slightly below it. 
+This suggests that there might be a small amount of curvature in the recovery pattern - faster initial recovery that slows down over the course of the 4 weeks of treatment. 
+The next chapter will discuss how to model more complex data curves. 
+
+----------------------------------------
+
+2.4 Another example: Visual search response times The primary focus of growth •curve analysis -- and longitudinal data analysis :echniques in general — is to capture change 
+over time, so 
+most of the examples irirthis hook will have some version of time as the main predictor. However, many of the same issues hold for other sorts of repeated 
+measures scenarioz, \,.itli a continuous predictor. For example, response times in a conjunction ti,isual search task tend to be a linear function of the 
+number of objet'ts ill • ,\ie., displaY (called "set size"). 
+
+In other words, I 0-1. among g w_ien looking for a green letter reen "X's" and brown "N's," response 
+times aye a linear function exthe number of letters on the screen (e.g., Treisnian k Clelacte, I90). 1 he 15arnPi data Particip set visuaisearchEx contains results 
+from a study that tested ants with aphasia and 18 control tre participants in this task. We (.-an changes at set •size the same way that we treat tune and evaluate 
+how response time 4 nges asa function of set size for the two groups. 
