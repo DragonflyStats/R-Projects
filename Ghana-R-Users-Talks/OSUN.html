@@ -1,0 +1,2924 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>OSUN R Users Community</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# OSUN R Users Community
+## Kevin O’Brien
+
+---
+
+
+
+### Kevin O'Brien
+- Forestry Data Scientist based in the West of Ireland 
+  - Also in London, UK a lot
+  
+- Why R? - Community Team lead &amp; Webinars co-ordinator
+
+- Python Ireland - Director
+
+- JuliaCon 2022 - Social Media Chair
+
+- was previously (what is now known) as a "Research Software Engineer" in a University.
+
+
+---
+
+![Limerick City](About_Me/Limerick.jpg)
+
+
+
+---
+
+### Forestry
+
+
+* R is very useful in Forestry 
+ - Diameter at Breast Height / Height
+ - Growth Curves and Yield Models
+ - Statistical Analysis and Data Visualization
+ 
+* Other R packages have been ***VERY*** useful 
+
+![ForestryData](timbeter.png)
+
+(**Source: Timbeter.Com**)
+
+---
+
+### Intended Audience
+
+* Career Young Statisticians and Data Scientists.
+* Solid Foundation in R and/or Python.
+* Familiarity with Machine Learning / Deep Learning
+* Github
+
+### What's next?
+
+* Transition to Research Software Engineer?
+* Apply skills base to real world problems
+
+---
+
+### Research Software Engineering
+
+(**Digression**)
+
+Research software engineering is the use of software engineering practices in research applications. 
+
+The term was proposed in a research paper in 2010 in response to an empirical survey on tools used for software development in research projects. 
+
+It started to be used in United Kingdom in 2012, when it was needed to define the type of software development needed in research. 
+This focuses on reproducibility, reusability, and accuracy of data analysis and applications created for research.
+(*Wikipedia*)
+
+
+---
+
+![Society of RSE](RSElogo.jpg)
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Scope
+
+Machine Learning - types of analysis
+
+#### Many Types of ML Problems
+* Clustering 
+* Classification
+* Regression
+
+
+#### Focus on Regression
+
+* Predicting a numeric value based on predictors
+* Can easily generalize most of the content to all Linear Models (ANOVA)
+---
+
+
+### Scope
+ - Mainly focusing on item-wise diagnostics 
+
+
+#### Feature Engineering
+
+Not Covering This - but it is important
+
+* Normalisation
+* Scaling
+* One-hot Encoding / Model Matrices
+* Log Transformation
+* Box-Cox Transformation
+
+
+* {caret} package
+
+---
+
+### {yardstick}
+(**Digression**)
+
+Not Really Covering Machine Learning or Binary Classifers
+ 
+* Accuracy, Precision, Recall and F-Score
+* NPV, PPV
+* Lift and Gain Curves
+
+Includes a lot of functionality for standard regression model metrics
+
+
+
+---
+
+### My career
+
+Former University Lecturer of Mathematics and Statistics. 
+
+####  Motivation
+* Career young data scientists, mathematicians and statisticians. 
+* Job interviews. 
+* Career advice. 
+* Professional development. 
+
+#### Students
+* Maths and Statistics Students (Teaching R)
+* Health sciences, Life Sciences, Equine science, Sports Science, Food science, Biochemistry 
+
+(Emphasizing the second group more - as those subjects area have very interesting real-world applications.)
+
+---
+
+### Topics
+
+* Statistics 101
+* Exploratory Data Analysis
+* Linear models. 
+  * Robust, Polynomial Regression
+  * Model Metrics
+* Experimental design. 
+* Linear Mixed Effects models. 
+* Non-Parametric Statistics.
+* Statistical Process Control.
+
+---
+
+### Statistical Knowledge
+
+* The talk is aimed at students and early career data professionals who have already encountered conventional regression analyses, and
+are familiar with the model fitting process in R (i.e. the  ***lm()*** function). 
+* The talk will introduce a mixture of graphical procedures,
+statistical measures and hypothesis tests, which the attendees are invited to learn more about beyond the talk.
+
+* The talk will feature the {CAR} R package [1], but all of the other functionality is available in Base R or Tidyverse.
+
+
+[1] Fox, John, et al. "*The car package.*" R Foundation for Statistical Computing (2007).
+
+
+---
+
+### Key Motivations 
+
+
+* All statistical models and tests have underlying mathematical assumptions on the types of conditions upon we can generate reliable results (**Hoekstra et al., 2012**). 
+
+* What this means is that before we go off and generate predictions, p-values and correlation coefficients, we need to understand whether our data fits certain assumption criteria in order to avoid Type I or II errors given the technique at hand.
+
+---
+
+### Domain Knowledge 
+
+(**Digression**)
+
+https://www.linkedin.com/feed/update/urn:li:activity:6765853465861267456/
+
+
+
+ * Agriculture and Food
+ * Health &amp; Life Sciences
+ * Natural Sciences &amp; GIS
+ 
+
+My own career: Audiology, Equine Science, Water Quality, Milk Production, Sport Science, Forestry
+ 
+ 
+
+#### Life Sciences
+
+
+* Models must scrutinized thoroughly - particularly the effect of "Influential cases" and "outliers".
+
+* Random Forest Models are insufficent in this regards - can deduce important variables, but not important cases
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Sustainable Development Goals 
+
+![Sustainable Development Goals](sustainable_development_goals.png)
+
+---
+
+### Sustainable Development Goals 
+
+**Sustainable Development Goal 2**
+ -  ending hunger, achieving food security, improving nutrition and promoting sustainable agriculture.
+
+**Sustainable Development Goal 3**
+ -  ensuring healthy lives and promoting well-being for all, at all ages.
+
+**Sustainable Development Goal 6**
+ -  ensuring the availability and sustainable management of water and sanitation for all.
+
+**Sustainable Development Goal 7**
+ -  ensuring access to affordable, reliable, sustainable and modern energy for all.
+
+---
+
+### Sustainable Development Goals (more)
+
+**Sustainable Development Goal 8**
+ -  promoting sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.
+
+
+**Sustainable Development Goal 11**
+ -  making cities and human settlements inclusive, safe, resilient and sustainable.
+
+
+**Sustainable Development Goal 12**
+ -  ensuring sustainable consumption and production patterns.
+
+**Sustainable Development Goal 13**
+ -  taking urgent action to combat climate change and its impacts.
+
+
+---
+
+### Sustainable Development Goals (more)
+
+**Sustainable Development Goal 14**
+ -  conserving and using oceans, seas and marine resources sustainably.
+
+**Sustainable Development Goal 15**
+ -  protecting, restoring and promoting sustainable use of terrestrial ecosystems; sustainably managing forests; combating desertification, halting and reversing land degradation; and halting biodiversity loss.
+
+**Sustainable Development Goal 16**
+ -  promoting peaceful and inclusive societies for ***Sustainable Development, providing access to justice for all and building effective, accountable and inclusive institutions at all levels.
+
+
+
+---
+### Introduction to Model Validation Procedures with R
+
+
+* Model validation is a vital part of the statistical modelling process, but is often overlooked in statistical courses.
+* This process allows the analyst to properly validate the assumptions underlying the model, once applied to the data.
+* 
+In this presentation, we will look at residual analysis and influence measures for linear models, with some associated topics.
+
+
+
+---
+
+### R Packages
+
+![Easyverse - (*EasyStats.github.io*)](EasyStats.PNG)
+
+
+
+---
+
+### Pedagogical Effects on Statistics
+
+(More the general science students, rather than the Maths Science students)
+
+* Designing a Statistics course is an exercises in compromise, particularly Statistics 101 courses. For the curriculum design in universities, some choices are made that reflect scheduling needs. 
+
+* 12-14 Week semesters with 2 or 3 lectures per week. Many students will have only 1, but maybe 2 Statistics Modules in their 4 year degree programme.
+
+* Many would benefit from far more Statistics and Statistical Computing content on their curriculum.
+
+* Lecturers must create a pen-and-paper exam paper at the end of the semester, with a transparent rubric. Conventions must be followed.
+
+* Example: You ***MUST*** cover the Normal Distribution - but you are caught for time to explain all the reasons ***WHY*** it is so important to know.
+
+* DANGER! Pedagogical design can create misconceptions about the relative importance of various statistical topics. 
+
+
+
+---
+
+### Job Advertisement (Financial Services)
+
+The Data Scientist has a deep statistical knowledge and strong quantitative skills who will work as part of the Model Validation team to independently evaluate the efficacy of the design and implementation of [COMPANY]’s high performance modeling solutions across our Big Data analytics landscape.
+
+
+Quantitative models support some of the most important processes and decisions at [COMPANY], and the Model Validation team is responsible for their effective challenge. 
+
+The Model Validation team conducts testing and provides a ***critical review of conceptual soundness and model performance***, producing technical reports describing the results of validation, and interface with internal stakeholders and regulators to communicate findings in model risk. 
+
+The Model Validation team assesses all models across [COMPANY] and this role offers the unique opportunity to acquire a wide variety of experience of different models supporting a wide range of relevant processes including credit risk, fraud etc. 
+
+
+---
+
+
+### Job Advertisement (Financial Services)
+
+#### (Continued)
+
+You will be responsible for sourcing and generating validation datasets, analysis and critical review of related data, assessment of model performance and ultimately delivering validation reports on the status of the underlying models. You will work with a wide, diverse range of data science/model development teams. 
+
+You will have the opportunity to work with one of the world’s largest financial datasets and the most advanced analytics and machine learning approaches that deliver near real-time predictions and recommendations.
+
+---
+
+
+
+
+
+### Technology Acceptance Model
+
+#### Why do people use some tools and not others?
+
+![Technology Acceptance Model](Technology_Acceptance_Model.png)
+**(Source: Wikipedia)**
+---
+
+### Technology Acceptance Model
+
+***Perceived usefulness (PU)*** – This was defined by Fred Davis as "the degree to which a person believes that using a particular system would enhance their job performance". It means whether or not someone perceives that technology to be useful for what they want to do.
+
+***Perceived ease-of-use (PEOU)*** – Davis defined this as "the degree to which a person believes that using a particular system would be free from effort" (Davis 1989). If the technology is easy to use, then the barriers conquered. If it's not easy to use and the interface is complicated, no one has a positive attitude towards it.
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Exploratory Data Analysis
+
+BE THOROUGH
+
+* Domain Knowledge
+* Summary Statistics
+* Data Visualization
+* Outlier Detection
+* Missing Data Analysis
+
+
+#### Remark: 
+
+Cluster Analysis (e.g. K-means) can be a very useful EDA procedure.
+
+---
+
+### Exploratory Data Analysis
+
+#### Data Inspection
+
+* {inspectdf}
+* {janitor}
+
+#### Data Visualization
+
+* {WVPlots}
+* {ggally}
+
+#### tidyverse
+
+* {broom} and {modelr} (succeeded by {tidymodels})
+
+* &lt;tt&gt;dplyr::tally()&lt;/tt&gt;
+* &lt;tt&gt;dplyr::distinct()&lt;/tt&gt;
+
+
+---
+
+### Useful Packages (a selection)
+
+* {A3}
+* {arsenal}
+* {analytics}
+* {gdata}
+* {descriptr}
+* {furniture}
+* {rockchalk}
+* {yardstick}
+
+
+---
+
+### {inspectdf}
+
+#### inspectdf: Inspection, Comparison and Visualisation of Data Frames
+
+inspectdf is collection of utilities for columnwise summary, comparison and visualisation of data frames. Functions are provided to summarise missingness, categorical levels, numeric distribution, correlation, column types and memory usage. 
+The package has three aims: to speed up repetitive checking and exploratory tasks for data frames
+
+---
+
+### {inspectdf}
+
+Key functions
+* &lt;tt&gt;inspect_types()&lt;/tt&gt;: summary of column types
+* &lt;tt&gt;inspect_mem()&lt;/tt&gt;: summary of memory usage of columns
+* &lt;tt&gt;inspect_na()&lt;/tt&gt;: columnwise prevalence of missing values
+* &lt;tt&gt;inspect_cor()&lt;/tt&gt;: correlation coefficients of numeric columns
+* &lt;tt&gt;inspect_imb()&lt;/tt&gt;: feature imbalance of categorical columns
+* &lt;tt&gt;inspect_num()&lt;/tt&gt;: summaries of numeric columns
+* &lt;tt&gt;inspect_cat()&lt;/tt&gt;: summaries of categorical columns
+
+---
+  
+### {inspectdf}
+
+
+```r
+library(inspectdf)
+
+# Load dplyr for starwars data &amp; pipe
+library(dplyr)
+# Single dataframe summary
+inspect_cat(starwars)
+```
+
+```
+## # A tibble: 8 x 5
+##   col_name     cnt common    common_pcnt levels           
+##   &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;named list&gt;     
+## 1 eye_color     15 brown           24.1  &lt;tibble [15 x 3]&gt;
+## 2 gender         3 masculine       75.9  &lt;tibble [3 x 3]&gt; 
+## 3 hair_color    13 none            42.5  &lt;tibble [13 x 3]&gt;
+## 4 homeworld     49 Naboo           12.6  &lt;tibble [49 x 3]&gt;
+## 5 name          87 Ackbar           1.15 &lt;tibble [87 x 3]&gt;
+## 6 sex            5 male            69.0  &lt;tibble [5 x 3]&gt; 
+## 7 skin_color    31 fair            19.5  &lt;tibble [31 x 3]&gt;
+## 8 species       38 Human           40.2  &lt;tibble [38 x 3]&gt;
+```
+
+---
+
+### {inspectdf}
+
+
+```r
+# Paired dataframe comparison
+inspect_cat(starwars, starwars[1:20, ])
+```
+
+```
+## # A tibble: 8 x 5
+##   col_name      jsd     pval lvls_1            lvls_2           
+##   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;named list&gt;      &lt;named list&gt;     
+## 1 eye_color  0.0936 7.08e- 1 &lt;tibble [15 x 3]&gt; &lt;tibble [8 x 3]&gt; 
+## 2 gender     0.0387 3.38e- 1 &lt;tibble [3 x 3]&gt;  &lt;tibble [2 x 3]&gt; 
+## 3 hair_color 0.261  9.04e- 4 &lt;tibble [13 x 3]&gt; &lt;tibble [10 x 3]&gt;
+## 4 homeworld  0.394  2.21e- 2 &lt;tibble [49 x 3]&gt; &lt;tibble [11 x 3]&gt;
+## 5 name       0.573  9.35e-11 &lt;tibble [87 x 3]&gt; &lt;tibble [20 x 3]&gt;
+## 6 sex        0.0526 5.19e- 1 &lt;tibble [5 x 3]&gt;  &lt;tibble [4 x 3]&gt; 
+## 7 skin_color 0.288  1.58e- 1 &lt;tibble [31 x 3]&gt; &lt;tibble [10 x 3]&gt;
+## 8 species    0.300  7.86e- 2 &lt;tibble [38 x 3]&gt; &lt;tibble [6 x 3]&gt;
+```
+
+---
+
+### {inspectdf}
+
+
+```r
+# Grouped dataframe summary
+starwars %&gt;% group_by(species) %&gt;% inspect_cat()
+```
+
+```
+## # A tibble: 266 x 6
+## # Groups:   species [38]
+##    species  col_name     cnt common        common_pcnt levels          
+##    &lt;chr&gt;    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt; &lt;named list&gt;    
+##  1 Aleena   eye_color      1 unknown               100 &lt;tibble [1 x 3]&gt;
+##  2 Aleena   gender         1 masculine             100 &lt;tibble [1 x 3]&gt;
+##  3 Aleena   hair_color     1 none                  100 &lt;tibble [1 x 3]&gt;
+##  4 Aleena   homeworld      1 Aleen Minor           100 &lt;tibble [1 x 3]&gt;
+##  5 Aleena   name           1 Ratts Tyerell         100 &lt;tibble [1 x 3]&gt;
+##  6 Aleena   sex            1 male                  100 &lt;tibble [1 x 3]&gt;
+##  7 Aleena   skin_color     1 grey, blue            100 &lt;tibble [1 x 3]&gt;
+##  8 Besalisk eye_color      1 yellow                100 &lt;tibble [1 x 3]&gt;
+##  9 Besalisk gender         1 masculine             100 &lt;tibble [1 x 3]&gt;
+## 10 Besalisk hair_color     1 none                  100 &lt;tibble [1 x 3]&gt;
+## # ... with 256 more rows
+```
+
+---
+### WVPlots: Common Plots for Analysis
+#
+Select data analysis plots, under a standardized calling interface implemented on top of 'ggplot2' and 'plotly'. Plots of interest include: 'ROC', gain curve, scatter plot with marginal distributions, conditioned scatter plot with marginal densities, box and stem with matching theoretical distribution, and density with matching theoretical distribution.
+
+
+
+
+```r
+set.seed(34903490)
+x = rnorm(50)
+y = 0.5*x^2 + 2*x + rnorm(length(x))
+frm = data.frame(
+  x = x,
+  y = y,
+  yC = y&gt;=as.numeric(quantile(y,probs=0.8)),
+  stringsAsFactors = FALSE)
+
+frm$absY &lt;- abs(frm$y)
+frm$posY = frm$y &gt; 0
+```
+
+---
+### Scatterplot
+
+
+Scatterplot with smoothing line through points.
+
+
+```r
+WVPlots::ScatterHist(frm, "x", "y", title="Example Fit")
+```
+
+---
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-23-1.png" width="80%" /&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Mahalanobis Distance
+
+
+* Mahalanobis Distance 
+* multivariate distance
+
+#### How to Calculate Mahalanobis Distance in R
+
+* The Mahalanobis distance is the distance between a data point and the origin (mean) in a multivariate space. 
+* It's often used to identify outliers in multivariate statistical analyses.
+
+---
+
+![Mahalanobis](images/Mahalanobis-distance-location-and-scatter-methods.png)
+---
+
+### Mahalanobis Distance
+
+
+
+
+
+```r
+library(faraway)
+
+data(cheddar)
+```
+---
+
+
+### cheddar: Taste of Cheddar cheese
+
+In **{faraway}**: Functions and Datasets for Books by Julian Faraway
+
+**Description**
+In a study of cheddar cheese from the LaTrobe Valley of Victoria, Australia, samples of cheese were analyzed for their chemical composition and were subjected to taste tests. Overall taste scores were obtained by combining the scores from several tasters.
+
+
+* **taste** - a subjective taste score
+
+* **Acetic** - concentration of acetic acid (log scale)
+
+* **H2S** - concentration of hydrogen sulfice (log scale)
+
+* **Lactic** - concentration of lactic acid
+
+---
+
+#### Step 1: Create the dataset.
+
+
+```r
+head(cheddar)
+```
+
+```
+##   taste Acetic   H2S Lactic
+## 1  12.3  4.543 3.135   0.86
+## 2  20.9  5.159 5.043   1.53
+## 3  39.0  5.366 5.438   1.57
+## 4  47.9  5.759 7.496   1.81
+## 5   5.6  4.663 3.807   0.99
+## 6  25.9  5.697 7.601   1.09
+```
+
+---
+
+### Step 2: Calculate the Mahalanobis distance for each observation.
+
+Next, we'll use the built-in &lt;tt&gt;mahalanobis()&lt;/tt&gt; function in R to calculate the Mahalanobis distance for each observation, which uses the following syntax:
+
+&lt;pre&gt;&lt;code&gt;
+mahalanobis(x, center, cov)
+&lt;/code&gt;&lt;/pre&gt;
+
+where:
+
+* &lt;tt&gt;x&lt;/tt&gt;: matrix of data
+* &lt;tt&gt;center&lt;/tt&gt;: mean vector of the distribution
+* &lt;tt&gt;cov&lt;/tt&gt;: covariance matrix of the distribution
+
+
+---
+
+#### Implementation
+
+The following code shows how to implement this function for our dataset:
+
+
+```r
+df &lt;- cheddar[,2:4]
+
+#calculate Mahalanobis distance for each observation
+
+mahalanobis(df, colMeans(df), cov(df)) %&gt;% 
+  head() %&gt;%
+  t()
+```
+
+```
+##          [,1]     [,2]      [,3]     [,4]     [,5]     [,6]
+## [1,] 4.115811 1.235341 0.7716917 1.593862 2.768398 5.713978
+```
+
+---
+
+
+### Step 3: Calculate the p-value for each Mahalanobis distance.
+
+We can see that some of the Mahalanobis distances are much larger than others. To determine if any of the distances are statistically significant, we need to calculate their p-values.
+
+The p-value for each distance is calculated as the p-value that corresponds to the Chi-Square statistic of the Mahalanobis distance with k-1 degrees of freedom, where k = number of variables. So, in this case we'll use a degrees of freedom of 3-1 = 2.
+
+---
+
+Step 3: Calculate the p-value for each Mahalanobis distance.
+
+
+
+```r
+#create new column in data frame to hold Mahalanobis distances
+df$mahal &lt;- mahalanobis(df, colMeans(df), cov(df))
+
+#create new column in data frame to hold p-value for each Mahalanobis distance
+df$p &lt;- pchisq(df$mahal, df=2, lower.tail=FALSE)
+```
+
+---
+
+### Mahalanobis distance.
+
+Step 3: Calculate the p-value for each Mahalanobis distance.
+
+
+```r
+#view data frame
+df %&gt;%
+  head() %&gt;%
+  kable(format="markdown")
+```
+
+
+
+| Acetic|   H2S| Lactic|     mahal|         p|
+|------:|-----:|------:|---------:|---------:|
+|  4.543| 3.135|   0.86| 4.1158108| 0.1277212|
+|  5.159| 5.043|   1.53| 1.2353409| 0.5391991|
+|  5.366| 5.438|   1.57| 0.7716917| 0.6798753|
+|  5.759| 7.496|   1.81| 1.5938621| 0.4507101|
+|  4.663| 3.807|   0.99| 2.7683980| 0.2505244|
+|  5.697| 7.601|   1.09| 5.7139779| 0.0574415|
+
+---
+
+### Intrepretating the output
+
+* Typically a p-value that is less than some threshold (e.g. 0.001) is considered to be an outlier. 
+
+* In this case, all the p values are greater than 0.001
+
+* Depending on the context of the problem, you may *omit* any outlier observation from the dataset, as they could affect the results of the analysis. (Domain knowledge is vital).
+
+---
+
+
+
+
+Linear Regression
+================================
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Simple Linear Regression
+
+
+* In simple linear regression, we predict values on one variable from the values of a second variable. 
+
+
+* The variable we are predicting is called the ***dependent variable*** (or response variable) and is referred to as Y. 
+
+* The variable we are basing our predictions on is called the ***independent variable*** (or predictor variable) and is referred to as X.
+
+* Remark: When there is only one predictor variable, the prediction method is called simple regression. Linear regression can have more than one predictor variable, i.e. Multiple Linear Regression.
+
+---
+### Simple Linear Regression
+
+
+* Suppose we construct our model using `\(n\)` observed values of the response variable: `\(\{y_1, y_2, \ldots y_i \ldots y_n\)`\}.
+
+* For the original data set, there is a predicted value of each case of `\(Y\)` that corresponds to an observed value of `\(Y\)`. 
+
+* The difference between an observed value of the dependent variable ($y_i$) and the corresponding predicted value ($\hat{y}$) is called the residual ($e_i$). Each data point from the data set has one residual.
+
+---
+
+### Residuals
+
+
+Simply put, the values of the residuals are derived as follows: 
+
+`$$\mbox{Residual = Observed value - Predicted value}$$`
+
+`$$e_i = y_i - \hat{y_i}$$`
+
+* Important theoretical assumption underlying the OLS model: the sum of the residuals should equal to zero. 
+
+`$$\sum e_i = 0$$`
+
+* An extension of this is that the expected value of the residuals is 0: `\(\mathrm{E}(e) = 0\)`.
+
+* Another Important Theoretical Assumption - The residuals are normally distributed. (more on that later)
+
+---
+
+### Residual Plots
+
+* A residual plot is a graph that shows the residuals on the vertical axis and the independent variable on the horizontal axis. 
+
+* If the points in a residual plot are randomly dispersed around the horizontal axis, a linear regression model is appropriate for the data; otherwise, a non-linear model is more appropriate.
+
+---
+
+### Summary of Important Terms
+
+Some important terms in model diagnostics, essentially a plan for this talk.
+
+*  ***Residual:*** The difference between the predicted value (based on the regression equation) and the actual, observed value.
+
+*  ***Outlier:***  In linear regression, an outlier is an observation with large residual.  In other words, it is an observation whose dependent-variable value is unusual given its value on the predictor variables.  An outlier may indicate a sample peculiarity or may indicate a data entry error or other problem. 
+
+---
+
+### Summary of Important Terms
+
+*  ***Leverage:***  An observation with an extreme value on a predictor variable is a point with high leverage.  Leverage is a measure of how far an independent variable deviates from its mean.  High leverage points can have a great amount of effect on the estimate of regression coefficients. 
+
+*  ***Influence:***  An observation is said to be influential if removing the observation substantially changes the estimate of the regression coefficients.  Influence can be thought of as the product of leverage and outlierness.  
+
+
+*  ***Cook's distance (or Cook's D):*** A measure that combines the information of leverage and residual of the observation.  
+
+---
+
+### MultiCollinearity
+
+* An important aspect in model diagnostics is checking for multicollinearity. We are not going to cover this much in this talk - but rather include in a talk about variable selection procedure.
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Outliers, leverage and influence
+* An outlier may be defined as a data point that differs significantly from other observations.
+
+* A high-leverage point are observations made at extreme values of independent variables.
+
+* Both types of atypical observations will force the regression line to be close to the point.
+
+
+#### Anscombe's quartet
+(Next Slide)
+
+* The bottom right image has a point with high leverage
+* The bottom left image has an outlying point.
+---
+
+### Anscombe's quartet
+
+
+
+![Anscombe's quartet](AnscombeQuartet.PNG)
+
+---
+
+### Influential observations
+
+* An influential observation is an observation for a statistical calculation whose deletion from the dataset would noticeably change the result of the calculation.
+
+* Equivalently, an influential observation is one whose deletion has a large effect on the parameter estimates in a regression analysis
+
+
+### Metrics
+
+* The DFBETAS are statistics that indicate the effect that deleting each observation has on the estimates for the regression coefficients. 
+
+* The DFFITS and Cook's D statistics indicate the effect that deleting each observation has on the predicted values of the model.
+
+* {broom} R package
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+Model Assumptions
+==========================
+The Distribution of Dependent Variables
+
+*  The assumptions of normality and homogeneity of variance for linear models are not about Y, the dependent variable.  
+
+*  The distributional assumptions for linear regression and ANOVA are for the distribution of `\(Y|X\)` — (Y given X).  
+
+*  The distribution of Y|X is, by definition, the same as the distribution of the residuals. Hence we can check validity by looking at the residuals.  
+
+
+What are those distributional assumptions of `\(Y|X\)`?
+
+
+1.  Independence
+2.  Normality
+3.  Constant Variance
+
+---
+
+#### Examining the Residual Plots
+
+Recall: 
+
+* The mean value of the residuals is zero,
+* The variance of residuals are constant across the range of measurements,
+* The residuals are normally distributed,
+* Residuals are independent.
+
+
+---
+
+A residual plot is obtained by plotting the residuals e with respect to the independent variable X or,
+alternatively with respect to the fitted regression line values `\(\hat{Y}\)`. Such a plot can be used to
+investigate whether the assumptions concerning the residuals appear to be satisfied.
+
+
+---
+
+#### Asummption of Constant Variance
+
+* Homoscedascity (also known as constant variance) is one of the assumptions required in a
+regression analysis in order to make valid statistical inferences about population relationships.
+
+* Homoscedasticity requires that the variance of the residuals are constant for all fitted values,
+indicated by a uniform scatter or dispersion of data points about the trend line (i.e. "The Zero Line").
+* From the above plot, we can conclude that the constant variance assumption is valid. We can also
+see that the mean value of the residuals is close to zero. \textit{(Theoretically it is precisely zero)}.
+
+
+---
+
+### Residual Plots
+
+&lt;img src="images/homosked.png" width="1200" height="600" /&gt;
+
+
+---
+
+### Residual Plots
+
+![Non-Constant Variance](images/heteroscedascity.jpg)
+
+
+
+---
+
+### Residual Plots
+
+![Comparison](images/homosked2.png)
+
+
+
+
+---
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Deming Regression
+
+* Orthogonal regression (also known as “Deming regression”) examines the linear relationship between two continuous variables. 
+
+* Unlike simple linear regression, ***both the response and predictor in orthogonal regression contain measurement error***. In simple regression, only the response variable contains measurement error.
+
+
+* It’s often used to test whether two instruments or methods are measuring the same thing, and is most commonly used in clinical sciences to test the equivalence of measurement instruments. This is an extremely common use case (see Bland-Altman plot)
+
+
+---
+
+
+
+![MethComp R Package](MethComp.PNG)
+
+
+---
+
+### {MethComp} R package
+
+
+```r
+library(MethComp)
+
+# 'True' values
+M &lt;- runif(100,0,5)
+
+# Measurements - with generated error terms
+x &lt;- M + rnorm(100)
+y &lt;- 2 + 3 * M + rnorm(100,sd=2)
+```
+
+---
+
+### {MethComp} R package
+
+#### Deming regression with equal variances
+
+
+```r
+Deming(x,y)
+```
+
+```
+## Intercept     Slope   sigma.x   sigma.y 
+## 0.6018363 3.7332594 1.1376184 1.1376184
+```
+
+#### Specifying the Variance Ratio as 2
+
+
+```r
+Deming(x,y,vr=2)
+```
+
+```
+## Intercept     Slope   sigma.x   sigma.y 
+##  1.121673  3.519659  1.099406  1.554795
+```
+
+---
+
+### {MethComp} R package
+
+OLS Model Estimates
+
+
+```r
+# Comparing classical regression and "Deming extreme"
+summary(lm(y~x))
+```
+
+```
+## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.7668 -1.6339 -0.1343  1.9191  7.8558 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   4.9524     0.5883   8.418 3.22e-13 ***
+## x             1.9456     0.2009   9.683 5.91e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.27 on 98 degrees of freedom
+## Multiple R-squared:  0.4889,	Adjusted R-squared:  0.4837 
+## F-statistic: 93.75 on 1 and 98 DF,  p-value: 5.914e-16
+```
+
+---
+
+
+
+### {MethComp} R package
+
+* Blue: OLS Regression
+* Red : Deming Regression
+
+![](OSUN_files/figure-html/unnamed-chunk-35-1.png)&lt;!-- --&gt;
+
+---
+
+
+
+### {MethComp} R package
+
+Bootstrap Estimates
+
+
+```r
+Deming(x,y,boot=TRUE)
+```
+
+```
+## y  = alpha + beta* x
+```
+
+```
+##            Estimate S.e.(boot)       50%       2.5%    97.5%
+## Intercept 0.6018363 1.05716130 0.5837007 -1.6821725 2.460100
+## Slope     3.7332594 0.38074700 3.7308207  3.0848277 4.632750
+## sigma.x   1.1376184 0.07630951 1.1258730  0.9671753 1.276044
+## sigma.y   1.1376184 0.07630951 1.1258730  0.9671753 1.276044
+```
+
+---
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Linear modelling with R (Cheeses)
+
+
+#### Cheddar Cheese taste
+
+* As cheese ages, various chemical processes take place that determine the taste of the final product. 
+
+* This dataset contains concentrations of various chemicals in 30 samples of mature cheddar cheese, and a subjective measure of taste for each sample. 
+
+* The variables "Acetic" and "H2S" are the natural logarithm of the concentration of acetic asid and hydrogen sulfide respectively. 
+
+* The variable "Lactic" has not been transformed.
+
+#### Reference: 
+
+* Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics.
+
+---
+
+### Linear modelling with R (Cheeses)
+
+
+* Number of cases: 30
+
+#### Variable Names:
+
+* **Case**: Sample number
+* **taste**: Subjective taste test score, obtained by combining the scores of several tasters
+* **Acetic**: Natural log of concentration of acetic acid
+* **H2S**: Natural log of concentration of hydrogen sulfide
+* **Lactic**: Concentration of lactic acid
+
+
+---
+
+### Linear modelling with R (Cheeses)
+
+
+
+```r
+library(tidyverse)
+library(magrittr)
+library(faraway)
+data(cheddar)
+
+
+head(cheddar)
+```
+
+```
+##   taste Acetic   H2S Lactic
+## 1  12.3  4.543 3.135   0.86
+## 2  20.9  5.159 5.043   1.53
+## 3  39.0  5.366 5.438   1.57
+## 4  47.9  5.759 7.496   1.81
+## 5   5.6  4.663 3.807   0.99
+## 6  25.9  5.697 7.601   1.09
+```
+
+
+---
+
+### Linear modelling with R (Cheeses)
+
+
+
+```r
+Fit_1 &lt;- lm(taste ~ Acetic + Lactic, data = cheddar)
+Fit_2 &lt;- lm(taste ~ Acetic + H2S, data = cheddar)
+Fit_3 &lt;- lm(taste ~ H2S + Lactic, data = cheddar)
+
+Fit_4 &lt;- lm(taste ~ Acetic + H2S + Lactic, data = cheddar)
+```
+
+---
+
+### Linear modelling with R (Cheeses)
+
+
+#### Aikaike Information Criterion
+
+
+```r
+AIC(Fit_1)
+```
+
+```
+## [1] 237.3884
+```
+
+```r
+AIC(Fit_2)
+```
+
+```
+## [1] 233.2438
+```
+
+```r
+AIC(Fit_3)
+```
+
+```
+## [1] 227.7838
+```
+
+```r
+AIC(Fit_4)
+```
+
+```
+## [1] 229.7775
+```
+
+---
+
+### {modelr}
+
+Compute model quality for a given dataset
+
+Three summaries are immediately interpretible on the scale of the response variable:
+
+* &lt;tt&gt;rmse()&lt;/tt&gt; is the root-mean-squared-error
+* &lt;tt&gt;mae()&lt;/tt&gt; is the mean absolute error
+* &lt;tt&gt;qae()&lt;/tt&gt; is quantiles of absolute error.
+
+---
+
+### {modelr}
+
+#### Root Mean Square Error
+
+
+```r
+library(modelr)
+rmse(Fit_4,cheddar)
+```
+
+```
+## [1] 9.431174
+```
+
+
+---
+
+### {modelr}
+
+#### mean absolute error
+
+
+```r
+mae(Fit_4,cheddar)
+```
+
+```
+## [1] 7.586727
+```
+
+---
+
+### {modelr}
+
+
+```r
+qae(Fit_4,cheddar)
+```
+
+```
+##        5%       25%       50%       75%       95% 
+##  1.051164  4.087882  5.238398 10.848030 16.609669
+```
+
+---
+
+### {modelr}
+
+Other summaries
+
+* &lt;tt&gt;mape()&lt;/tt&gt; mean absolute percentage error.
+* &lt;tt&gt;rsae()&lt;/tt&gt; is the relative sum of absolute errors.
+* &lt;tt&gt;mse()&lt;/tt&gt; is the mean-squared-error.
+* &lt;tt&gt;rsquare()&lt;/tt&gt; is the variance of the predictions divided by the variance of the response.
+
+---
+
+### {modelr}
+
+
+```r
+rsquare(Fit_4,cheddar)
+```
+
+```
+## [1] 0.6517747
+```
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Diagnostic Plots for Linear Models with R
+===================================================
+
+### Plot Diagnostics for an &lt;tt&gt;lm()&lt;/tt&gt; Object
+
+There are six plots (selectable by &lt;tt&gt;which=&lt;/tt&gt;) are currently available: 
+
+*  a plot of residuals against fitted values, 
+*  a Normal Q-Q plot, 
+*  a Scale-Location plot of &lt;tt&gt;sqrt( `\(\mid \mbox{residuals} \mid\)` })&lt;/tt&gt; against fitted values, 
+
+*  a plot of Cook's distances versus row labels, 
+*  a plot of residuals against leverages, 
+*  a plot of Cook's distances against *leverage/(1-leverage)*.
+
+By default, the first three and 5 are provided, if you just type something like &lt;tt?plot(fit)&lt;/tt&gt;.
+
+---
+
+### Diagnostic Plot 1
+
+* The first one displays the residuals vs. the fitted values we use this to evlauate the mean, variance and correlation of residuals.
+
+* If our assumptions of constant variance and uncorrelated residuals are violated we **may** be able to correct this with a variance-stabilizing transformation.
+
+* see &lt;tt&gt;car::ncevTest()&lt;/tt&gt;
+
+
+---
+### Diagnostic Plot 1
+
+
+```r
+  plot(Fit_4,
+     which=1,
+     pch=16,lwd=1.2)
+```
+
+Just increment the "&lt;tt&gt;which=&lt;/tt&gt;" argument with any integer between 1 and 6
+
+
+---
+### Diagnostic Plot 1
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-46-1.png" width="80%" /&gt;
+
+
+---
+### Diagnostic Plot 2
+
+* The second plot helps us check the normality of the residuals. 
+
+* If the residuals are indeed normal, they should fall along the dashed line.
+
+* Remember that the normality assumption for our errors allows us to determine
+the standard errors of our coefficients and predictions.
+
+---
+### Diagnostic Plot 2
+
+
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-47-1.png" width="80%" /&gt;
+
+---
+### Diagnostic Plots 3
+
+* The ***Scale-Location*** plot, also called 'Spread-Location' (or 'S-L' plot), takes the square root of the absolute residuals in order to diminish skewness (**sqrt($\mid E\mid$)**) is much less skewed than `\(\mid E\mid\)` for Gaussian zero-mean E).
+ 
+ 
+---
+### Diagnostic Plots 3
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-48-1.png" width="80%" /&gt;
+
+
+---
+### Diagnostic Plots 4
+
+* This plot details the Cook's Distance for each observation. 
+* We will revert to this later.
+ 
+---
+
+### Diagnostic Plots 4
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-49-1.png" width="80%" /&gt;
+
+--- 
+
+### Extracting Cook's Distance
+
+
+```r
+cooks.distance(Fit_4) %&gt;% 
+  head(5) %&gt;% 
+  round(4) %&gt;%
+  t()
+```
+
+```
+##           1     2      3      4     5
+## [1,] 0.0693 7e-04 0.0322 0.0257 8e-04
+```
+
+---
+
+### Diagnostic Plots 5
+
+* The ***Residual-Leverage*** plot shows contours of equal Cook's distance, for values of ***cook.levels*** (by default 0.5 and 1) and omits cases with leverage one with a warning. 
+
+* If the leverages are constant the plot uses factor level combinations instead of the leverages for the x-axis. 
+
+* **(The factor levels are ordered by mean fitted value.)**
+
+---
+
+### Diagnostic Plots 5
+
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-51-1.png" width="80%" /&gt;
+
+---
+
+### Diagnostic Plots 6
+
+* The final plot will display our residuals vs. their leverage. 
+* The dashed red lines are level curves that denote a particular value of Cook's distance.
+* We will pay attention to points lying beyond the distance of 1. 
+* Notice that when we have data with row labels, the points will be labeled with their names. Otherwise, the row number will be shown.
+
+
+---
+
+### Diagnostic Plots 6
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-52-1.png" width="80%" /&gt;
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+![Lindia R Package](lindia-cran.PNG)
+
+
+```r
+library(lindia)
+```
+
+
+```r
+library(MASS)
+```
+
+```
+## 
+## Attaching package: 'MASS'
+```
+
+```
+## The following object is masked from 'package:dplyr':
+## 
+##     select
+```
+
+```r
+data(Cars93)
+
+dim(Cars93)
+```
+
+```
+## [1] 93 27
+```
+
+```r
+names(Cars93)
+```
+
+```
+##  [1] "Manufacturer"       "Model"              "Type"              
+##  [4] "Min.Price"          "Price"              "Max.Price"         
+##  [7] "MPG.city"           "MPG.highway"        "AirBags"           
+## [10] "DriveTrain"         "Cylinders"          "EngineSize"        
+## [13] "Horsepower"         "RPM"                "Rev.per.mile"      
+## [16] "Man.trans.avail"    "Fuel.tank.capacity" "Passengers"        
+## [19] "Length"             "Wheelbase"          "Width"             
+## [22] "Turn.circle"        "Rear.seat.room"     "Luggage.room"      
+## [25] "Weight"             "Origin"             "Make"
+```
+
+---
+
+
+```r
+cars_lm &lt;- lm(Price ~ Passengers + Length + RPM, data = Cars93)
+
+summary(cars_lm)
+```
+
+```
+## 
+## Call:
+## lm(formula = Price ~ Passengers + Length + RPM, data = Cars93)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -10.823  -5.494  -1.532   4.197  39.773 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -73.466556  17.374752  -4.228 5.69e-05 ***
+## Passengers   -1.605429   0.972676  -1.651   0.1024    
+## Length        0.451499   0.068189   6.621 2.61e-09 ***
+## RPM           0.003489   0.001650   2.115   0.0373 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 8.023 on 89 degrees of freedom
+## Multiple R-squared:  0.3327,	Adjusted R-squared:  0.3102 
+## F-statistic: 14.79 on 3 and 89 DF,  p-value: 6.811e-08
+```
+
+---
+
+
+```r
+gg_cooksd(cars_lm)
+```
+
+![](OSUN_files/figure-html/unnamed-chunk-56-1.png)&lt;!-- --&gt;
+
+---
+
+
+```r
+gg_diagnose(cars_lm)
+```
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+![](OSUN_files/figure-html/unnamed-chunk-57-1.png)&lt;!-- --&gt;
+
+
+---
+
+
+
+```r
+gg_resX(cars_lm)
+```
+
+![](OSUN_files/figure-html/unnamed-chunk-58-1.png)&lt;!-- --&gt;
+---
+
+
+```r
+gg_qqplot(cars_lm) 
+```
+
+![](OSUN_files/figure-html/unnamed-chunk-59-1.png)&lt;!-- --&gt;
+
+---
+
+
+```r
+gg_resfitted(cars_lm) 
+```
+
+![](OSUN_files/figure-html/unnamed-chunk-60-1.png)&lt;!-- --&gt;
+
+
+
+
+
+
+---
+
+
+
+```r
+gg_boxcox(cars_lm)
+```
+
+![](OSUN_files/figure-html/unnamed-chunk-61-1.png)&lt;!-- --&gt;
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### {broom} R package
+
+
+* &lt;tt&gt;tidy()&lt;/tt&gt; summarizes information about model components such as coefficients of a regression. 
+* &lt;tt&gt;glance()&lt;/tt&gt; reports information about an entire model, such as goodness of fit measures like AIC and BIC. 
+* &lt;tt&gt;augment()&lt;/tt&gt; adds information about individual observations to a dataset, such as fitted values or influence measures.
+
+---
+
+### &lt;tt&gt;tidy()&lt;/tt&gt;
+
+
+```r
+library(broom)
+tidy(Fit_4)  %&gt;%
+  kable( format = "markdown",digits=4)
+```
+
+
+
+|term        | estimate| std.error| statistic| p.value|
+|:-----------|--------:|---------:|---------:|-------:|
+|(Intercept) | -28.8768|   19.7354|   -1.4632|  0.1554|
+|Acetic      |   0.3277|    4.4598|    0.0735|  0.9420|
+|H2S         |   3.9118|    1.2484|    3.1334|  0.0042|
+|Lactic      |  19.6705|    8.6291|    2.2796|  0.0311|
+
+
+---
+
+### &lt;tt&gt;glance()&lt;/tt&gt;
+
+
+```r
+glance(Fit_4) %&gt;%
+  dplyr::select(1:7) %&gt;%
+  kable( format = "markdown",digits=3)
+```
+
+
+
+| r.squared| adj.r.squared|  sigma| statistic| p.value| df|   logLik|
+|---------:|-------------:|------:|---------:|-------:|--:|--------:|
+|     0.652|         0.612| 10.131|    16.221|       0|  3| -109.889|
+
+
+
+```r
+glance(Fit_4) %&gt;%
+  dplyr::select(6:12) %&gt;%
+  kable( format = "markdown",digits=4)
+```
+
+
+
+| df|    logLik|      AIC|      BIC| deviance| df.residual| nobs|
+|--:|---------:|--------:|--------:|--------:|-----------:|----:|
+|  3| -109.8888| 229.7775| 236.7835| 2668.411|          26|   30|
+
+---
+
+### &lt;tt&gt;augment()&lt;/tt&gt;
+
+
+```r
+augment(Fit_4,interval = "confidence") %&gt;%
+  kable( format = "markdown",digits=4)
+```
+
+
+
+| taste| Acetic|    H2S| Lactic| .fitted|  .lower|  .upper|   .resid|   .hat|  .sigma| .cooksd| .std.resid|
+|-----:|------:|------:|------:|-------:|-------:|-------:|--------:|------:|-------:|-------:|----------:|
+|  12.3|  4.543|  3.135|   0.86|  1.7924| -6.9253| 10.5102|  10.5076| 0.1753| 10.0688|  0.0693|     1.1421|
+|  20.9|  5.159|  5.043|   1.53| 22.6374| 16.8992| 28.3756|  -1.7374| 0.0759| 10.3250|  0.0007|    -0.1784|
+|  39.0|  5.366|  5.438|   1.57| 25.0372| 19.9388| 30.1356|  13.9628| 0.0599|  9.9217|  0.0322|     1.4215|
+|  47.9|  5.759|  7.496|   1.81| 37.9375| 31.7498| 44.1252|   9.9625| 0.0883| 10.1184|  0.0257|     1.0299|
+|   5.6|  4.663|  3.807|   0.99|  7.0177| -0.4556| 14.4910|  -1.4177| 0.1288| 10.3269|  0.0008|    -0.1499|
+|  25.9|  5.697|  7.601|   1.09| 24.1652| 14.1704| 34.1600|   1.7348| 0.2304| 10.3238|  0.0029|     0.1952|
+|  37.3|  5.892|  8.726|   1.29| 32.5640| 23.0874| 42.0406|   4.7360| 0.2071| 10.2764|  0.0180|     0.5250|
+|  21.9|  6.078|  7.966|   1.78| 39.2905| 33.2790| 45.3021| -17.3905| 0.0833|  9.6716|  0.0731|    -1.7930|
+|  18.1|  4.898|  3.850|   1.29| 13.1641|  7.1680| 19.1602|   4.9359| 0.0829| 10.2798|  0.0059|     0.5088|
+|  21.0|  5.242|  4.174|   1.58| 20.2487| 13.0309| 27.4665|   0.7513| 0.1201| 10.3301|  0.0002|     0.0791|
+|  34.9|  5.740|  6.142|   1.68| 30.0775| 24.7554| 35.3996|   4.8225| 0.0653| 10.2831|  0.0042|     0.4924|
+|  57.2|  6.446|  7.908|   1.90| 41.5447| 33.4986| 49.5908|  15.6553| 0.1493|  9.7577|  0.1232|     1.6755|
+|   0.7|  4.477|  2.996|   1.06|  5.1612| -2.8557| 13.1781|  -4.4612| 0.1482| 10.2860|  0.0099|    -0.4771|
+|  25.9|  5.236|  4.942|   1.30| 17.7433| 13.4087| 22.0779|   8.1567| 0.0433| 10.1958|  0.0077|     0.8232|
+|  54.9|  6.151|  6.752|   1.52| 29.4511| 23.2038| 35.6984|  25.4489| 0.0900|  8.8469|  0.1715|     2.6334|
+|  40.9|  6.365|  9.588|   1.74| 44.9428| 36.8364| 53.0491|  -4.0428| 0.1515| 10.2940|  0.0084|    -0.4332|
+|  15.9|  4.787|  3.912|   1.16| 10.8131|  4.5887| 17.0375|   5.0869| 0.0893| 10.2762|  0.0068|     0.5262|
+|   6.4|  5.412|  4.700|   1.49| 20.5917| 15.4070| 25.7764| -14.1917| 0.0620|  9.9070|  0.0346|    -1.4464|
+|  18.0|  5.247|  6.174|   1.63| 29.0576| 23.0764| 35.0388| -11.0576| 0.0825| 10.0700|  0.0292|    -1.1395|
+|  38.9|  5.438|  9.064|   1.99| 47.5068| 36.8827| 58.1309|  -8.6068| 0.2603| 10.1356|  0.0858|    -0.9878|
+|  14.0|  4.564|  4.949|   1.15| 14.5999|  6.6645| 22.5353|  -0.5999| 0.1452| 10.3305|  0.0002|    -0.0640|
+|  15.2|  5.298|  5.220|   1.33| 19.4412| 15.3223| 23.5602|  -4.2412| 0.0391| 10.2950|  0.0019|    -0.4271|
+|  32.0|  5.455|  9.242|   1.44| 37.3899| 27.9509| 46.8288|  -5.3899| 0.2055| 10.2603|  0.0230|    -0.5969|
+|  56.7|  5.855| 10.199|   2.01| 52.4768| 42.4157| 62.5380|   4.2232| 0.2334| 10.2862|  0.0173|     0.4761|
+|  16.8|  5.366|  3.664|   1.31| 12.9833|  6.9454| 19.0211|   3.8167| 0.0841| 10.3005|  0.0036|     0.3937|
+|  11.6|  6.043|  3.219|   1.46| 14.4150|  3.6737| 25.1563|  -2.8150| 0.2661| 10.3104|  0.0095|    -0.3243|
+|  26.5|  6.458|  6.962|   1.72| 34.3074| 26.2494| 42.3653|  -7.8074| 0.1497| 10.1916|  0.0308|    -0.8358|
+|   0.7|  5.328|  3.912|   1.25| 12.7607|  7.2369| 18.2845| -12.0607| 0.0704| 10.0239|  0.0288|    -1.2347|
+|  13.4|  5.802|  6.685|   1.08| 20.4196| 11.1492| 29.6900|  -7.0196| 0.1982| 10.2117|  0.0370|    -0.7738|
+|   5.5|  6.176|  4.787|   1.25| 16.4615|  6.8181| 26.1049| -10.9615| 0.2145| 10.0309|  0.1017|    -1.2208|
+
+
+
+
+
+
+
+### R Packages
+
+
+```r
+library(tidyverse)
+
+# Graphics &amp; Data Inspection
+library(inspectdf)
+library(WVPlots)
+```
+
+```
+## Warning: package 'WVPlots' was built under R version 4.0.5
+```
+
+```
+## Loading required package: wrapr
+```
+
+```
+## Warning: package 'wrapr' was built under R version 4.0.5
+```
+
+```
+## 
+## Attaching package: 'wrapr'
+```
+
+```
+## The following object is masked from 'package:modelr':
+## 
+##     qae
+```
+
+```
+## The following objects are masked from 'package:tidyr':
+## 
+##     pack, unpack
+```
+
+```
+## The following object is masked from 'package:tibble':
+## 
+##     view
+```
+
+```
+## The following object is masked from 'package:dplyr':
+## 
+##     coalesce
+```
+
+```r
+# Statistics &amp; Modelling
+library(MASS)   # installed with Base R
+library(car)
+```
+
+```
+## Warning: package 'car' was built under R version 4.0.5
+```
+
+```
+## Loading required package: carData
+```
+
+```
+## Warning: package 'carData' was built under R version 4.0.5
+```
+
+```
+## 
+## Attaching package: 'car'
+```
+
+```
+## The following object is masked from 'package:wrapr':
+## 
+##     bc
+```
+
+```
+## The following objects are masked from 'package:faraway':
+## 
+##     logit, vif
+```
+
+```
+## The following object is masked from 'package:purrr':
+## 
+##     some
+```
+
+```
+## The following object is masked from 'package:dplyr':
+## 
+##     recode
+```
+
+```r
+library(gvlma)
+```
+
+
+
+
+Definitions: Leverage and Influence
+===========================================================
+
+
+
+*  ***Studentized Residuals*** :  Residuals divided by their estimated standard errors (like t-statistics). Observations with values larger than 3 in absolute value are considered outliers.
+*  ***Leverage Values (Hat Diag)*** :  Measure of how far an observation is from the others in terms of the levels of the independent variables (not the dependent variable). Observations with values larger than `\(2(k+1)/n\)` are considered to be potentially highly influential, where k is the number of predictors and n is the sample size.
+
+Definitions: DFFITS and DFBETAs
+===========================================================
+
+*  ***DFFITS*** :  Measure of how much an observation has effected its fitted value from the regression model. Values larger than `\(2\sqrt{(k+1)/n}\)` in absolute value are considered highly influential. 
+
+*  ***DFBETAS*** :  Measure of how much an observation has effected the estimate of a regression coefficient (there is one DFBETA for each regression coefficient, including the intercept). 
+* Values larger than ***2/sqrt(n)*** in absolute value are usually considered highly influential.
+
+
+Definitions: DFFITS and DFBETAs
+===========================================================
+
+* The measure that measures how much impact each observation has on a particular predictor is DFBETAs The DFBETA for a predictor and for a particular observation is the difference between the regression coefficient calculated for all of the data and the regression coefficient calculated with the observation deleted, scaled by the standard error calculated with the observation deleted. 
+
+
+Definitions: Leverage and Influence
+===========================================================
+
+*  ***Cook's D*** :  Measure of aggregate impact of each observation on the group of regression coefficients, as well as the group of fitted values. Values larger than 4/n are considered highly influential.
+
+The studentized residual
+=============================================================
+
+* The studentized residual RSTUDENT is estimated by `\(s(i)^2\)` without the ith observation, not by `\(s^2\)`. For example,
+
+\[\mbox{RSTUDENT} = \frac{r_i}{s_{(i)} \sqrt{(1 - h_i)}} \]
+* Observations with RSTUDENT larger than 2 in absolute value may need some attention.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### {gvlma}
+
+#### Global Validation of Linear Model Assumptions
+
+* The {gvlma} package is a comprehensive, automatic testing suite for many of the assumptions of general linear models. 
+
+* Perform a single global test to assess the linear model assumptions, as well as perform specific
+directional tests designed to detect skewness, kurtosis, a nonlinear link function, and heteroscedasticity
+
+* It does both statistical tests and diagnostic plots using an extremely simple implementation for powerful results.
+
+
+
+
+---
+
+### {gvlma}
+
+The package is an implementation of a paper by Pena &amp; Slate called ***Global Validation of Linear Model Assumptions*** and allows you to quickly check for:
+
+* ***Linearity*** - the Global Stat tests for the null hypothesis that our model is a linear combination of its predictors.
+
+* ***Homoscedasticity*** - the respective stat tests for the null that the residial variance is relatively constant over the range of values.
+
+* ***Normality*** - skewness and kurtosis tests help you understand if the residuals fits a normal distribution. 
+
+* If the null is rejected you probably need to transform your data in some way (like a log transform). 
+This can also be assessed by looking at the normal probability plot it generates.	
+
+
+---
+
+### {gvlma}
+
+
+
+
+```r
+  library("gvlma")
+
+  # model &lt;- lm(y ~ x, data)
+  
+  
+  summary(gvlma(model))
+```
+
+```
+## 
+## Call:
+## lm(formula = taste ~ Acetic + H2S + Lactic, data = cheddar)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -17.390  -6.612  -1.009   4.908  25.449 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept) -28.8768    19.7354  -1.463  0.15540   
+## Acetic        0.3277     4.4598   0.073  0.94198   
+## H2S           3.9118     1.2484   3.133  0.00425 **
+## Lactic       19.6705     8.6291   2.280  0.03108 * 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 10.13 on 26 degrees of freedom
+## Multiple R-squared:  0.6518,	Adjusted R-squared:  0.6116 
+## F-statistic: 16.22 on 3 and 26 DF,  p-value: 3.81e-06
+## 
+## 
+## ASSESSMENT OF THE LINEAR MODEL ASSUMPTIONS
+## USING THE GLOBAL TEST ON 4 DEGREES-OF-FREEDOM:
+## Level of Significance =  0.05 
+## 
+## Call:
+##  gvlma(x = model) 
+## 
+##                      Value p-value                Decision
+## Global Stat        1.33099  0.8561 Assumptions acceptable.
+## Skewness           1.12180  0.2895 Assumptions acceptable.
+## Kurtosis           0.02119  0.8843 Assumptions acceptable.
+## Link Function      0.02906  0.8646 Assumptions acceptable.
+## Heteroscedasticity 0.15894  0.6901 Assumptions acceptable.
+```
+
+
+---
+
+### {gvlma}
+
+![GVLMA](images/gvlma-output.png)
+
+---
+
+### {gvlma}
+
+* Global Stat checks whether the relationship between the dependent and independent relationship roughly linear.
+
+* Skewness and kurtosis assumptions show that the distribution of the residuals are normal.
+
+* Link function checks to see if the dependent variable is continuous or categorical. 
+
+---
+
+### {gvlma}
+
+* The diagnostic plots also let you understand the relation between your data and these assumptions visually. 
+* Other useful capabilities are the link function test which is used for understanding whether the underlying data is categorical or continuous.
+
+
+---
+
+### {gvlma}
+
+
+
+```r
+  plot(gvlma(model))
+```
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-70-1.png" width="80%" /&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+olsrr
+===================================
+
+###{olsrr} 
+
+#### Tools for Building OLS Regression Models
+
+* Tools designed to make it easier for users, particularly beginner/intermediate R users to build ordinary least squares regression models.
+* Includes comprehensive regression output, heteroskedasticity tests, collinearity diagnostics, residual diagnostics, measures of influence, model fit assessment and variable selection procedures.
+* Author: Aravind Hebbali 
+
+(Source: CRAN)
+
+---
+
+### Diagnostics panel
+
+Panel of plots for regression diagnostics.
+
+
+```r
+ols_plot_diagnostics(model)
+```
+
+#### Arguments 
+ 
+* ***model***: An object of class lm.
+
+
+---
+
+### Diagnostics panel
+
+
+
+```r
+model &lt;- Fit_4
+ols_plot_diagnostics(model)
+```
+
+![](OSUN_files/figure-html/unnamed-chunk-74-1.png)&lt;!-- --&gt;![](OSUN_files/figure-html/unnamed-chunk-74-2.png)&lt;!-- --&gt;![](OSUN_files/figure-html/unnamed-chunk-74-3.png)&lt;!-- --&gt;
+
+
+---
+
+### Residual QQ plot
+
+#### Description 
+ 
+Graph for detecting violation of normality assumption.
+
+ 
+
+```r
+ols_plot_resid_qq(model)
+```
+
+---
+
+
+### Residual QQ plot
+
+
+```r
+ols_plot_resid_qq(model)
+```
+
+![](OSUN_files/figure-html/unnamed-chunk-76-1.png)&lt;!-- --&gt;
+
+---
+
+### &lt;tt&gt;ols_plot_resid_box()&lt;/tt&gt;
+
+ 
+Box plot of residuals to examine if residuals are normally distributed.
+
+ 
+
+
+```r
+ols_plot_resid_box(model)
+```
+
+
+---
+
+***ols_plot_resid_box()***
+=================================================
+
+
+```r
+ols_plot_resid_box(model)
+```
+
+![](OSUN_files/figure-html/unnamed-chunk-78-1.png)&lt;!-- --&gt;
+
+---
+
+Breusch pagan test
+=================================================
+
+#### Description 
+ 
+Test for constant variance. It assumes that the error terms are normally distributed.
+
+ 
+
+```r
+ols_test_breusch_pagan(model, fitted.values = TRUE, rhs = FALSE,
+                       multiple = FALSE, 
+                       p.adj = c("none", "bonferroni", "sidak", "holm"),
+                       vars = NA)
+```
+
+### Breusch pagan test
+
+* Breusch Pagan Test was introduced by Trevor Breusch and Adrian Pagan in 1979. 
+* It is used to test for heteroscedasticity in a linear regression model. 
+* It tests whether variance of errors from a
+regression is dependent on the values of a independent variable.
+
+---
+
+### Breusch pagan test
+* Null Hypothesis: Equal/constant variances
+* Alternative Hypothesis: Unequal/non-constant variances
+Computation
+* Fit a regression model
+* Regress the squared residuals from the above model on the independent variables
+* Compute the test statistic. It follows a chi square distribution with `\(p -1\)` degrees of freedom, where `\(p\)` is
+the number of independent variables, n is the sample size and `\(R^2\)` is the coefficient of determination.
+
+---
+
+### Breusch pagan test
+
+#### Value
+An object of
+class "&lt;tt&gt;ols_test_breusch_pagan&lt;/tt&gt;" is a list containing the following components:
+
+* bp : breusch pagan statistic
+* p : p-value of bp
+* fv : fitted values of the regression model
+* rhs : names of explanatory variables of fitted regression model
+* multiple logical value indicating if multiple tests should be performed
+* padj : adjusted p values
+* vars : variables to be used for heteroskedasticity test
+* resp : response variable
+* preds : predictors
+
+---
+
+### Breusch pagan test
+
+
+```r
+# model
+
+# use fitted values of the model
+
+ols_test_breusch_pagan(model)
+```
+
+```
+## 
+##  Breusch Pagan Test for Heteroskedasticity
+##  -----------------------------------------
+##  Ho: the variance is constant            
+##  Ha: the variance is not constant        
+## 
+##               Data                
+##  ---------------------------------
+##  Response : taste 
+##  Variables: fitted values of taste 
+## 
+##         Test Summary         
+##  ----------------------------
+##  DF            =    1 
+##  Chi2          =    1.157465 
+##  Prob &gt; Chi2   =    0.2819919
+```
+---
+
+### Breusch pagan test
+
+
+```r
+# use independent variables of the model
+ols_test_breusch_pagan(model, rhs = TRUE)
+```
+
+```
+## 
+##  Breusch Pagan Test for Heteroskedasticity
+##  -----------------------------------------
+##  Ho: the variance is constant            
+##  Ha: the variance is not constant        
+## 
+##             Data             
+##  ----------------------------
+##  Response : taste 
+##  Variables: Acetic H2S Lactic 
+## 
+##         Test Summary         
+##  ----------------------------
+##  DF            =    3 
+##  Chi2          =    4.493994 
+##  Prob &gt; Chi2   =    0.2128266
+```
+---
+
+### Breusch pagan test
+
+
+```r
+# use independent variables of the model and perform multiple tests
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE)
+```
+
+```
+## 
+##  Breusch Pagan Test for Heteroskedasticity
+##  -----------------------------------------
+##  Ho: the variance is constant            
+##  Ha: the variance is not constant        
+## 
+##             Data             
+##  ----------------------------
+##  Response : taste 
+##  Variables: Acetic H2S Lactic 
+## 
+##         Test Summary (Unadjusted p values)        
+##  -----------------------------------------------
+##   Variable           chi2       df        p      
+##  -----------------------------------------------
+##   Acetic           3.8855767     1    0.04870253 
+##   H2S              0.5192075     1    0.47117994 
+##   Lactic           1.6874864     1    0.19393265 
+##  -----------------------------------------------
+##   simultaneous     4.4939942     3    0.21282661 
+##  -----------------------------------------------
+```
+
+---
+
+### Breusch pagan test
+
+
+
+```r
+# bonferroni p value adjustment
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE, p.adj = 'bonferroni')
+```
+
+```
+## 
+##  Breusch Pagan Test for Heteroskedasticity
+##  -----------------------------------------
+##  Ho: the variance is constant            
+##  Ha: the variance is not constant        
+## 
+##             Data             
+##  ----------------------------
+##  Response : taste 
+##  Variables: Acetic H2S Lactic 
+## 
+##         Test Summary (Bonferroni p values)       
+##  ----------------------------------------------
+##   Variable           chi2       df        p     
+##  ----------------------------------------------
+##   Acetic           3.8855767     1    0.1461076 
+##   H2S              0.5192075     1    1.0000000 
+##   Lactic           1.6874864     1    0.5817979 
+##  ----------------------------------------------
+##   simultaneous     4.4939942     3    0.2128266 
+##  ----------------------------------------------
+```
+---
+
+### Breusch pagan test
+
+
+```r
+# sidak p value adjustment
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE, p.adj = 'sidak')
+```
+
+```
+## 
+##  Breusch Pagan Test for Heteroskedasticity
+##  -----------------------------------------
+##  Ho: the variance is constant            
+##  Ha: the variance is not constant        
+## 
+##             Data             
+##  ----------------------------
+##  Response : taste 
+##  Variables: Acetic H2S Lactic 
+## 
+##           Test Summary (Sidak p values)          
+##  ----------------------------------------------
+##   Variable           chi2       df        p     
+##  ----------------------------------------------
+##   Acetic           3.8855767     1    0.1391073 
+##   H2S              0.5192075     1    0.8521151 
+##   Lactic           1.6874864     1    0.4762621 
+##  ----------------------------------------------
+##   simultaneous     4.4939942     3    0.2128266 
+##  ----------------------------------------------
+```
+
+```r
+# holm's p value adjustment
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE, p.adj = 'holm')
+```
+
+```
+## 
+##  Breusch Pagan Test for Heteroskedasticity
+##  -----------------------------------------
+##  Ho: the variance is constant            
+##  Ha: the variance is not constant        
+## 
+##             Data             
+##  ----------------------------
+##  Response : taste 
+##  Variables: Acetic H2S Lactic 
+## 
+##           Test Summary (Holm's p values)         
+##  ----------------------------------------------
+##   Variable           chi2       df        p     
+##  ----------------------------------------------
+##   Acetic           3.8855767     1    0.1461076 
+##   H2S              0.5192075     1    0.4711799 
+##   Lactic           1.6874864     1    0.3878653 
+##  ----------------------------------------------
+##   simultaneous     4.4939942     3    0.2128266 
+##  ----------------------------------------------
+```
+
+---
+
+### &lt;tt&gt;ols_aic&lt;/tt&gt; Akaike information criterion
+
+#### Description 
+
+Akaike information criterion for model selection.
+
+ 
+
+```r
+  ols_aic(model, method = c("R", "STATA", "SAS"))
+```
+
+---
+
+### &lt;tt&gt;ols_aic&lt;/tt&gt;  Akaike information criterion
+
+#### Arguments 
+  
+* model An object of class lm.
+* method A character vector; specify the method to compute AIC. Valid options include R, STATA and SAS.
+
+#### Details 
+
+* AIC provides a means for model selection. Given a collection of models for the data, AIC estimates the quality of each model, relative to each of the other models. 
+* R and STATA use loglikelihood to compute AIC. SAS uses residual sum of squares.
+
+---
+
+### &lt;tt&gt;ols_sbc&lt;/tt&gt; Bayesian information criterion
+
+#### Description 
+ 
+Bayesian information criterion for model selection.
+
+ 
+
+```r
+ols_sbc(model, method = c("R", "STATA", "SAS"))
+```
+
+#### Arguments
+* &lt;tt&gt;model&lt;/tt&gt;: An object of class lm.
+* &lt;tt&gt;method&lt;/tt&gt;: A character vector; specify the method to compute BIC. Valid options include
+R, STATA and SAS.
+
+---
+
+### &lt;tt&gt;ols_sbc&lt;/tt&gt; Bayesian information criterion
+
+
+```r
+# using R computation method
+ols_sbc(model)
+```
+
+```
+## [1] 236.7835
+```
+
+```r
+# using STATA computation method
+
+# ols_sbc(model, method = 'STATA')
+
+# using SAS computation method
+
+# ols_sbc(model, method = 'SAS')
+```
+
+---
+
+### Cook's Distance
+
+* Cook's distance was introduced by American statistician R Dennis Cook in 1977. 
+* It is used to
+identify influential data points. 
+* It depends on both the residual and leverage .
+
+---
+
+### Cook's Distance
+
+Steps to compute Cook's distance:
+
+*  Delete observations one at a time.
+*  Refit the regression model on remaining `\(n-1\)` observations??? 1 observations
+*  examine how much all of the fitted values change when the ith observation is deleted.
+
+
+A data point having a large cook's d indicates that the data point strongly influences the fitted values.
+
+---
+
+### Cooks' D bar plot
+
+#### Description 
+ 
+Bar Plot of cook's distance to detect observations that strongly influence fitted values of the model.
+
+ 
+
+```r
+ols_plot_cooksd_bar(model)
+```
+
+
+---
+
+### Cook's distance:
+
+&lt;tt&gt;ols_plot_cooksd_bar&lt;/tt&gt; returns a list containing the following components:
+
+* ***outliers***: a tibble with observation number and cooks distance that exceed threshold
+* ***threshold***: threshold for classifying an observation as an outlier
+
+
+```r
+ols_plot_cooksd_bar(model)
+```
+
+
+```r
+ols_plot_cooksd_chart(model)
+```
+
+
+---
+
+### Cook's distance:
+
+
+ 
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-91-1.png" width="80%" /&gt;
+
+---
+
+### Cook's distance:
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-92-1.png" width="80%" /&gt;
+
+---
+
+### DFBETa:
+
+
+#### Description 
+ 
+Panel of plots to detect influential observations using DFBETAs.
+
+ 
+
+```r
+ols_plot_dfbetas(model)
+```
+
+#### Arguments 
+ 
+* ``model``: An object of class lm.
+
+
+---
+
+#### Details 
+ 
+* DFBETA measures the difference in each parameter estimate with and without the influential point.
+* There is a DFBETA for each data point i.e if there are n observations and k variables, there will be `\(n - k\)` DFBETAs. 
+* In general, large values of DFBETAS indicate observations that are influential in estimating a given parameter. 
+* Belsley, Kuh, and Welsch recommend 2 as a general cutoff value toindicate influential observations and well as an alternative size-adjusted cutoff.
+
+---
+
+
+```r
+ols_plot_dfbetas(model)
+```
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-94-1.png" width="80%" /&gt;
+
+---
+
+### olsrr: Leverage
+
+ 
+The leverage of an observation is based on how much the observation's value on the predictor variable differs from the mean of the predictor variable. The greater an observation's leverage, the more potential it has to be an influential observation.
+
+ 
+
+```r
+ols_leverage(model)
+```
+
+#### Arguments 
+ 
+* ``model``: An object of class lm.
+
+ 
+
+
+```r
+ols_leverage(model)
+```
+
+```
+##  [1] 0.17525784 0.07593130 0.05994339 0.08829409 0.12879533 0.23036705
+##  [7] 0.20709897 0.08333780 0.08291114 0.12013909 0.06531941 0.14929496
+## [13] 0.14821335 0.04332811 0.09000337 0.15153827 0.08934443 0.06198950
+## [19] 0.08249992 0.26029095 0.14521419 0.03912430 0.20545696 0.23343680
+## [25] 0.08406925 0.26606306 0.14973461 0.07036401 0.19818511 0.21445340
+```
+
+---
+
+### Studentized residuals vs leverage plot
+
+ 
+Graph for detecting outliers and/or observations with high leverage.
+
+ 
+
+```r
+ols_plot_resid_lev(model)
+```
+
+---
+
+### Studentized residuals vs leverage plot
+
+
+
+```r
+ols_plot_resid_lev(model)
+```
+
+&lt;img src="OSUN_files/figure-html/unnamed-chunk-98-1.png" width="80%" /&gt;
+
+---
+
+### olsrr: PRESS
+
+PRESS (prediction sum of squares) tells you how well the model will predict new data.
+
+
+* The prediction sum of squares (PRESS) is the sum of squares of the prediction error.
+* Each fitted
+to obtain the predicted value for the ith observation. 
+* Use PRESS to assess your model's predictive
+ability. 
+* Usually, the smaller the PRESS value, the better the model's predictive ability.
+
+
+#### Usage 
+
+```r
+ols_press(model)
+```
+
+
+
+
+---
+
+### Collinearity diagnostics
+
+
+#### Collinearity
+
+Variance inflation factor, tolerance, eigenvalues and condition indices.
+
+
+#### Details 
+
+* Collinearity implies two variables are near perfect linear combinations of one another. 
+* Multicollinearity
+involves more than two variables.
+* In the presence of multicollinearity, regression estimates
+are unstable and have high standard errors.
+
+---
+
+### Collinearity diagnostics
+
+
+
+* &lt;tt&gt;ols_coll_diag(model)&lt;/tt&gt;
+* &lt;tt&gt;ols_vif_tol(model)&lt;/tt&gt;
+* &lt;tt&gt;ols_eigen_cindex(model)&lt;/tt&gt;
+
+---
+
+### Collinearity diagnostics
+
+
+```r
+# vif and tolerance
+ols_vif_tol(model)
+```
+
+```
+##   Variables Tolerance      VIF
+## 1    Acetic 0.5459740 1.831589
+## 2       H2S 0.5019577 1.992200
+## 3    Lactic 0.5160194 1.937912
+```
+
+---
+
+### Collinearity diagnostics
+
+
+
+```r
+# eigenvalues and condition indices
+
+ols_eigen_cindex(model) %&gt;%
+  kable( format = "markdown",digits=4)
+```
+
+
+
+| Eigenvalue| Condition Index| intercept| Acetic|    H2S| Lactic|
+|----------:|---------------:|---------:|------:|------:|------:|
+|     3.9154|          1.0000|    0.0006| 0.0004| 0.0034| 0.0014|
+|     0.0646|          7.7878|    0.0347| 0.0072| 0.5673| 0.0000|
+|     0.0165|         15.3968|    0.0698| 0.0154| 0.2826| 0.9483|
+|     0.0036|         33.1344|    0.8950| 0.9770| 0.1466| 0.0504|
+
+---
+
+### Collinearity diagnostics
+
+
+
+```r
+# collinearity diagnostics
+ols_coll_diag(model)
+```
+
+```
+## Tolerance and Variance Inflation Factor
+## ---------------------------------------
+##   Variables Tolerance      VIF
+## 1    Acetic 0.5459740 1.831589
+## 2       H2S 0.5019577 1.992200
+## 3    Lactic 0.5160194 1.937912
+## 
+## 
+## Eigenvalue and Condition Index
+## ------------------------------
+##    Eigenvalue Condition Index    intercept       Acetic        H2S       Lactic
+## 1 3.915360446         1.00000 0.0005615356 0.0003642985 0.00344925 1.365207e-03
+## 2 0.064557155         7.78778 0.0347152460 0.0072159623 0.56732059 2.694277e-05
+## 3 0.016516138        15.39684 0.0697512251 0.0154437761 0.28263569 9.482560e-01
+## 4 0.003566261        33.13441 0.8949719933 0.9769759631 0.14659447 5.035184e-02
+```
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

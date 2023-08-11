@@ -1,0 +1,99 @@
+---
+title: "OSUN R Users Community"
+subtitle: "Kevin O'Brien"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      countIncrementalSlides: false
+---
+
+### Method Comparison Studies
+
+* Graphical Techniques
+* Deming / Orthonormal Regression
+* LME Models
+  * {nlme} and {lme4}
+* Systolic Blood Pressure Data
+* Influence Analysis and Regression Analysis
+  * DFBETAs
+
+---
+
+## Bland-Altman 1986
+
+#### Statistical methods for assessing agreement between two methods of clinical measurement
+
+51,232 Citations
+
+
+![Bland-Altman 1986 Citations](BlandAltmanCite.PNG)
+
+
+---
+
+
+### Bland-Altman Plot
+
+For two vectors of equal length representing measurements of the same quantity by two different
+methods, the differences are plotted versus the average. The limits of agreement (prediction limits
+for the differences) are plotted, optionally a regression of differences of means is given too.
+
+```{r eval=FALSE}
+library(MethComp)
+data( ox )
+ox <- Meth( ox )
+# The simplest possible Bland-Altman plot
+BA.plot( ox )
+```
+
+```{r echo=FALSE}
+library(MethComp)
+data( ox )
+```
+
+---
+### ***ox***- Measurement of oxygen saturation in blood
+61 children had their blood oxygen content measured at the Children’s Hospital in Melbourne,
+either with a chemical method analysing gases in the blood (CO) or by a pulse oximeter measuring
+transcutaneously (pulse). 
+
+
+```{r echo=FALSE}
+library(MethComp)
+data( ox )
+```
+#### 61 items - 3 replicate measurements each
+```{r echo=FALSE, warning=FALSE,message=FALSE}
+library(tidyverse)
+library(magrittr)
+ox %>% group_by(meth,item) %>% tally()  %>% tail(4)
+```
+
+#### Example of Data
+```{r echo=FALSE, warning=FALSE,message=FALSE}
+
+head(ox,4)
+```
+
+---
+
+```{r}
+ox %>%  mutate(meth=as.character(meth),item=as.character(item))%>%
+ pivot_wider(id_cols=c(item,repl),names_from="meth",values_from="y") %>% ggplot(aes(x=CO,y=pulse)) + 
+  geom_point(pch=16,col="red") + theme_bw()
+
+```
+
+---
+
+
+### Bland-Altman Plot
+
+```{r echo=FALSE}
+# The simplest possible Bland-Altman plot
+BA.plot( ox )
+```
+
+---

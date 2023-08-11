@@ -1,0 +1,368 @@
+Ghana R Users (January 2022)
+========================================================
+author: Kevin O'Brien
+date: `r format(Sys.time(), '%d-%B-%Y')`
+width: 960
+height: 800
+transition: linear
+css: rpres.css
+
+About Me
+========================================================
+
+### Kevin O'Brien
+
+- Why R? - Community Team lead & Webinars co-ordinator
+- West of Ireland / South London
+- Python Ireland - Director
+- JuliaCon 2022 - Social Media Chair
+- was previously (what is now known) as a "Research Software Engineer" in a University.
+
+Target
+=========================================
+
+### Intended Audience
+
+* Career Young Statisticians and Data Scientists.
+* Solid Foundation in R and/or Python.
+* Machine Learning / Deep Learning
+* Github
+
+### What's next?
+
+* Transition to Research Software Engineer?
+* Apply skills base to real world problems
+
+Research Software Engineering
+=========================================
+Research software engineering is the use of software engineering practices in research applications. The term was proposed in a research paper in 2010 in response to an empirical survey on tools used for software development in research projects. 
+
+It started to be used in United Kingdom in 2012, when it was needed to define the type of software development needed in research. This focuses on reproducibility, reusability, and accuracy of data analysis and applications created for research.
+(*Wikipedia*)
+
+Sustainable Development Goals 
+=========================================
+
+![Sustainable Development Goals](sustainable_development_goals.png)
+
+
+Sustainable Development Goals 
+=========================================
+
+**Sustainable Development Goal 2**
+ -  ending hunger, achieving food security, improving nutrition and promoting sustainable agriculture.
+
+**Sustainable Development Goal 3**
+ -  ensuring healthy lives and promoting well-being for all, at all ages.
+
+**Sustainable Development Goal 6**
+ -  ensuring the availability and sustainable management of water and sanitation for all.
+
+**Sustainable Development Goal 7**
+ -  ensuring access to affordable, reliable, sustainable and modern energy for all.
+
+
+Sustainable Development Goals (more)
+=========================================
+
+**Sustainable Development Goal 8**
+ -  promoting sustained, inclusive and sustainable economic growth, full and productive employment and decent work for all.
+
+
+**Sustainable Development Goal 11**
+ -  making cities and human settlements inclusive, safe, resilient and sustainable.
+
+
+**Sustainable Development Goal 12**
+ -  ensuring sustainable consumption and production patterns.
+
+**Sustainable Development Goal 13**
+ -  taking urgent action to combat climate change and its impacts.
+
+
+
+Sustainable Development Goals (more)
+=========================================
+
+**Sustainable Development Goal 14**
+ -  conserving and using oceans, seas and marine resources sustainably.
+
+**Sustainable Development Goal 15**
+ -  protecting, restoring and promoting sustainable use of terrestrial ecosystems; sustainably managing forests; combating desertification, halting and reversing land degradation; and halting biodiversity loss.
+
+**Sustainable Development Goal 16**
+ -  promoting peaceful and inclusive societies for ***Sustainable Development, providing access to justice for all and building effective, accountable and inclusive institutions at all levels.
+
+
+
+Domain Knowledge 
+================================
+
+
+https://www.linkedin.com/feed/update/urn:li:activity:6765853465861267456/
+
+
+
+ * Agriculture and Food
+ * Health & Life Sciences
+ * Natural Sciences & GIS
+ 
+
+Mw oen career: Audiology, Equine Science, Water Quality, Milk Production, Sport Science, Forestry
+ 
+ 
+
+
+
+
+Machine Learning - types of analysis
+========================================================
+Many Types of ML Problems
+* Clustering 
+* Classification
+* Regression
+
+
+#### Focus on Regression
+
+* Predicting a numberic value based on predictors
+
+
+
+Life Sciences
+=============================================
+
+
+* Models must scrutinized thoroughly - particularly the effect of "Influential cases" and "outliers".
+
+* Random Forest Models are insufficent in this regards - can deduce important variables, but not important cases
+
+
+Introduction to Model Validation Procedures with R
+===========================================
+
+
+* Model validation is a vital part of the statistical modelling process, but is often overlooked in statistical courses.
+* This process allows the analyst to properly validate the assumptions underlying the model, once applied to the data.
+* 
+In this presentation, we will look at residual analysis and influence measures for linear models, with some associated topics.
+
+
+
+Audience 
+===========================================
+
+* The talk is aimed at students and early career data professionals who have already encountered conventional regression analyses, and
+are familiar with the model fitting process in R (i.e. the ``lm()`` function). 
+* The talke will introduce a mixture of graphical procedures,
+statistical measures and hypothesis tests, which the attendees are invited to learn more about beyond the talk.
+
+* The talk will feature the {CAR} R package [1], but all of the other functionality is available in Base R or Tidyverse.
+
+
+[1] Fox, John, et al. "*The car package.*" R Foundation for Statistical Computing (2007).
+
+R Packages
+================================
+
+![Easyverse - (*EasyStats.github.io*)](EasyStats.PNG)
+
+
+
+
+
+R Packages
+================================
+
+```{r}
+library(tidyverse)
+
+# Graphics & Data Inspection
+library(inspectdf)
+library(WVPlots)
+
+
+# Statistics & Modelling
+library(MASS)   # installed with Base R
+library(car)
+library(gvlma)
+```
+
+
+
+cheddar: Taste of Cheddar cheese
+==============================================
+In **{faraway}**: Functions and Datasets for Books by Julian Faraway
+
+**Description**
+In a study of cheddar cheese from the LaTrobe Valley of Victoria, Australia, samples of cheese were analyzed for their chemical composition and were subjected to taste tests. Overall taste scores were obtained by combining the scores from several tasters.
+
+
+* **taste** - a subjective taste score
+
+* **Acetic** - concentration of acetic acid (log scale)
+
+* **H2S** - concentration of hydrogen sulfice (log scale)
+
+* **Lactic** - concentration of lactic acid
+
+
+Linear Models
+=======================
+
+#### Linear Models
+ - `lm()` -
+ - `aov()` - analysis of variance
+ - ancova models
+
+#### Random Forest
+
+
+
+Key Motivations 
+=============================
+
+* All statistical models and tests have underlying mathematical assumptions on the types of conditions upon we can generate reliable results (**Hoekstra et al., 2012**). 
+
+* What this means is that before we go off and generate predictions, p-values and correlation coefficients, we need to understand whether our data fits certain assumption criteria in order to avoid Type I or II errors given the technique at hand.
+
+
+
+
+Feature Engineering
+========================================================
+
+Not Covering This - but it is important
+
+* Feature Engineering
+* Normalisation
+* Scaling
+* One-hot Encoding
+
+* {caret} package
+
+
+
+Exploratory Data Analysis
+================================
+
+BE THOROUGH
+
+* Domain Knowledge
+* Summary Statistics
+* Data Visualization
+* Outlier Detection
+* Missing Data Analysis
+
+
+#### Remark: 
+
+Cluster Analysis (e.g. K-means) can be a very useful EDA procedure.
+
+
+
+Exploratory Data Analysis
+========================================================
+
+#### Data Inspection
+
+* {inspectdf}
+* {janitor}
+
+#### Data Visualization
+
+* {WVPlots}
+* {ggally}
+
+#### tidyverse
+
+* {broom} and {modelr} (succeeded by {tidymodels})
+* `dplyr::tally()`
+* `dplyr::distinct()`
+
+Useful Packages (a selection)
+========================================================
+
+* {A3}
+* {arsenal}
+* {analytics}
+* {gdata}
+* {descriptr}
+* {furniture}
+* {rockchalk}
+* {yardstick}
+
+
+```{r child="parts/inspectdf.Rmd"}
+```
+
+
+
+
+```{r child="parts/WVplots.Rmd"}
+```
+
+
+```{r child="parts/Mahalanobis_distance.Rmd"}
+```
+
+
+```{r echo=FALSE, include=FALSE}
+library(knitr)
+
+library(tidyverse)
+
+# Graphics & Data Inspection
+library(inspectdf)
+library(WVPlots)
+
+
+# Statistics & Modelling
+library(MASS)   # installed with Base R
+library(car)
+```
+
+```{r child="segments/00-LinearRegression.Rmd"}
+```
+
+```{r child="cheeses-linear-models-1.Rmd"}
+```
+
+
+```{r child="cheeses-diagnostic-plots-1.Rmd"}
+```
+
+
+```{r child="segments/00-broom-r-package.Rmd"}
+```
+
+
+```{r child="segments/01-Diagnostic-Definitions.Rmd"}
+```
+
+
+Regression Diagnostics
+===================================
+
+An excellent review of regression diagnostics is provided in ***Overview of Regression Diagnostics***. 
+
+Dr. John Fox's {car} package provides advanced utilities for regression modeling. The prestige data set comes with the car package
+
+```{r child="segments/00-gvlma-r-package.Rmd"}
+```
+
+
+```{r child="segments/00-olsrr-r-package.Rmd"}
+```
+
+```{r child="segments/02-ResidualVariance.Rmd"}
+```
+
+```{r child="segments/01-Outliers.Rmd"}
+```
+
+```{r child="segments/03-residualdiagnostics.Rmd"}
+```
+
+
+
