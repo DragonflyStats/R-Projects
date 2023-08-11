@@ -1,0 +1,15 @@
+
+
+\subsection*{Frechet Distribution}
+
+Support
+{\displaystyle x>m}  
+
+PDF
+{\displaystyle {\frac {\alpha }{s}}\;\left({\frac {x-m}{s}}\right)^{-1-\alpha }\;e^{-({\frac {x-m}{s}})^{-\alpha }}}  
+
+
+CDF
+{\displaystyle e^{-({\frac {x-m}{s}})^{-\alpha }}} 
+
+

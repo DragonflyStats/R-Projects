@@ -1,0 +1,99 @@
+\documentclass[MAIN.tex]{subfiles} 
+\begin{document} 
+	%======================================================================================= %
+%	\begin{frame}[fragile]
+%		\Large
+%	\textbf{Random Number Generation}
+%	\begin{itemize}
+%	\item Random Number Generation
+%	\item The Mersenne Twister and Diehard tests
+%	\item RDieharder \texttt{R} package
+%	\end{itemize}
+%		
+%	\end{frame}
+%===============================================================================%
+\begin{frame}[fragile]
+\frametitle{Diehard Tests}
+\large
+\textbf{The Diehard Tests}
+\begin{itemize}
+\item The diehard tests are a battery of statistical tests for measuring the quality of a random number generator. 
+\item They were developed by George Marsaglia over several years and first published in 1995 on a CD-ROM of random numbers.
+\end{itemize}
+
+
+\end{frame}
+%================================================================================== %
+\begin{frame}
+\textbf{RDieHarder R Package}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.05\linewidth]{images/Rdieharder}
+		
+	\end{figure}
+	
+\end{frame}
+%================================================================================== %
+\begin{frame}
+	\begin{figure}
+\textbf{Vignette on CRAN}
+\centering
+\includegraphics[width=1.05\linewidth]{images/Rdieharder2}
+
+\end{figure}
+
+\end{frame}
+%===============================================================================%
+\begin{frame}[fragile]
+\frametitle{Diehard Tests}
+\large
+\begin{description}
+\item[Birthday spacings:] Choose random points on a large interval. The spacings between the points should be asymptotically exponentially distributed.\\ The name is based on the birthday paradox. \bigskip
+\item[Overlapping permutations:] Analyze sequences of five consecutive random numbers. The 120 possible orderings should occur with statistically equal probability.
+\end{description}
+\end{frame}
+%===============================================================================%
+\begin{frame}[fragile]
+\frametitle{Diehard Tests}
+\large
+\begin{description}
+\item[Ranks of matrices:] Select some number of bits from some number of random numbers to form a matrix over {0,1}, then determine the rank of the matrix. Count the ranks. \bigskip
+\item[Monkey tests:] Treat sequences of some number of bits as "words". Count the overlapping words in a stream. The number of "words" that don't appear should follow a known distribution.\\ The name is based on the \textit{infinite monkey} theorem.
+\end{description}
+\end{frame}
+%===============================================================================%
+\begin{frame}[fragile]
+\frametitle{Diehard Tests}
+\large
+\begin{description}
+\item[Count the 1s:] Count the 1 bits in each of either successive or chosen bytes. \\ Convert the counts to "letters", and count the occurrences of five-letter "words".
+\item[Parking lot test:] Randomly place unit circles in a $100 \times 100$ square. If the circle overlaps an existing one, try again. \\ After 12,000 tries, the number of successfully "parked" circles should follow a certain normal distribution.
+\end{description}
+\end{frame}
+%===============================================================================%
+\begin{frame}[fragile]
+\frametitle{Diehard Tests}
+\large
+\begin{description}
+\item[Minimum distance test:] Randomly place 8,000 points in a 10,000 x 10,000 square, then find the minimum distance between the pairs.\\ The square of this distance should be exponentially distributed with a certain mean. \bigskip
+\item[Random spheres test:] Randomly choose 4,000 points in a cube of edge 1,000. \\ Center a sphere on each point, whose radius is the minimum distance to another point. \\The smallest sphere's volume should be exponentially distributed with a certain mean.
+\end{description}
+\end{frame}
+%===============================================================================%
+\begin{frame}[fragile]
+\frametitle{Diehard Tests}
+\begin{description}
+\item[The squeeze test:] Multiply 231 by random floats on (0,1) until you reach 1. Repeat this 100,000 times. The number of floats needed to reach 1 should follow a certain distribution. \bigskip
+\item[Overlapping sums test:] Generate a long sequence of random floats on (0,1). \\ Add sequences of 100 consecutive floats.\\ The sums should be normally distributed with characteristic mean and sigma.
+\end{description}
+\end{frame}
+%===============================================================================%
+\begin{frame}[fragile]
+\frametitle{Diehard Tests}
+\begin{description}
+\item[Runs test:] Generate a long sequence of random floats on (0,1). Count ascending and descending runs. The counts should follow a certain distribution. \bigskip
+\item[The craps test:] Play 200,000 games of craps, counting the wins and the number of throws per game. \\ Each count should follow a certain distribution.
+\end{description}
+\end{frame}
+%===============================================================================%
+\end{document}

@@ -1,0 +1,76 @@
+\documentclass[MAIN.tex]{subfiles} 
+\begin{document} 
+
+
+\begin{frame}
+	\frametitle{Pseudo-Random Number Generation}
+	\textbf{Random Number Generation}
+\begin{itemize}
+\item To a very high degree computers are deterministic and therefore are not a reliable source of significant amounts of random values. In general pseudo random number generators are used. 
+\item The default algorithm in \texttt{R} is Mersenne-Twister but a long list of methods is available. 
+\item See the help of \texttt{RNGkind()} to learn about random number generators.
+\end{itemize}
+\end{frame}	
+%======================================================================================= %
+\begin{frame}[fragile]
+	\frametitle{Pseudo-Random Number Generation}
+	\begin{description}		
+	\item[\texttt{.Random.seed}] is an integer vector, containing the \textbf{random number generator} (RNG) state for random number generation in \texttt{R}.\\ It can be saved and restored, but should not be altered by the user.
+	
+	\item[\texttt{RNGkind}] is a more friendly interface to query or set the kind of RNG in use.
+	\end{description}
+\end{frame}
+%======================================================================================= %
+\begin{frame}
+		\frametitle{Pseudo-Random Number Generation}
+		\begin{description}	
+\item[\texttt{RNGversion}] can be used to set the random generators as they were in an earlier \texttt{R} version (for reproducibility).
+	
+\item[\texttt{set.seed}] is the recommended way to specify seeds.
+	\end{description}
+\end{frame}
+%===================================================================================== %
+	\begin{frame}[fragile]
+	\frametitle{Seed}
+		A pseudo random number generator is an algorithm based on a starting point called "\textbf{seed}". \\ If you want to perform an exact replication of your program, you have to specify the seed using the function \texttt{set.seed()}. The argument of \texttt{set.seed()} has to be an integer.
+		
+		\begin{framed}
+		\begin{verbatim}
+		> set.seed(1)
+		> runif(1)
+		[1] 0.2655087
+		> set.seed(1)
+		> runif(1)
+		[1] 0.2655087
+		\end{verbatim}
+		\end{framed}
+	\end{frame}
+%======================================================================================= %
+\begin{frame}[fragile]
+	\frametitle{Pseudo-Random Number Generation}
+\textbf{Mersenne Twister}\\
+Mersenne Twister(MT) is a pseudorandom number generating algorithm developped by Makoto Matsumoto and Takuji Nishimura (alphabetical order) in 1996/1997. 
+
+\begin{itemize}
+	\item It is designed with consideration on the flaws of various existing generators.
+	\item The algorithm is coded into a C-source downloadable below.
+	\item Far longer period and far higher order of equidistribution than any other implemented generators. 
+	% (It is proved that the period is $2^19937-1$, and 623-dimensional equidistribution property is assured.)
+\end{itemize}
+\end{frame}
+
+%======================================================================================= %
+\begin{frame}
+	
+	\frametitle{Mersenne Twister}
+\textbf{Mersenne Twister}\\
+\begin{itemize}
+\item Fast generation. \\ \textit{(Although it depends on the system, it is reported that MT is sometimes faster than the standard ANSI-C library in a system with pipeline and cache memory.)}
+% (Note added in 2004/3: on 1998, usually MT was much faster than rand(), but the algorithm for rand() has been substituted, and now there are no much difference in speed.)
+\item Efficient use of the memory. 
+%(The implemented C-code mt19937.c consumes only 624 words of working area.)
+\end{itemize}	
+\end{frame}
+%======================================================================================= %
+\end{document}	
+		

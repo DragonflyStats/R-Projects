@@ -1,0 +1,58 @@
+
+\documentclass{beamer}
+
+\usepackage{subfiles}
+\usepackage{framed}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+\begin{document}
+\section{Probability Distributions }
+
+
+%-----------------------------------------------------------%
+% Part 1
+\subsection{Introduction to Probability Distributions}
+\subfile{01a-taleb.tex}
+ \subfile{01b-distribution-basics.tex}
+ \subfile{01d-exponential.tex}
+ \subfile{01e-geometric.tex}
+%-----------------------------------------------------------%
+% Part 1X 
+\subsubsection{Random Numbers Generation}
+ % Reproducibility
+ % Setting the Seed
+ % Mersenne Twister 
+\subfile{01Xa-pseudo-rng.tex}
+\subfile{01Xb-dieharder.tex}
+ 
+
+%-----------------------------------------------------------%
+% Part 2
+\subsection{Advanced Probability Distributions}
+
+% CRAN taskview Vose Software Compendium
+% Exponetial Distribution
+% Shifted Exponential Distribution and Weibull Distributiob
+% Benfords Law
+% Zipf Law
+\subfile{02d-BenfordsLaw.tex}
+\subfile{02e-zipfdistribution.tex}
+%-----------------------------------------------------------%
+% Part 3
+\subsection{Gambler's Ruin}
+ % Gamblers Ruin
+ % Duration Distributions
+ % KS test
+ % Fitting Distributions
+\subfile{03a-gamblersruin.tex}
+\subfile{03b-fitting.tex} 
+
+%-----------------------------------------------------------%
+% Part 4
+\subsection{Extreme Value Theory}
+\subfile{04a-evt-intro.tex}
+%\subfile{04b-evt-distributions.tex}
+
+\end{document}

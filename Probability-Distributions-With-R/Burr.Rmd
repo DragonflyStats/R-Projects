@@ -1,0 +1,84 @@
+---
+title: "Burr distribution"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Standard parameterization
+
+In probability theory, statistics and econometrics, the Burr Type XII distribution or simply the Burr distribution[1] is a continuous probability distribution for a non-negative random variable. It is also known as the Singh–Maddala distribution and is one of a number of different distributions sometimes called the "generalized log-logistic distribution". The Burr Type XII distribution is a member of a system of continuous distributions introduced by Irving W. Burr (1942), which comprises 12 distributions
+
+The Burr (Type XII) distribution has probability density function:[3][4]
+
+\[ {\displaystyle {\begin{aligned}f(x;c,k)&=ck{\frac {x^{c-1}}{(1+x^{c})^{k+1}}}\\[6pt]f(x;c,k,\lambda )&={\frac {ck}{\lambda }}\left({\frac {x}{\lambda }}\right)^{c-1}\left[1+\left({\frac {x}{\lambda }}\right)^{c}\right]^{-k-1}\end{aligned}}} \]
+and cumulative distribution function:
+
+\[{\displaystyle F(x;c,k)=1-\left(1+x^{c}\right)^{-k}} \]
+
+\[{\displaystyle F(x;c,k,\lambda )=1-\left[1+\left({\frac {x}{\lambda }}\right)^{c}\right]^{-k}}\]
+
+When $c = 1$, the Burr distribution becomes the Pareto Type II (Lomax) distribution. 
+When $k = 1$, the Burr distribution is a special case of the Champernowne distribution, often referred to as the Fisk distribution.
+
+#### Implementation with R
+
+Density, distribution, quantile, random number generation, and parameter estimation functions for the Burr distribution with parameters location, scale and inequality. Parameter estimation can be based on a weighted or unweighted i.i.d sample and can be performed numerically.
+
+
+The Burr distribution has the following special cases:
+
+* A Loglogistic distribution when ``shape1 == 1``;
+* A Paralogistic distribution when ``shape2 == shape1``;
+* A Pareto distribution when ``shape2 == 1``.
+
+
+#### Density Plot of Random Covariates
+
+
+
+
+ * Shape Parameter set to 2,3,5 and 10.
+
+```{r rweibuill message = FALSE}
+library(actuar)
+
+Burr = data.frame(
+  k2 <- rburr (1000,shape1 = 2, shape2 =2),
+  k3 <- rburr (1000,shape1 = 2, shape2 =3),
+  k5 <- rburr (1000,shape1 = 2, shape2 =5),
+  k10 <- rburr (1000,shape1 = 2, shape2 =10)
+)
+  
+```
+
+```{r echo=FALSE}
+
+library(ggplot2)
+
+ggplot() + geom_density( data = Burr, aes(x=k2),col="black") + 
+  geom_density( data = Burr, aes(x=k3),col="red") +
+  geom_density( data = Burr, aes(x=k5),col="green") + 
+  geom_density( data = Burr, aes(x=k10),col="blue") + 
+  geom_hline(yintercept=0) + 
+  geom_vline(xintercept=0) + 
+  xlab("Burr Distribution") + 
+  theme_bw()
+  
+
+```
+
+```{r}
+ggplot() + stat_ecdf( data = Burr, aes(x=k2),col="black") + 
+  stat_ecdf( data = Burr, aes(x=k3),col="red") +
+  stat_ecdf( data = Burr, aes(x=k5),col="green") + 
+  stat_ecdf( data = Burr, aes(x=k10),col="blue") + 
+  geom_hline(yintercept=0) + 
+  geom_vline(xintercept=0) + 
+  xlab("Burr Distribution") + 
+  theme_bw()
+
+```
+

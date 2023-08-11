@@ -1,0 +1,269 @@
+\documentclass{beamer}
+%-http://math.tutorvista.com/statistics/exponential-distribution.html
+\usepackage{default}
+
+\begin{document}
+	
+	Negative Exponential DistributionBack to Top
+	The negative exponential distribution is one which arises in practice where failure of equipment can be caused by failure of any one of a number of components which comprise the equipment. A continuous random variable which often occurs in practice is the negative exponential distribution. A continuous random variable X is said to be exponentially distributed if it has a probability density function. 
+	
+	f(x) = λe−λx x ≥ 0
+	and 0 otherwise
+	
+	where, λ > 0. 
+	
+	The corresponding cumulative distribution function is therefore given by
+	
+	F(x) = 1 - e−λx for x > 0 
+	
+	and 0 otherwise
+	Shifted Exponential DistributionBack to Top
+	Shifted distributions are sometimes used in life and failure data analysis. Such distribution is obtained by shifting a distribution that is defined for outcomes between 0 and ∞. The shifted exponential distribution has the cumulative distribution function
+	
+	F(x) = 1 - exp[γ−xθ]
+	
+	where, x ≥ γ
+	
+	The parameter γ is called the shift parameter and θ is called scale parameter. The probability density for exponential distribution is the exponential distribution shifted by an amount γ. The difference (x - γ ) has an exponential distribution with a mean θ.
+	
+	Shifted Exponential Distribution
+	R Exponential DistributionBack to Top
+	Continuous distributions in R is one whose graph can be drawn in one continuous motion. The exponential probability density function is defined and continuous on the interval [0, ∞].
+	
+	The exponential probability density function
+	
+	f(x) = λ exp(−λx)
+	The mean of exponential function = 1λ 
+	
+	and standard deviation = 1λ2 
+	
+	If λ = 1, then the mean and the standard deviation of the distribution should be 1.
+	
+	Exponential Function
+	
+	The exponential probability density function is shown on the interval [0, 5].
+	Inverse Exponential DistributionBack to Top
+	The inverse transform technique can be used in any distribution when the cdf, F(x), is one of a form so simple that its inverse, F-1, can be computed easily. Inverse transform technique illustrate by the exponential distribution. The cdf of the exponential distribution is
+	
+	F(x) = 1 - exp(-λ x), x ≥ 0.
+	
+	When F(x) = R on the range of x then cdf of exponential expression becomes
+	
+	1 - exp(-λ x) = R on the range x ≥ 0.
+	
+	Here, R has a uniform distribution over the interval [0, 1].
+	
+	The inverse exponential distribution with no scale parameter has cdf
+	
+	F(x) = exp(−1x)
+	
+	And, with scale parameter,
+	
+	F(x) = exp(−θx).
+	Bivariate Exponential DistributionBack to Top
+	The bivariate exponential distributions are motivated by either the operational models within a reliability set up or generalizations by the univariate exponential.
+	
+	The cdf of bivarate distribution is given bby
+	
+	F(x, y) = F1(x)F2(y)[1 + α(1 - F1(x))(1 - F2(y))]
+	
+	and pdf is given by
+	
+	f(x, y) = f1(x)f2(y)[1 + α(1 - 2f1(x))(1 - 2f2(y))]
+	
+	where -1 < α < 1, F2 is the marginal cdf of Y, and f2 is the pdf of F2.
+	Exponential Distribution ExampleBack to Top
+	Given below are some of the examples on exponential distribution.
+	Solved Example
+	Question: Let take a customer who goes for shopping and lets suppose the time he spends in the shop is exponentially distributed with a mean value 15 minutes. Then what will be the probability that the customer will spend more than 20 minutes in shopping? What is the probability that the customer will spend more than 20 minutes in the bank given that he is still in the shop after 15 minutes?
+	
+	Solution:
+	
+	Here mean is given as 15 minutes
+	
+	Now the mean of an exponential distribution is 1λ
+	
+	So 1λ = 10
+	
+	So λ = 110
+	
+	First we need the probability that the customer will spend more than 20 minutes in shopping
+	
+	So P (X > 20) = e−20λ
+	
+	= e−2015 
+	
+	= e−43
+	
+	= 0.26
+	
+	For the next part we need to find the probability that the customer will spend more than 20 minutes in the bank given that he is still in the shop after 15 minutes.
+	
+	So P(X > 20) at X > 15 = P(X > 5)
+	
+	= e−12
+	
+	= 0.604
+	
+	Weibull Distribution
+	
+	Weibull distribution is a continuous probability distribution. It is one of the most reliable tools for engineering. It has been extensively used as a model of time to failure for manufacturing items. Weibull distribution has lots of application in Finance and Climatology. The exponential distribution is the special case of the Weibull distribution. The Weibull distribution has two parameters α > 0 and β > 0. When α = 1 the pdf reduces to the exponential distribution.
+	
+	
+	Weibull Distribution ParametersBack to Top
+	The Weibull distribution is used very widely due to its versatility. The main reason is that it has about 3 parameters that define three different criterion. Depending on their values, the Weibull distribution can use used to develop different models. Here lets check the effect of these three parameters on the probability density function. The parameters are γ = shape parameter, μ = location parameter and α = scale parameter. 
+	
+	3 Parameter Weibull Distribution
+	
+	There are three different parameters of weibull distribution a follows:
+	γ - Shape Parameter
+	
+	This is also called the slope, as it is taken as equal to the slope of the regressed line in a probability plot. As the shape changes, the behavior of the distribution also changes. When γ becomes 1, the three parameter probability density function changes to two parameter probability density function of exponential distribution.
+	
+	f(x) = 1αe−(x−μα)
+	
+	Here, 1α is taken as failure rate and can also be denoted by λ
+	
+	The shape parameter γ can be used to interpret the data provided by checking how the shape is changing for a function. The shape parameter γ is dimensionless. Let y be the dependent and x be the independent variable.
+	If γ < 1, indicates the decreasing in y as x increases. For example, in a company where dolls are made, the number of defective dolls decreases as it is weeded out of the total population.
+	If γ = 1, indicates the y moves at a constant rate with x.
+	If γ > 1, indicates the increase in y with increase in x. For example, its possible to take the aging process of a human being. As the time increases, age also increases.
+	α - Scale Parameter
+	
+	Any change in the scale parameter α, will have same effect on the probability distribution as that of the change of the x axis scale. The probability density function stretches out as the scale parameter α increases with γ being kept constant. Lets assume the other two parameters γ shape parameter, and μ location parameter are kept constant, then we can see changes in the α, scale parameter.
+	If α is increasing, the shape and location will remain same but the distribution will get stretched out to the right as well as the height decreases.
+	If α is decreased, the shape and location will still remain same but the distribution will get pushed in towards left as well as the height increase.
+	The unit of α will be same as the unit taken for x.
+	μ - Location Parameter
+	
+	It distributes along the x-axis, the abscissa. As the value of μ changes the distribution will have sliding effect. And as μ > 0, it slides to the right and starts at the right of the origin and if μ < 0, it slides to the left and starts at the left of the origin. The unit of μ will be same as the unit taken for x.
+	When μ = 0, the distribution start at the origin where x = 0.
+	If μ < 0, it means that the failure occurred before the test occurred.
+	Mean of Weibull DistributionBack to Top
+	The mean x¯ of the Weibull probability density function is given by 
+	
+	x¯=μ+α×Γ(1λ+1)
+	
+	where, Γ(1λ+1) is the gamma function at the point (1λ+1).
+	
+	In the case of two parameter, the mean of the Weibull probability density function reduces as follows: 
+	
+	x¯=α×Γ(1λ+1)
+	
+	Also, when location parameter μ=0 and scale parameter, α=1, then mean, x¯=Γ(1λ+1)
+	
+	Weibull Distribution FunctionBack to Top
+	The Weibull distribution function has been a successful model of many unrelated systems where destruction and survival are involved. The probability density function of Weibull distribution can be written in two ways.
+	
+	1. f(x | a, b) = ba(xa)b−1e−(xa)b if x ≥ 0
+	
+	and otherwise 0 
+	
+	where, a = scale parameter and b = shape parameter.
+	
+	So, Weibull probability density function will be positive only when x is positive, otherwise its zero.
+	
+	2. f(x) = γα((x−μ)α)γ−1e(−x−μα)γ if x≥μ; γ, α > 0 
+	
+	where, γ = shape parameter, μ = location parameter and α = scale parameter.
+	
+	Median, Mode and Standard Deviation of Weibull Distribution
+	
+	The median of Weibull distribution, M is given by
+	
+	M = μ+α×(ln2) 1λ
+	
+	Also, when location parameter μ=0 and scale parameter, alpha=1,
+	
+	then, median M=(ln2)1λ
+	
+	The mode of Weibull distribution, m is given by
+	
+	m=μ+α×Γ(1−1λ)1λ
+	
+	Also, when location parameter μ=0 and scale parameter, α=1
+	
+	Then, mode can be taken as two parts
+	
+	m=Γ(1−1λ)1λ when λ>1 
+	
+	otherwise 0 elsewhere.
+	
+	The standard deviation σT of the Weibull distribution is given as
+	
+	σT=α[(Γ(2λ+1))−(Γ(1λ+1))2]−−−−−−−−−−−−−−−−−−−−−−−√ 
+	
+	Also, when location parameter μ=0 and scale parameter, α=1
+	
+	The standard deviation σT reduces to
+	
+	σT=α[(Γ(2λ+1))−(Γ(1λ+1))2]−−−−−−−−−−−−−−−−−−−−−−−√.
+	
+	The Weibull distribution can be seen in connection with other probability distributions like exponential distribution, which will be obtained by plugging in γ=1, and so on.
+	Weibull Distribution ReliabilityBack to Top
+	Weibull distribution is widely used in science and engineering. It introducing a self-contained presentation of the probabilistic basis for the methodology while providing powerful techniques for extracting information from data. The standard Weibull distribution can be obtained when the parameters are changed, that is μ=0 and α=1.
+	
+	Hence, the standard Weibull distribution becomes converted to
+	
+	f(x)=γxγ−1e−1(xγ) if x≥0; γ>0 
+	
+	A Weibull distribution can be called 2-parameter Weibull distribution when μ=0. The Probability density distribution of this is given as follows:
+	
+	f(x) = γα (xα)γ−1e−(xα)γ
+	
+	A Weibull distribution can be called 1-parameter Weibull distribution when μ=0 and also it assumes γ as a constant, say c, which can be an assumed value. The Probability density distribution of this is given as
+	
+	f(x) = cα (xα)c−1e−(xα)c
+	
+	Here, the scale parameter α becomes the only parameter that will be unknown.
+	
+	It can be seen here that the shape parameter γ is assumed to be known before itself from the past experience with similar situations. This will help to analyze the datas with few or no failures at all.
+	
+	The cumulative distribution function of the Weibull distribution can be written as the formula:
+	
+	F(x) = 1−e−(xγ) if x≥0; γ>0 
+	
+	If we consider the complementary cumulative distribution function, it can be seen that it is a stretched type of exponential function.
+	Inverse Weibull DistributionBack to Top
+	The Weibull quantile function is the inverse of the Weibull distribution function. The random variable Y has an inverse Weibull distribution if its cumulative distribution function (cdf) takes the form
+	
+	F(t) = exp[-(αt)β], t > 0.
+	
+	where, α>0 and β>0.
+	
+	The corresponding probability density function (pdf) is
+	
+	f(t) = βαβt−(β+1)exp[−(αt)β]
+	
+	The inverse Weibull distribution is also a limiting distribution of the largest order statistics.
+	Weibull Distribution ExampleBack to Top
+	Given below are some of the examples on Weibull Distribution.
+	Solved Example
+	Question: Calculate the probability that a part will fail at time t = 2 if that parts failure occurrence is Weibull distribution and has, the shape parameter, γ = 0.5 and, scale parameter, α = 4.
+	
+	Solution:
+	
+	The problems says calculate the probability that a part will fail at time t = 2
+	
+	So let x = 2
+	
+	γ = 0.5
+	
+	Here 0.5 < 1 so failure rate decreases over time.
+	
+	α = 4
+	
+	Now here we will have two turning points.
+	
+	Whether they are asking for cumulative distribution function or Probability density function?
+	
+	The graph will vary according to that. Here as the problem wants the answer at exactly at t = 2, we use Probability density function.
+	So when the table as given is checked at t = 2
+	
+	Weibull Distribution Example
+	
+	We get the value of 0.087163
+	
+	So 8.72% part will fail exactly at t = 2
+
+\end{document}

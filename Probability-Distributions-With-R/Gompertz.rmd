@@ -1,0 +1,19 @@
+### Gompertz
+
+
+Support
+{\displaystyle x\in [0,\infty )\!}  x\in [0,\infty )\! 
+
+PDF
+
+The probability density function of the Gompertz distribution is: 
+\[ {\displaystyle f\left(x;\eta ,b\right)=b\eta e^{\eta }e^{bx}\exp \left(-\eta e^{bx}\right){\text{for }}x\geq 0,\,} \]
+
+
+where {\displaystyle b>0\,\!} is the scale parameter and {\displaystyle \eta >0\,\!}  is the shape parameter of the Gompertz distribution. 
+
+
+
+
+CDF
+{\displaystyle 1-\exp \left(-\eta \left(e^{bx}-1\right)\right)} 

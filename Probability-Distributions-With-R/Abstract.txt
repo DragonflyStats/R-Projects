@@ -1,0 +1,4 @@
+variants of well-known probability distributions, Gamblers Ruin, Internet of things, Nicholas Nassim Taleb, Control Charts, Extreme Value Theory, Flood Risk, Julia Programming,
+
+Shifted Exponential Distributions
+
