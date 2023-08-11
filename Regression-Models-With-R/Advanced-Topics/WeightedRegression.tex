@@ -1,0 +1,133 @@
+% MA4128
+
+% https://www3.nd.edu/~rwilliam/stats1/OLS-SPSS.pdf
+%http://psychweb.psy.umt.edu/denis/datadecision/front/stat_II_2011/psyx_521_multiple_regression_part_II.pdf
+
+% ftp://public.dhe.ibm.com/software/analytics/spss/documentation/statistics/20.0/en/client/Manuals/IBM_SPSS_Regression.pdf
+
+%http://www.education.umd.edu/EDMS/fac/Harring/Past-Classes/EDMS651/Notes/LRA-3.pdf
+
+% http://www.psych.yorku.ca/lab/psy6140/lectures/ModelSelection2x2.pdf
+
+%http://philosophy.wisc.edu/forster/220/simplicity.html
+
+%http://statistics.uchicago.edu/~s220e/Lect/lec21.pdf
+
+%http://publib.boulder.ibm.com/infocenter/spssstat/v20r0m0/index.jsp?topic=%2Fcom.ibm.spss.statistics.help%2Fsyn_regression_criteria_variable_selection.htm
+
+\documentclass[Master.tex]{subfiles}
+\begin{document}
+\section{Weighted Regression}
+
+\textbf{Homoscedasticity} - the standard deviations of
+y-observations from the straight line are the same independently
+of the underlying x-observations.
+
+\textbf{Heteroscedasticity} - the standard deviations of
+y-observations depend on the underlying x-observations.
+
+In the first case, standard regression analysis should be
+performed, while in the second the weighted regression is more
+suitable.
+
+\begin{verbatim}
+>Conc=c(0,2,4,6,8,10)
+>StDev=c(0.001,0.004,0.010,0.013,0.017,0.022)
+>Abs=c(0.009,0.158,0.301,0.472,0.577,0.739)
+>n=length(Conc)
+>weights=StDev(-2)/mean(StDev(-2))
+>wreg=lm(AbsConc,weights=weights)
+>reg=lm(AbsConc)
+>summary(wreg)
+\end{verbatim}
+
+
+It is often convienent to express the regression analysis using
+ANOVA table. The following equation is the basis for such
+representation
+
+It is often shortened to SST = SSLR + SSR; where SST is referred
+
+to as the total sum of squares, SSLR is the sum of squares due to
+linear regression (within regression), SSR is the sum of squares
+due to residuals (outside regression).
+
+\section{Weighted Regression}
+Unweighted regression requires that the variability of the
+residuals is constant over the measured range of values.
+(This is called homoskedasticity).
+
+Weighted regression does not have this requirement.
+There may be differing variability over the range of values.
+(This is called heteroskedasticity).
+
+Weighted regression requires extra information on the standard deviations of the responses so as to compute the weights.
+
+Unweighted regression doesn’t need or use any information on the response standard deviations.
+
+Weighted regression is preferable if heteroskedasticity evident in the data
+
+(If there is not constant variance for the residuals over the range of values)
+
+
+\section{Weighted Regression}
+
+\textbf{Homoscedasticity} - the standard deviations of
+y-observations from the straight line are the same independently
+of the underlying x-observations.
+
+\textbf{Heteroscedasticity} - the standard deviations of
+y-observations depend on the underlying x-observations.
+
+In the first case, standard regression analysis should be
+performed, while in the second the weighted regression is more
+suitable.
+
+\begin{verbatim}
+>Conc=c(0,2,4,6,8,10)
+>StDev=c(0.001,0.004,0.010,0.013,0.017,0.022)
+>Abs=c(0.009,0.158,0.301,0.472,0.577,0.739)
+>n=length(Conc)
+>weights=StDevˆ(-2)/mean(StDevˆ(-2))
+>wreg=lm(Abs˜Conc,weights=weights)
+>reg=lm(Abs˜Conc)
+>summary(wreg)
+\end{verbatim}
+
+\newpage
+
+\section{Weighted Regression}
+
+\textbf{Homoscedasticity} - the standard deviations of
+y-observations from the straight line are the same independently
+of the underlying x-observations.
+
+\textbf{Heteroscedasticity} - the standard deviations of
+y-observations depend on the underlying x-observations.
+
+In the first case, standard regression analysis should be
+performed, while in the second the weighted regression is more
+suitable.
+
+\begin{verbatim}
+>Conc=c(0,2,4,6,8,10)
+>StDev=c(0.001,0.004,0.010,0.013,0.017,0.022)
+>Abs=c(0.009,0.158,0.301,0.472,0.577,0.739)
+>n=length(Conc)
+>weights=StDev(-2)/mean(StDev(-2))
+>wreg=lm(AbsConc,weights=weights)
+>reg=lm(AbsConc)
+>summary(wreg)
+\end{verbatim}
+
+
+It is often convienent to express the regression analysis using
+ANOVA table. The following equation is the basis for such
+representation
+
+It is often shortened to SST = SSLR + SSR; where SST is referred
+
+to as the total sum of squares, SSLR is the sum of squares due to
+linear regression (within regression), SSR is the sum of squares
+due to residuals (outside regression).
+\end{document}
