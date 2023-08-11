@@ -1,0 +1,430 @@
+﻿
+%--------------------------------------------------------------------------------------%
+\section{Model Validation}
+%http://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm
+Model validation is possibly the most important step in the model building sequence. It is also one of the most overlooked. Often the validation of a model seems to consist of nothing more than quoting the $R^2$ statistic from the fit (which measures the fraction of the total variability in the response that is accounted for by the model). 
+
+Unfortunately, a high $R^2$ value does not guarantee that the model fits the data well. Use of a model that does not fit the data well cannot provide good answers to the underlying engineering or scientific questions under investigation.
+
+
+
+Model diagnostic techniques determine whether or not the distributional assumptions are satisfied, and to assess the influence of unusual observations.
+
+
+\subsection{Why Use Residuals?}
+
+
+The subsections listed below detail the types of plots to use to test different aspects of a model and give guidance on the correct interpretations of different results that could be observed for each type of plot.
+%------------------------------------------------------------------------------------------------------------------------ %
+\section{Introduction to Residuals}
+
+The difference between the observed value of the dependent variable (y) and the predicted value ($\hat{y}$) is called the \textbf{residual} (e). Each data point has one residual.
+
+\[\mbox{Residual} = \mbox{Observed value} - \mbox{Predicted value}\] 
+\[e = y - \hat{y}\]
+
+Both the sum and the mean of the residuals are equal to zero. 
+%That is, Σ e = 0 and e = 0.
+
+\subsection{Residual Plots}
+A residual plot is a graph that shows the residuals on the vertical axis and the independent variable on the horizontal axis. If the points in a residual plot are randomly dispersed around the horizontal axis, a linear regression model is appropriate for the data; otherwise, a non-linear model is more appropriate.
+
+Below the table on the left shows inputs and outputs from a simple linear regression analysis, and the chart on the right displays the residual (e) and independent variable (X) as a residual plot.
+
+%x	60	70	80	85	95
+%y	70	65	70	95	85
+%ŷ	65.411	71.849	78.288	81.507	87.945
+%e	4.589	-6.849	-8.288	13.493	-2.945
+% Image of residual plot
+\newpage
+
+%----------------------------------------------------------------------------------------------%
+\newpage
+%http://blog.minitab.com/blog/adventures-in-statistics/why-you-need-to-check-your-residual-plots-for-regression-analysis
+In the graph above, you can predict non-zero values for the residuals based on the fitted value. For example, a fitted value of 8 has an expected residual that is negative. Conversely, a fitted value of 5 or 11 has an expected residual that is positive.
+
+The non-random pattern in the residuals indicates that the deterministic portion (predictor variables) of the model is not capturing some explanatory information that is “leaking” into the residuals. The graph could represent several ways in which the model is not explaining all that is possible. 
+
+Possibilities include:
+
+\begin{itemize}
+\item A missing variable
+\item A missing higher-order term of a variable in the model to explain the curvature
+\item A missing interction between terms already in the model
+\end{itemize}
+
+
+%---------------------------------------------------------------------------------------------%
+\newpage
+\section{Standardization and Studentization}
+\subsection{Standardization} %1.4.1
+
+A random variable is said to be standardized if the difference from its mean is scaled by its standard deviation. The residuals above have mean zero but their variance is unknown, it depends on the true values of $\theta$. Standardization is thus not possible in practice.
+
+\subsection{Studentization} %1.4.2
+Instead, you can compute studentized residuals by dividing a residual by an estimate of its standard deviation. 
+
+\subsection{Internal and External Studentization} %1.4.3
+If that estimate is independent of the $i-$th observation, the process is termed \emph{external studentization}`external studentization'. This is usually accomplished by excluding the $i-$th observation when computing the estimate of its standard error. If the observation contributes to the
+standard error computation, the residual is said to be \emph{internally studentization}internally studentized.
+
+Externally \emph{studentized residual} studentized residual require iterative influence analysis or a profiled residuals variance.
+
+\subsection{Computation}%1.4.4
+
+%The computation of internally studentized residuals relies on the diagonal entries of $\boldsymbol{V} (\hat{\theta})$ - $\boldsymbol{Q} (\hat{\theta})$, where $\boldsymbol{Q} (\hat{\theta})$ is computed as
+
+\[ \boldsymbol{Q} (\hat{\theta}) = \boldsymbol{X} ( \boldsymbol{X}^{\prime}\boldsymbol{Q} (\hat{\theta})^{-1}\boldsymbol{X})\boldsymbol{X}^{-1} \]
+
+\subsection{Pearson Residual}%1.4.5
+
+Another possible scaled residual is the \index{Pearson residual} `Pearson residual', whereby a residual is divided by the standard deviation of the dependent variable. The Pearson residual can be used when the variability of $\hat{\beta}$ is disregarded in the underlying assumptions.
+
+
+%-------------------------------------------------------------------------------------------%
+\newpage
+\section{Leverage and Influence}
+
+\subsection{Leverage}
+% http://onlinestatbook.com/2/regression/influential.html
+% Leverage
+The leverage of an observation is based on how much the observation's value on the predictor variable differs from the mean of the predictor variable. The greater an observation's leverage, the more potential it has to be an influential observation. 
+
+For example, an observation with a value equal to the mean on the predictor variable has no influence on the slope of the regression line regardless of its value on the criterion variable. On the other hand, an observation that is extreme on the predictor variable has the potential to affect the slope greatly.
+
+\subsubsection{Calculation of Leverage (h)}
+The first step is to standardize the predictor variable so that it has a mean of 0 and a standard deviation of 1. Then, the leverage (h) is computed by squaring the observation's value on the standardized predictor variable, adding 1, and dividing by the number of observations.
+
+
+\subsection{Summary of Influence Statistics}
+\begin{itemize}
+\item	\textbf{Studentized Residuals} – Residuals divided by their estimated standard errors (like t-statistics). Observations with values larger than 3 in absolute value are considered outliers.
+\item	\textbf{Leverage Values (Hat Diag)} – Measure of how far an observation is from the others in terms of the levels of the independent variables (not the dependent variable). Observations with values larger than $2(k+1)/n$ are considered to be potentially highly influential, where k is the number of predictors and n is the sample size.
+\item	\textbf{DFFITS} – Measure of how much an observation has effected its fitted value from the regression model. Values larger than $2\sqrt{(k+1)/n}$ in absolute value are considered highly influential. %Use standardized DFFITS in SPSS.
+\item	\textbf{DFBETAS} – Measure of how much an observation has effected the estimate of a regression coefficient (there is one DFBETA for each regression coefficient, including the intercept). Values larger than 2/sqrt(n) in absolute value are considered highly influential.
+\\
+The measure that measures how much impact each observation has on a particular predictor is DFBETAs The DFBETA for a predictor and for a particular observation is the difference between the regression coefficient calculated for all of the data and the regression coefficient calculated with the observation deleted, scaled by the standard error calculated with the observation deleted. 
+
+\item	\textbf{Cook’s D} – Measure of aggregate impact of each observation on the group of regression coefficients, as well as the group of fitted values. Values larger than 4/n are considered highly influential.
+\end{itemize}
+
+
+\subsection{Influential Observations : DFBeta and DFBetas}
+% http://stats.stackexchange.com/questions/22161/how-to-read-cooks-distance-plots
+Cook's distance refers to how far, on average, predicted y-values will move if the observation in question is dropped from the data set. dfbeta refers to how much a parameter estimate changes if the observation in question is dropped from the data set. Note that with k covariates, there will be k+1 dfbetas (the intercept,$\beta_0$, and 1 $\beta$ for each covariate). Cook's distance is presumably more important to you if you are doing predictive modeling, whereas dfbeta is more important in explanatory modeling.
+
+\subsection{Cook's Distance}
+% Interpretation
+% http://stats.stackexchange.com/questions/22161/how-to-read-cooks-distance-plots %
+Some texts tell you that points for which Cook's distance is higher than 1 are to be considered as influential. Other texts give you a threshold of $4/N$ or $4/(N−k−1)$, where N is the number of observations and k the number of explanatory variables. In your case the latter formula should yield a threshold around 0.1 .
+
+John Fox (1), in his booklet on regression diagnostics is rather cautious when it comes to giving numerical thresholds. He advises the use of graphics and to examine in closer details the points with "values of D that are substantially larger than the rest". According to Fox, thresholds should just be used to enhance graphical displays.
+
+In your case the observations 7 and 16 could be considered as influential. Well, I would at least have a closer look at them. The observation 29 is not substantially different from a couple of other observations.
+
+(1) Fox, John. (1991). Regression Diagnostics: An Introduction. Sage Publications.
+\subsection{Leverage}
+ leverage is a term used in connection with regression analysis and, in particular, in analyses aimed at identifying those observations that are far away from corresponding average predictor values. Leverage points do not necessarily have a large effect on the outcome of fitting regression models.
+
+Leverage points are those observations, if any, made at extreme or outlying values of the independent variables such that the lack of neighboring observations means that the fitted regression model will pass close to that particular observation.[1]
+
+Modern computer packages for statistical analysis include, as part of their facilities for regression analysis, various quantitative measures for identifying influential observations: among these measures is partial leverage, a measure of how a variable contributes to the leverage of a datum.
+
+
+\newpage
+%http://stats.stackexchange.com/questions/58141/interpreting-plot-lm
+ I explained the assumption of homoscedasticity and the plots that can help you assess it (including scale-location plots [2]) on CV here: What does having constant variance in a linear regression model mean? I have discussed qq-plots [3] on CV here: QQ plot does not match histogram. So, what's left is primarily just understanding [5], the residual-leverage plot.
+
+To understand this, we need to understand three things:
+
+\begin{itemize}
+\item leverage,
+\item standardized residuals, and
+\item Cook's distance.
+\end{itemize}
+%Move next bit to "Leverarge"
+\subsubsection{Leverage}
+To understand leverage, recognize that \textit{Ordinary Least Squares} regression fits a line that will pass through the centre of your data, ($\bar{x}, \bar{y}$). The line can be shallowly or steeply sloped, but it will pivot around that point like a lever on a fulcrum. We can take this analogy fairly literally: because OLS seeks to minimize the vertical distances between the data and the line, the data points that are further out towards the extremes of X will push / pull harder on the lever (i.e., the regression line); they have more leverage. One result of this could be that the results you get are driven by a few data points; that's what this plot is intended to help you determine.
+
+% Standardization
+Another result of the fact that points further out on X have more leverage is that they tend to be closer to the regression line (or more accurately: the regression line is fit so as to be closer to them) than points that are near $\bar{x}$. In other words, the residual standard deviation can differ at different points on X (even if the error standard deviation is constant). To correct for this, residuals are often standardized so that they have constant variance (assuming the underlying data generating process is homoscedastic, of course).
+
+% Cook's Distance
+One way to think about whether or not the results you have were driven by a given data point is to calculate how far the predicted values for your data would move if your model were fit without the data point in question. This calculated total distance is called \textbf{Cook's distance}. Fortunately, you don't have to rerun your regression model N times to find out how far the predicted values will move, Cook's D is a function of the leverage and standardized residual associated with each data point.
+
+With these facts in mind, consider the plots associated with four different situations:
+\begin{enumerate}
+\item a dataset where everything is fine
+\item a dataset with a high-leverage, but low-standardized residual point
+\item a dataset with a low-leverage, but high-standardized residual point
+\item a dataset with a high-leverage, high-standardized residual point
+\end{enumerate}
+
+
+\subsubsection{Plot 6 :  Cook's Distance vs Leverage}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\linewidth]{./mtcarsDiagPlot6}
+
+\label{mtcarsDiagPlot6}
+\end{figure}
+
+
+\begin{framed}
+\begin{verbatim}
+par(mfrow=c(4,1))
+plot(fittedmodel)
+par(opar)
+\end{verbatim}
+\end{framed}
+
+% http://www.columbia.edu/~cjd11/charles_dimaggio/DIRE/resources/R/rFunctionsList.pdf
+
+\newpage
+\section{Case Deletion} %1.14
+Case-deleted analysis is a popular method for evaluating the inﬂuence of a subset of cases on inference.
+
+\textbf{Cite: CPJ} develops case-deletion diagnostics for detecting influential observations in mixed linear models. Diagnostics for both fixed effects and variance components are proposed. Computational formulas are given that make the procedures feasible. The methods are illustrated using examples. 
+
+\subsection{Case Deletion Diagnostic Statistics}
+% http://support.sas.com/documentation/cdl/en/statug/63033/HTML/default/viewer.htm#statug_genmod_sect045.htm
+
+For ordinary generalized linear models, regression diagnostic statistics developed by Williams (1987) are commonly used in statistical platforms such as SS. These diagnostics measure the influence of an individual observation on model fit, and generalize the one-step diagnostics developed by Pregibon (1981) for the logistic regression model for binary data.
+Preisser and Qaqish (1996) further generalize regression diagnostics to apply to models for correlated data fit by generalized estimating equations (GEEs), where the influence of entire clusters of correlated observations is measured.
+
+
+\subsection{Matrix Notation for  Case deletion notation} %1.14.1
+
+For notational simplicity, $\boldsymbol{A}(i)$ denotes an $n \times m$ matrix $\boldsymbol{A}$ with the $i$-th row
+removed, $a_i$ denotes the $i$-th row of $\boldsymbol{A}$, and $a_{ij}$ denotes the $(i, j)-$th element of $\boldsymbol{A}$.
+
+\subsection{Partitioning Matrices} %1.14.2
+Without loss of generality, matrices can be partitioned as if the $i-$th omitted observation is the first row; i.e. $i=1$.
+
+\subsection{Pearson and Deviance Residuals} 
+% https://v8doc.sas.com/sashtml/insight/chap39/sect55.htm
+
+Pearson Residuals
+
+The Pearson residual is the raw residual divided by the square root of the variance function $V(\mu).$
+The Pearson residual is the individual contribution to the Pearson $\chi^2$ statistic. 
+
+For a binomial distribution with mi trials in the ith observation, it is defined as
+
+\[ r_{Pi} = \sqrt{ m_{i}}
+ \frac{r_{i}}{\sqrt{V(\hat{ \mu_{i}})}} \]
+For other distributions, the Pearson residual is defined as
+
+\[ r_{Pi} = \frac{r_{i}}{\sqrt{V(\hat{ \mu_{i}})}}\]
+The Pearson residuals can be used to check the model fit at each observation for generalized linear models. 
+%These residuals are stored in variables named RP_yname for each response variable, where yname is the response variable name. 
+The standardized and studentized Pearson residuals are
+\[
+r_{Psi} = \frac{r_{Pi}}{\sqrt{\hat{ \phi} (1- h_{i})} } \]
+\[ r_{Pti} = \frac{r_{Pi}}{\sqrt{ \hat{ \phi}_{(i)}
+ (1- h_{i})} } \]
+
+
+
+The \textbf{deviance residual} is the measure of deviance contributed from each observation and is given by
+\[r_{Di} = \textrm{sign}( r_{i})
+ \sqrt{ d_{i}}\]
+where $d_i$ is the individual deviance contribution.
+The deviance residuals can be used to check the model fit at each observation for generalized linear models. 
+
+%These residuals are stored in variables named \textit{RD\_yname} for each response variable, where yname is the response variable name. 
+
+The standardized and studentized deviance residuals are
+\[
+r_{Dsi} = \frac{r_{Di}}{\sqrt{\hat{ \phi} (1- h_{i})} }\]
+\[r_{Dti} = \frac{r_{Di}}{\sqrt{ \hat{ \phi}_{(i)}
+ (1- h_{i})}}\]
+ 
+
+\section{Residual Analysis for LME Models}
+\subsection{Introduction}%1.1
+In classical linear models model diagnostics have been become a required part of any statistical analysis, and the methods are commonly available in statistical packages and standard textbooks on applied regression. However it has been noted by several papers that model diagnostics do not often accompany LME model analyses.
+
+\textbf{Cite:Zewotir} lists several established methods of analyzing influence in LME models. These methods include \begin{itemize}
+\item Cook's distance for LME models,
+\item \index{likelihood distance} likelihood distance,
+\item the variance (information) ration,
+\item the \index{Cook-Weisberg statistic} Cook-Weisberg statistic,
+\item the \index{Andrews-Prebigon statistic} Andrews-Prebigon statistic.
+\end{itemize}
+
+%-------------------------------------------------------------------------------------------------------------------------------------%
+\subsection{Zewotir Measures of Influence in LME Models}%2.2
+%Zewotir page 161
+\citet{Zewotir} describes a number of approaches to model diagnostics, investigating each of the following;
+\begin{itemize}
+\item Variance components
+\item Fixed effects parameters
+\item Prediction of the response variable and of random effects
+\item likelihood function
+\end{itemize}
+
+\subsection{Cook's Distance applied to LMEs}
+\begin{itemize}
+\item For variance components $\gamma$: $CD(\gamma)_i$,
+\item For fixed effect parameters $\beta$: $CD(\beta)_i$,
+\item For random effect parameters $\boldsymbol{u}$: $CD(u)_i$,
+\item For linear functions of $\hat{beta}$: $CD(\psi)_i$
+\end{itemize}
+
+
+%------------------------------------------------------------%
+\begin{description}
+\item[Random Effects]
+
+A large value for $CD(u)_i$ indicates that the $i-$th observation is influential in predicting random effects.
+
+\item[linear functions]
+$CD(\psi)_i$ does not have to be calculated unless $CD(\beta)_i$ is large.
+
+
+\item[Information Ratio]
+\end{description}
+
+%--------------------------------------------------------------%
+\newpage
+\section{Measures 2} %2.4
+
+\subsection{Cook's Distance} %2.4.1
+\begin{itemize}
+\item For variance components $\gamma$
+\end{itemize}
+
+Diagnostic tool for variance components
+\[ C_{\theta i} =(\hat(\theta)_{[i]} - \hat(\theta))^{T}\mbox{cov}( \hat(\theta))^{-1}(\hat(\theta)_{[i]} - \hat(\theta))\]
+
+\subsection{Variance Ratio} %2.4.2
+\begin{itemize}
+\item For fixed effect parameters $\beta$.
+\end{itemize}
+
+\subsection{Cook-Weisberg statistic} %2.4.3
+\begin{itemize}
+\item For fixed effect parameters $\beta$.
+\end{itemize}
+
+
+
+%---------------------------------------------------------------------------%
+
+%------------------------------------------------------------------------------------------------%
+% http://journal.r-project.org/archive/2012-2/RJournal_2012-2_Nieuwenhuis~et~al.pdf
+
+You should have a look at the \texttt{R} package \textit{\textbf{influence.ME}}. It allows you to compute measures of influential data for mixed effects models generated by lme4.
+
+An example model:
+\begin{verbatim}
+library(lme4)
+model <- lmer(mpg ~ disp + (1 | cyl), mtcars)
+\end{verbatim}
+
+The function \texttt{influence} is the basis for all further steps:
+
+\begin{verbatim}
+library(influence.ME)
+infl <- influence(model, obs = TRUE)
+\end{verbatim}
+Calculate Cook's distance:
+\begin{verbatim}
+cooks.distance(infl)
+\end{verbatim}
+Plot Cook's distance:
+\begin{verbatim}
+plot(infl, which = "cook")
+\end{verbatim}
+\newpage
+%----------------------------------------------------------------------------------------%
+
+\section{Case-Deletion Diagnostics for LMEs The CPJ Paper}%1.13
+
+\subsection{Case-Deletion results for Variance components}
+\textbf{Cite: CPJ}  examines case deletion results for estimates of the variance components, proposing the use of one-step estimates of variance components for examining case influence. The method describes focuses on REML estimation, but can easily be adapted to ML or other methods.
+
+This paper develops their global influences for the deletion of single observations in two steps: a one-step estimate for the REML (or ML) estimate of the variance components, and an ordinary case-deletion diagnostic for a weighted regression problem ( conditional on the estimated covariance matrix) for fixed effects.
+
+% Lesaffre's approach accords with that proposed by Christensen et al when applied in a repeated measurement context, with a large sample size.
+
+\subsection{CPJ Notation} %1.13.1
+
+\[ \boldsymbol{C} = \boldsymbol{H}^{-1} = \left[
+\begin{array}{cc}
+c_{ii} & \boldsymbol{c}_{i}^{\prime}\\
+\boldsymbol{c}_{i} &  \boldsymbol{C}_{[i]}
+\end{array} \right]
+\]
+
+\textbf{Cite: CPJ}  noted the following identity:
+
+\[ \boldsymbol{H}_{[i]}^{-1}  = \boldsymbol{C}_{[i]} - {1 \over c_{ii}}\boldsymbol{c}_{[i]}\boldsymbol{c}_{[i]}^{\prime} \]
+
+
+\textbf{Cite: CPJ} use the following as building blocks for case deletion statistics.
+\begin{itemize}
+\item $\breve{x}_i$
+\item $\breve{z}_i$
+\item $\breve{z}_ij$
+\item $\breve{y}_i$
+\item $p_ii$
+\item $m_i$
+\end{itemize}
+All of these terms are a function of a row (or column) of $\boldsymbol{H}$ and $\boldsymbol{H}_{[i]}^{-1}$
+
+
+\newpage
+
+Below the table on the left shows inputs and outputs from a simple linear regression analysis, and the chart on the right displays the residual (e) and independent variable (X) as a residual plot.
+
+%x	60	70	80	85	95
+%y	70	65	70	95	85
+%ŷ	65.411	71.849	78.288	81.507	87.945
+%e	4.589	-6.849	-8.288	13.493	-2.945
+% Image of residual plot
+\newpage
+
+
+\newpage
+\section{Standardization and Studentization}
+
+
+\subsection{Internal and External Studentization} %1.4.3
+If that estimate is independent of the $i-$th observation, the process is termed \emph{external studentization}`external studentization'. This is usually accomplished by excluding the $i-$th observation when computing the estimate of its standard error. If the observation contributes to the
+standard error computation, the residual is said to be \emph{internally studentization}internally studentized.
+
+Externally \emph{studentized residual} studentized residual require iterative influence analysis or a profiled residuals variance.
+
+\subsection{Computation}%1.4.4
+
+%The computation of internally studentized residuals relies on the diagonal entries of $\boldsymbol{V} (\hat{\theta})$ - $\boldsymbol{Q} (\hat{\theta})$, where $\boldsymbol{Q} (\hat{\theta})$ is computed as
+
+\[ \boldsymbol{Q} (\hat{\theta}) = \boldsymbol{X} ( \boldsymbol{X}^{\prime}\boldsymbol{Q} (\hat{\theta})^{-1}\boldsymbol{X})\boldsymbol{X}^{-1} \]
+
+\subsection{Pearson Residual}%1.4.5
+
+Another possible scaled residual is the \index{Pearson residual} `Pearson residual', whereby a residual is divided by the standard deviation of the dependent variable. The Pearson residual can be used when the variability of $\hat{\beta}$ is disregarded in the underlying assumptions.
+
+%-------------------------------------------------------------- %
+
+\section{Case Deletion} %1.14
+Case-deleted analysis is a popular method for evaluating the inﬂuence of a subset of cases on inference.
+
+\textbf{Cite: CPJ} develops case-deletion diagnostics for detecting influential observations in mixed linear models. Diagnostics for both fixed effects and variance components are proposed. Computational formulas are given that make the procedures feasible. The methods are illustrated using examples. 
+
+\subsection{Case Deletion Diagnostic Statistics}
+% http://support.sas.com/documentation/cdl/en/statug/63033/HTML/default/viewer.htm#statug_genmod_sect045.htm
+
+For ordinary generalized linear models, regression diagnostic statistics developed by Williams (1987) are commonly used in statistical platforms such as SS. These diagnostics measure the influence of an individual observation on model fit, and generalize the one-step diagnostics developed by Pregibon (1981) for the logistic regression model for binary data.
+Preisser and Qaqish (1996) further generalize regression diagnostics to apply to models for correlated data fit by generalized estimating equations (GEEs), where the influence of entire clusters of correlated observations is measured.
+
+
+\subsection{Matrix Notation for  Case deletion notation} %1.14.1
+
+For notational simplicity, $\boldsymbol{A}(i)$ denotes an $n \times m$ matrix $\boldsymbol{A}$ with the $i$-th row
+removed, $a_i$ denotes the $i$-th row of $\boldsymbol{A}$, and $a_{ij}$ denotes the $(i, j)-$th element of $\boldsymbol{A}$.
+
+\subsection{Partitioning Matrices} %1.14.2
+Without loss of generality, matrices can be partitioned as if the $i-$th omitted observation is the first row; i.e. $i=1$.

@@ -1,0 +1,25 @@
+
+
+\textbf{Remarks :} 
+% OLD MA4605 Notes
+The plots actually indicate the fitted model is actually quite good. The trend lines in the first and third plots demonstrate constant variance, and in the case of the first, the trend line through the centre of the plot  follows the X=0 line quite well.
+
+The Q-Q plot (i.e. the second plot) indicates that the assumption of normality is vindicated.
+The last plot indicates the no observations have unusually high Cook’s Distances values.  No observations are beyond the 0.5 (red line) threshold.
+
+Robust regression is an alternative to least squares regression when data are contaminated with outliers or influential observations, and it can also be used for the purpose of detecting influential observation
+
+% IMAGES HERE
+
+
+%-------------------------------------%
+#### Using Other \textit{Psi} Operators}
+
+Fitting is done by \textbf{\emph{iterated re-weighted least squares (IWLS).}}
+
+Psi functions are supplied for the Huber, Hampel and Tukey bisquare proposals as psi.huber, \texttt{psi.hampel} and \textbf{psi.bisquare}. Huber's corresponds to a convex optimization problem and gives a unique solution (up to collinearity). The other two will have multiple local minima, and a good starting point is desirable.
+
+* huber
+* bisquare
+* hampel
+

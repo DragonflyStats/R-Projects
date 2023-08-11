@@ -1,0 +1,407 @@
+﻿
+\maketitle
+
+\tableofcontents
+<p>
+%--------------------------------------------------------------------------------------%
+
+%% - The subsections listed below detail the types of plots to use to test different aspects of a model and give guidance on the correct interpretations of different results that could be observed for each type of plot.
+%------------------------------------------------------------------------------------------------------------------------ %
+\section{Introduction to Residuals}
+
+The difference between the observed value of the dependent variable (y) and the predicted value ($\hat{y}$) is called the \textbf{residual} (e). Each data point has one residual.
+
+\[\mbox{Residual} = \mbox{Observed value} - \mbox{Predicted value}\] 
+\[e = y - \hat{y}\]
+
+Both the sum and the mean of the residuals are equal to zero. 
+%That is, Σ e = 0 and e = 0.
+
+
+<p>
+The residual plot shows a fairly random pattern - the first residual is positive, the next two are negative, the fourth is positive, and the last residual is negative. This random pattern indicates that a linear model provides a decent fit to the data.
+
+Below, the residual plots show three typical patterns. The first plot shows a random pattern, indicating a good fit for a linear model. The other plot patterns are non-random (U-shaped and inverted U), suggesting a better fit for a non-linear model.
+
+
+%Random patternNon-random: U-shapedNon-random: Inverted U
+In the next lesson, we will work on a problem, where the residual plot shows a non-random pattern. And we will show how to "transform" the data to use a linear model with nonlinear data.
+
+%----------------------------------------------------------------------------------------------%
+<p>
+%http://blog.minitab.com/blog/adventures-in-statistics/why-you-need-to-check-your-residual-plots-for-regression-analysis
+In the graph above, you can predict non-zero values for the residuals based on the fitted value. For example, a fitted value of 8 has an expected residual that is negative. Conversely, a fitted value of 5 or 11 has an expected residual that is positive.
+
+
+
+
+\subsubsection{Autocorrelation} 
+#
+For example, if a residual is more likely to be followed by another residual that has the same sign, adjacent residuals are positively correlated. You can include a variable that captures the relevant time-related information, or use a time series analysis. 
+
+\subsubsection{Durbin-Watson Test for Autocorrelated Errors}
+The \textbf{\textit{Durbin-Watson} }procedure is commonly used to to test for autocorrelationof residuals.
+
+
+```{r}
+attach(mtcars)
+ FitMod <- lm(mpg~wt+cyl)
+
+# library(car)
+durbinWatsonTest(FitMod)
+
+
+
+```{r}
+> durbinWatsonTest(FitMod)
+ lag Autocorrelation D-W Statistic p-value
+   1       0.1302185      1.671096   0.252
+ Alternative hypothesis: rho != 0
+
+<p>
+
+% http://polisci.msu.edu/jacoby/icpsr/regress3/lectures/week3/11.Outliers.pdf
+%---------------------------------------------------------------------------------------------%
+
+#### Computation}%1.4.4
+
+%The computation of internally studentized residuals relies on the diagonal entries of $\boldsymbol{V} (\hat{\theta})$ - $\boldsymbol{Q} (\hat{\theta})$, where $\boldsymbol{Q} (\hat{\theta})$ is computed as
+
+\[ \boldsymbol{Q} (\hat{\theta}) = \boldsymbol{X} ( \boldsymbol{X}^{\prime}\boldsymbol{Q} (\hat{\theta})^{-1}\boldsymbol{X})\boldsymbol{X}^{-1} \]
+
+#### Pearson Residual}%1.4.5
+
+Another possible scaled residual is the \index{Pearson residual} `Pearson residual', whereby a residual is divided by the standard deviation of the dependent variable. The Pearson residual can be used when the variability of $\hat{\beta}$ is disregarded in the underlying assumptions.
+
+
+%-------------------------------------------------------------------------------------------%
+<p>
+\section{Leverage and Influence}
+#### Influence}
+The influence of an observation can be thought of in terms of how much the predicted scores for other observations would differ if the observation in question were not included. 
+
+Cook's D is a good measure of the influence of an observation and is proportional to the sum of the squared differences between predictions made with all observations in the analysis and predictions made leaving out the observation in question. If the predictions are the same with or without the observation in question, then the observation has no influence on the regression model. If the predictions differ greatly when the observation is not included in the analysis, then the observation is influential.
+
+#### Interpreting Cook's Distance}
+A common rule of thumb is that an observation with a value of Cook's D over 1.0 has too much influence. 
+As with all rules of thumb, this rule should be applied judiciously and not thoughtlessly.
+
+#### Leverage}
+% http://onlinestatbook.com/2/regression/influential.html
+% Leverage
+The leverage of an observation is based on how much the observation's value on the predictor variable differs from the mean of the predictor variable. 
+The greater an observation's leverage, the more potential it has to be an influential observation. 
+
+For example, an observation with a value equal to the mean on the predictor variable has no influence on the slope of the regression line regardless of its value on the criterion variable. 
+On the other hand, an observation that is extreme on the predictor variable has the potential to affect the slope greatly.
+
+\subsubsection{Calculation of Leverage (h)}
+The first step is to standardize the predictor variable so that it has a mean of 0 and a standard deviation of 1. 
+Then, the leverage (h) is computed by squaring the observation's value on the standardized predictor variable, adding 1, and dividing by the number of observations.
+
+
+#### Summary of Influence Statistics}
+
+\item\textbf{Studentized Residuals} – Residuals divided by their estimated standard errors (like t-statistics). 
+Observations with values larger than 3 in absolute value are considered outliers.
+\item\textbf{Leverage Values (Hat Diag)} – Measure of how far an observation is from the others in terms of the levels of the independent variables (not the dependent variable). 
+Observations with values larger than $2(k+1)/n$ are considered to be potentially highly influential, where k is the number of predictors and n is the sample size.
+\item\textbf{DFFITS} – Measure of how much an observation has effected its fitted value from the regression model. 
+Values larger than $2\sqrt{(k+1)/n}$ in absolute value are considered highly influential. %Use standardized DFFITS in SPSS.
+\item\textbf{DFBETAS} – Measure of how much an observation has effected the estimate of a regression coefficient (there is one DFBETA for each regression coefficient, including the intercept). 
+Values larger than 2/sqrt(n) in absolute value are considered highly influential.
+\\
+The measure that measures how much impact each observation has on a particular predictor is DFBETAs The DFBETA for a predictor and for a particular observation is the difference between the regression coefficient calculated for all of the data and the regression coefficient calculated with the observation deleted, scaled by the standard error calculated with the observation deleted. 
+
+
+#### Cook's Distance}
+% Interpretation
+% http://stats.stackexchange.com/questions/22161/how-to-read-cooks-distance-plots %
+Some texts tell you that points for which Cook's distance is higher than 1 are to be considered as influential. Other texts give you a threshold of $4/N$ or $4/(N−k−1)$, where N is the number of observations and k the number of explanatory variables. In your case the latter formula should yield a threshold around 0.1 .
+
+John Fox (1), in his booklet on regression diagnostics is rather cautious when it comes to giving numerical thresholds. He advises the use of graphics and to examine in closer details the points with "values of D that are substantially larger than the rest". According to Fox, thresholds should just be used to enhance graphical displays.
+
+In your case the observations 7 and 16 could be considered as influential. Well, I would at least have a closer look at them. The observation 29 is not substantially different from a couple of other observations.
+
+(1) Fox, John. (1991). Regression Diagnostics: An Introduction. Sage Publications.
+#### Leverage}
+  and, in particular, in analyses aimed at identifying those observations that are far away from corresponding average predictor values. Leverage points do not necessarily have a large effect on the outcome of fitting regression models.
+
+
+%-------------------------------------------------------------------------------------------%
+<p>
+\section{Regression Diagnostics with \texttt{R} }
+% http://www.statmethods.net/stats/rdiagnostics.html
+
+An excellent review of regression diagnostics is provided in John Fox's aptly named \textit{Overview of Regression Diagnostics}. Dr. Fox's car package provides advanced utilities for regression modeling.
+
+```{r}
+(1) Fox, John. (1991). Regression Diagnostics: An Introduction. Sage Publications.
+
+
+
+```{r}
+# Assume that we are fitting a multiple linear regression
+# on the MTCARS data
+library(car)
+fit <- lm(mpg~disp+hp+wt+drat, data=mtcars)
+
+
+
+
+
+#### Outliers}
+
+Assessment of Outliers can be carried out using the \texttt{outlierTest} function.
+
+
+```{r}
+outlierTest(fit) # Bonferonni p-value for most extreme obs
+qqPlot(fit, main="QQ Plot") #qq plot for studentized resid 
+leveragePlots(fit) # leverage plots
+
+
+
+
+%-------------------------------------------------------------- %
+
+
+%http://stats.stackexchange.com/questions/58141/interpreting-plot-lm
+ I explained the assumption of homoscedasticity and the plots that can help you assess it (including scale-location plots [2]) on CV here: What does having constant variance in a linear regression model mean? I have discussed qq-plots [3] on CV here: QQ plot does not match histogram. So, what's left is primarily just understanding [5], the residual-leverage plot.
+
+To understand this, we need to understand three things:
+
+
+* leverage,
+* standardized residuals, and
+* Cook's distance.
+
+%Move next bit to "Leverarge"
+\subsubsection{Leverage}
+To understand leverage, recognize that \textit{Ordinary Least Squares} regression fits a line that will pass through the centre of your data, ($\bar{x}, \bar{y}$). The line can be shallowly or steeply sloped, but it will pivot around that point like a lever on a fulcrum. We can take this analogy fairly literally: because OLS seeks to minimize the vertical distances between the data and the line, the data points that are further out towards the extremes of X will push / pull harder on the lever (i.e., the regression line); they have more leverage. One result of this could be that the results you get are driven by a few data points; that's what this plot is intended to help you determine.
+
+% Standardization
+Another result of the fact that points further out on X have more leverage is that they tend to be closer to the regression line (or more accurately: the regression line is fit so as to be closer to them) than points that are near $\bar{x}$. In other words, the residual standard deviation can differ at different points on X (even if the error standard deviation is constant). To correct for this, residuals are often standardized so that they have constant variance (assuming the underlying data generating process is homoscedastic, of course).
+
+% Cook's Distance
+One way to think about whether or not the results you have were driven by a given data point is to calculate how far the predicted values for your data would move if your model were fit without the data point in question. This calculated total distance is called \textbf{Cook's distance}. Fortunately, you don't have to rerun your regression model N times to find out how far the predicted values will move, Cook's D is a function of the leverage and standardized residual associated with each data point.
+
+With these facts in mind, consider the plots associated with four different situations:
+\begin{enumerate}
+* a dataset where everything is fine
+* a dataset with a high-leverage, but low-standardized residual point
+* a dataset with a low-leverage, but high-standardized residual point
+* a dataset with a high-leverage, high-standardized residual point
+\end{enumerate}
+<p>
+#### Diagnostic Plots for LMs}
+%-------------------------------------------------------------------------------------------%
+
+
+<p>
+\section{Case Deletion} %1.14
+Case-deleted analysis is a popular method for evaluating the inﬂuence of a subset of cases on inference.
+
+\textbf{Cite: CPJ} develops case-deletion diagnostics for detecting influential observations in mixed linear models. Diagnostics for both fixed effects and variance components are proposed. Computational formulas are given that make the procedures feasible. The methods are illustrated using examples. 
+
+#### Case Deletion Diagnostic Statistics}
+% http://support.sas.com/documentation/cdl/en/statug/63033/HTML/default/viewer.htm#statug_genmod_sect045.htm
+
+For ordinary generalized linear models, regression diagnostic statistics developed by Williams (1987) are commonly used in statistical platforms such as SS. These diagnostics measure the influence of an individual observation on model fit, and generalize the one-step diagnostics developed by Pregibon (1981) for the logistic regression model for binary data.
+Preisser and Qaqish (1996) further generalize regression diagnostics to apply to models for correlated data fit by generalized estimating equations (GEEs), where the influence of entire clusters of correlated observations is measured.
+
+%----------------------------------------------------------------------------------------------%
+
+
+
+
+
+
+\section{Case Deletion} %1.14
+Case-deleted analysis is a popular method for evaluating the inﬂuence of a subset of cases on inference.
+
+\textbf{Cite: CPJ} develops case-deletion diagnostics for detecting influential observations in mixed linear models. Diagnostics for both fixed effects and variance components are proposed. Computational formulas are given that make the procedures feasible. The methods are illustrated using examples. 
+
+#### Case Deletion Diagnostic Statistics}
+% http://support.sas.com/documentation/cdl/en/statug/63033/HTML/default/viewer.htm#statug_genmod_sect045.htm
+
+For ordinary generalized linear models, regression diagnostic statistics developed by Williams (1987) are commonly used in statistical platforms such as SS. These diagnostics measure the influence of an individual observation on model fit, and generalize the one-step diagnostics developed by Pregibon (1981) for the logistic regression model for binary data.
+Preisser and Qaqish (1996) further generalize regression diagnostics to apply to models for correlated data fit by generalized estimating equations (GEEs), where the influence of entire clusters of correlated observations is measured.
+
+
+#### Matrix Notation for  Case deletion notation} %1.14.1
+
+For notational simplicity, $\boldsymbol{A}(i)$ denotes an $n \times m$ matrix $\boldsymbol{A}$ with the $i$-th row
+removed, $a_i$ denotes the $i$-th row of $\boldsymbol{A}$, and $a_{ij}$ denotes the $(i, j)-$th element of $\boldsymbol{A}$.
+
+#### Partitioning Matrices} %1.14.2
+Without loss of generality, matrices can be partitioned as if the $i-$th omitted observation is the first row; i.e. $i=1$.
+
+%---------------------------------------------------------------------------%
+<p>
+#### CPJ's Three Propositions} %1.15
+%-----------------------------%
+
+
+\subsubsection{Proposition 1}
+
+\[
+\boldsymbol{V}^{-1} =
+\left[ \begin{array}{cc}
+\nu^{ii} & \lambda_{i}^{\prime}  \\
+\lambda_{i} & \Lambda_{[i]}
+\end{array}\right] \]
+
+
+\[\boldsymbol{V}_{[i]}^{-1} = \boldsymbol{\Lambda}_{[i]} - { \lambda_{i} \lambda_{i} ^{\prime} \over \lambda_{i} } \]
+
+%-----------------------------%
+#### Proposition 2}
+
+
+\item[(i)] $ \boldsymbol{X}_{[i]}^{T}\boldsymbol{V}^{-1}_{[i]}\boldsymbol{X}_{[i]}$ = $\boldsymbol{X}^{\prime}\boldsymbol{V}^{-1}\boldsymbol{X}$
+\item[(ii)] = $(\boldsymbol{X}^{\prime}\boldsymbol{V}^{-1}\boldsymbol{Y})^{-1}$
+\item[(iii)] $ \boldsymbol{X}_{[i]}^{T}\boldsymbol{V}^{-1}_{[i]}\boldsymbol{Y}_{[i]}$ = $\boldsymbol{X}^{\prime}\boldsymbol{V}^{-1}\boldsymbol{Y}$
+
+%-----------------------------%
+#### Proposition 3}
+This proposition is similar to the formula for the one-step Newtown Raphson estimate of the logistic regression coefficients given by Pregibon (1981) and discussed in Cook Weisberg.
+<p>
+<p>
+
+
+
+
+
+ 
+#### Diagnostics for Logistic Regression}
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------%
+#### Zewotir Measures of Influence in LME Models}%2.2
+%Zewotir page 161
+\citet{Zewotir} describes a number of approaches to model diagnostics, investigating each of the following;
+
+* Variance components
+* Fixed effects parameters
+* Prediction of the response variable and of random effects
+* likelihood function
+
+
+#### Cook's Distance applied to LMEs}
+
+* For variance components $\gamma$: $CD(\gamma)_i$,
+* For fixed effect parameters $\beta$: $CD(\beta)_i$,
+* For random effect parameters $\boldsymbol{u}$: $CD(u)_i$,
+* For linear functions of $\hat{beta}$: $CD(\psi)_i$
+
+
+
+
+%------------------------------------------------------------%
+\begin{description}
+\item[Random Effects]
+
+A large value for $CD(u)_i$ indicates that the $i-$th observation is influential in predicting random effects.
+
+\item[linear functions]
+$CD(\psi)_i$ does not have to be calculated unless $CD(\beta)_i$ is large.
+
+
+\item[Information Ratio]
+\end{description}
+
+%--------------------------------------------------------------%
+<p>
+\section{Measures 2} %2.4
+
+#### Cook's Distance} %2.4.1
+
+* For variance components $\gamma$
+
+
+Diagnostic tool for variance components
+\[ C_{\theta i} =(\hat(\theta)_{[i]} - \hat(\theta))^{T}\mbox{cov}( \hat(\theta))^{-1}(\hat(\theta)_{[i]} - \hat(\theta))\]
+
+#### Variance Ratio} %2.4.2
+
+* For fixed effect parameters $\beta$.
+
+
+#### Cook-Weisberg statistic} %2.4.3
+
+* For fixed effect parameters $\beta$.
+
+
+
+%------------------------------------------------------------------------------------------------%
+% http://journal.r-project.org/archive/2012-2/RJournal_2012-2_Nieuwenhuis~et~al.pdf
+
+You should have a look at the \texttt{R} package \textit{\textbf{influence.ME}}. It allows you to compute measures of influential data for mixed effects models generated by lme4.
+
+An example model:
+```{r}
+library(lme4)
+model <- lmer(mpg ~ disp + (1 | cyl), mtcars)
+
+
+The function \texttt{influence} is the basis for all further steps:
+
+```{r}
+library(influence.ME)
+infl <- influence(model, obs = TRUE)
+
+Calculate Cook's distance:
+```{r}
+cooks.distance(infl)
+
+Plot Cook's distance:
+```{r}
+plot(infl, which = "cook")
+
+<p>
+%----------------------------------------------------------------------------------------%
+
+\section{Case-Deletion Diagnostics for LMEs The CPJ Paper}%1.13
+
+#### Case-Deletion results for Variance components}
+\textbf{Cite: CPJ}  examines case deletion results for estimates of the variance components, proposing the use of one-step estimates of variance components for examining case influence. 
+The method describes focuses on REML estimation, but can easily be adapted to ML or other methods.
+
+This paper develops their global influences for the deletion of single observations in two steps: a one-step estimate for the REML (or ML) estimate of the variance components, and an ordinary case-deletion diagnostic for a weighted regression problem ( conditional on the estimated covariance matrix) for fixed effects.
+
+% Lesaffre's approach accords with that proposed by Christensen et al when applied in a repeated measurement context, with a large sample size.
+
+#### CPJ Notation} %1.13.1
+
+\[ \boldsymbol{C} = \boldsymbol{H}^{-1} = \left[
+\begin{array}{cc}
+c_{ii} & \boldsymbol{c}_{i}^{\prime}\\
+\boldsymbol{c}_{i} &  \boldsymbol{C}_{[i]}
+\end{array} \right]
+\]
+
+\textbf{Cite: CPJ}  noted the following identity:
+
+\[ \boldsymbol{H}_{[i]}^{-1}  = \boldsymbol{C}_{[i]} - {1 \over c_{ii}}\boldsymbol{c}_{[i]}\boldsymbol{c}_{[i]}^{\prime} \]
+
+
+\textbf{Cite: CPJ} use the following as building blocks for case deletion statistics.
+
+* $\breve{x}_i$
+* $\breve{z}_i$
+* $\breve{z}_ij$
+* $\breve{y}_i$
+* $p_ii$
+* $m_i$
+
+All of these terms are a function of a row (or column) of $\boldsymbol{H}$ and $\boldsymbol{H}_{[i]}^{-1}$
+
+
+
+\bibliographystyle{chicago}
+\bibliography{DB-txfrbib}
+
+
+\end{document} 

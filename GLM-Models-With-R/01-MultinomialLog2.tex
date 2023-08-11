@@ -1,0 +1,231 @@
+
+
+%================================================================================================%
+
+\documentclass[00-GLMregslides.tex]{subfiles}
+
+\begin{document}
+
+
+
+%================================================================================================%
+\begin{frame}[fragile]
+\frametitle{Multinomial Logistic Regression with \texttt{R}}
+\Large
+\textbf{Multinomial Logistic Regression}
+\begin{itemize}
+\item 
+We use the \texttt{multinom} function from the \textbf{nnet} package to estimate a multinomial logistic regression model. 
+
+\item Remark - There are other functions in other R packages capable of multinomial regression, such as the \textbf{mlogit} package. 
+\item
+  The \texttt{multinom} function does not require the data to be reshaped (as the \textbf{mlogit} package does) 
+\item (Similar format to example code found in Hilbe's \textit{Logistic Regression Models}).
+\end{itemize}
+\end{frame}
+ %================================================================================================%
+  \begin{frame}[fragile]
+  	\Large
+  	\frametitle{Multinomial Logistic Regression with \texttt{R}}
+\textbf{Multinomial logistic regression}
+\begin{itemize}
+ %		\item Before running our model.
+\item  We must choose the level of our outcome that we wish to use as our \textbf{\textit{baseline}} and specify this in the \texttt{relevel} function. \\ Let's choose ``academic".
+\item Then, we run our model using \textit{multinom}. 
+\item The \texttt{multinom} command does not include p-value calculation for the regression coefficients.
+\item (We can calculate p-values using Wald tests or z-tests).
+ 
+\end{itemize}
+\end{frame}
+%================================================================================================%
+\begin{frame}[fragile]
+\frametitle{Multinomial Logistic Regression with \texttt{R}}
+\begin{framed}
+	\begin{verbatim}
+ml$prog2 <- relevel(ml$prog, ref = "academic")
+test <- multinom(prog2 ~ ses + write, data = ml)
+ 
+ # weights:  15 (8 variable)
+ initial  value 219.722458 
+ iter  10 value 179.982880
+ final    value 179.981726 
+ converged
+\end{verbatim}
+\end{framed}
+\end{frame}
+%================================================================================================%
+\begin{frame}[fragile]
+
+\frametitle{Multinomial Logistic Regression with \texttt{R}}
+\large
+
+	\begin{verbatim}
+summary(test)
+ 
+ Call:
+ multinom(formula = prog2 ~ ses + write, 
+             data = ml)
+ 
+ Coefficients:
+          (Intercept) sesmiddle seshigh    write
+ general        2.852   -0.5333 -1.1628 -0.05793
+ vocation       5.218    0.2914 -0.9827 -0.11360
+\end{verbatim}
+
+\end{frame}
+
+%================================================================================================%
+\begin{frame}[fragile]
+
+\frametitle{Multinomial Logistic Regression with \texttt{R}}
+\large
+
+\begin{verbatim}
+....
+ Std. Errors:
+          (Intercept) sesmiddle seshigh   write
+ general        1.166    0.4437  0.5142 0.02141
+ vocation       1.164    0.4764  0.5956 0.02222
+ 
+ Residual Deviance: 360 
+ AIC: 376
+\end{verbatim}
+
+\end{frame}
+%================================================================================================%
+%\begin{frame}[fragile]
+%
+%\frametitle{Multinomial Regression with \texttt{R}}
+%\Large
+%\textbf{Test Statistics for computing $p-$values}
+%\begin{verbatim}
+%z <- summary(test)$coefficients/summary(test)$standard.errors
+%z
+% 
+%          (Intercept) sesmiddle seshigh  write
+% general        2.445   -1.2018  -2.261 -2.706
+% vocation       4.485    0.6117  -1.650 -5.113
+% \end{verbatim}
+%
+%\end{frame}
+%=========================================%
+\begin{frame}
+\frametitle{Multinomial Logistic Regression with \texttt{R}}
+\Large
+\textbf{Wald Test}
+
+\begin{itemize}
+\item The Wald test in the context of logistic regression is used to determine whether a certain predictor variable X  is significant or not. 
+\item It rejects the null hypothesis of the corresponding coefficient being zero. 
+
+\item The test consists of dividing the value of the coefficient by standard error 
+\end{itemize}
+
+
+
+
+\end{frame}
+%========================================================%
+%================================================================================================%
+\begin{frame}[fragile]
+
+\frametitle{Multinomial Logistic Regression with \texttt{R}}
+\large
+
+\begin{verbatim}
+# Coefficients Divided by Standard Errors
+# Then Compute p-values.
+# 2-tailed z test
+# p.values
+ 
+          (Intercept) sesmiddle seshigh     write
+ general    1.448e-02    0.2294 0.02374 6.819e-03
+ vocation   7.299e-06    0.5408 0.09895 3.176e-07
+\end{verbatim}
+
+\end{frame}
+
+%================================================================================================%
+\begin{frame}[fragile]
+
+\frametitle{Multinomial Regression with \texttt{R}}
+\Large
+\begin{itemize}
+\item Remark: Some output is generated by running the model, even though we are assigning the model to a new \texttt{R} object.
+\item This model-running output includes some iteration history and includes the final \textbf{\textit{negative 
+log-likelihood}} (+ 179.981726). 
+\item This value multiplied by two is then seen in the model summary as the \textbf{\textit{Residual Deviance}} 
+and it can be used in comparisons of nested models (360).
+\end{itemize}
+\end{frame}
+
+%================================================================================================%
+\begin{frame}[fragile]
+	
+	\frametitle{Multinomial Regression with \texttt{R}}
+	\Large
+	\begin{itemize}
+
+
+
+
+\item As with many summary outputs, the output contains a column of coefficients and a column of standard errors. 
+\item Each of these blocks has one row of values corresponding to a model equation. 
+\item Focusing on the block of coefficients, we can look at the first row comparing \texttt{prog = "general"} to our baseline \texttt{prog = "academic"} and the second row comparing \texttt{prog = "vocation"} to our baseline \texttt{prog = "academic"}. 
+\end{itemize}
+\end{frame}
+%================================================================================================%
+
+\begin{frame}[fragile]
+\frametitle{Multinomial Regression with \texttt{R}}
+\Large
+\begin{itemize}
+\item If we consider our coefficients from the first row to be $b_1$ and our coefficients from the second row to be $b_2$, we can write our model equations:
+\end{itemize}
+{\normalsize
+	
+	\hspace{-0.95cm} \[ ln\left(\frac{P(prog=gen.)}{P(prog=acad.)}\right) = b_{10} + b_{11}(ses=2) + b_{12}(ses=3) + b_{13}write \] \[ ln\left(\frac{P(prog=voc.)}{P(prog=acad.)}\right) = b_{20} + b_{21}(ses=2) + b_{22}(ses=3) + b_{23}write \] 
+}
+
+\end{frame}
+%================================================================================================%
+\begin{frame}[fragile]
+	
+	\frametitle{Multinomial Regression with \texttt{R}}
+	\Large
+	\begin{itemize}
+
+\item A one-unit increase in the variable \textbf{\textit{write}} is associated with the decrease in the log odds of being in general program vs. academic program in the amount of \textit{0.058 (b$_{13}$)}.
+\smallskip
+\item A one-unit increase in the variable \textbf{\textit{write}} is associated with the decrease 
+in the log odds of being in vocation program vs. academic program in the amount of \textit{0.1136 (b$_{23}$)}.
+\end{itemize}
+\end{frame}
+%================================================================================================%
+\begin{frame}[fragile]
+
+\frametitle{Multinomial Regression with \texttt{R}}
+\Large
+\begin{itemize}
+\item The log odds of being in general program vs. in academic program will decrease by 
+1.163 if moving from \textit{ses="low"} to \textit{ses="high"b$_{12}$}.
+\smallskip
+\item The log odds of being in general program vs. in academic 
+program will decrease by 0.533 if moving from \textit{ses="low"} to \textit{ses="middle"b$_{11}$}, 
+although this coefficient is not significant.
+\end{itemize}
+\end{frame}
+%================================================================================================%
+\begin{frame}[fragile]
+	
+	\frametitle{Multinomial Regression with \texttt{R}}
+	\Large
+	\begin{itemize}
+\item The log odds of being in vocation program vs. in academic program will decrease by 
+0.983 if moving from ses="low" to ses="high"(b$_{22}$).
+\item The log odds of being in vocation program vs. in academic program 
+will increase by 0.291 if moving from ses="low" to ses="middle"(b$_{21}$), although this coefficient is not signficant.
+\end{itemize}
+\end{frame}
+\end{document}
+%================================================================================================%
