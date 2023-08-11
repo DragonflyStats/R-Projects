@@ -1,0 +1,35 @@
+Two Sample t test}
+=========================================================
+
+The two-sample t test is used to test the hypothesis that two samples may
+be assumed to come from distributions with the same mean.
+
+The theory for the two-sample t test is not very different in principle from
+that of the one-sample test. Data are now from two groups, $x_{11}, . . . , x_{1n1}$
+and $x_{21}, . . . , x_{2n2}$ , which we assume are sampled from the normal distributions
+$N(µ_{1}, \sigma^{1}_{2} )$ and
+$N(µ_{2}, \sigma^{2}_{2} )$, and it is desired to test the null hypothesis
+$\mu_{1} = \mu_{2}$. You then calculate
+
+\[
+t = \frac{\bar{X}_{1}-\bar{X}_{2}}{S.E.(\bar{X}_{1}-\bar{X}_{2})}
+\]
+
+
+
+
+
+
+
+
+
+\section{Introduction to ``R}}
+``R} consists of a base package and many additional packages
+``R} was originally designed as a command language.  
+Commands were typed into a text-based input area on the computer screen and the program responded with a response to each command.
+The ``R} console opens with information and then a prompt mark  ``>"  it is ready to accept commands
+``R}  is an open source software package, meaning that the code written to implement the various functions can be freely examined and modified.
+``R} can be installed free of charge from the ``R}-project website.
+
+
+

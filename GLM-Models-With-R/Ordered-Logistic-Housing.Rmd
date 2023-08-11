@@ -1,0 +1,67 @@
+---
+title: "Ordered Logistic or Probit Regression"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ordered Logistic
+
+### Description
+
+Fits a logistic or probit regression model to an ordered factor response. The default logistic case is proportional odds logistic regression, after which the function is named.
+
+```{r warning = FALSE,message=FALSE}
+library(MASS)
+
+options(contrasts = c("contr.treatment", "contr.poly"))
+house.plr <- polr(Sat ~ Infl + Type + Cont, weights = Freq, data = housing)
+house.plr
+
+```
+
+```{r warning = FALSE,message=FALSE}
+
+summary(house.plr, digits = 3)
+```
+```{r warning = FALSE,message=FALSE}
+## slightly worse fit from
+summary(update(house.plr, method = "probit", Hess = TRUE), digits = 3)
+```
+```{r warning = FALSE,message=FALSE}
+## although it is not really appropriate, can fit
+summary(update(house.plr, method = "cloglog", Hess = TRUE), digits = 3)
+
+
+```
+```{r warning = FALSE,message=FALSE}
+predict(house.plr, housing, type = "p")
+addterm(house.plr, ~.^2, test = "Chisq")
+```
+```{r warning = FALSE,message=FALSE}
+house.plr2 <- stepAIC(house.plr, ~.^2)
+house.plr2$anova
+```
+```{r warning = FALSE,message=FALSE}
+anova(house.plr, house.plr2)
+```
+
+```{r warning = FALSE,message=FALSE}
+house.plr <- update(house.plr, Hess=TRUE)
+pr <- profile(house.plr)
+```
+
+```{r warning = FALSE,message=FALSE}
+confint(pr)
+
+```
+```{r warning = FALSE,message=FALSE}
+
+plot(pr)
+```
+```{r warning = FALSE,message=FALSE}
+pairs(pr)
+```
+```{r warning = FALSE,message=FALSE}

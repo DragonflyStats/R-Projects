@@ -1,0 +1,148 @@
+---
+title: "Ordinal Logistic Regression"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(reshape2)
+library(MASS)
+```
+
+### Ordinal Logistic Regression
+
+
+### Student Data Set
+
+A study looks at factors that influence the decision of whether to apply to graduate school. College juniors are asked if they are unlikely, somewhat likely, or very likely to apply to graduate school. Hence, our outcome variable has three categories. 
+
+Data on parental educational status, whether the undergraduate institution is public or private, and current GPA is also collected. The researchers have reason to believe that the “distances” between these three points are not equal. For example, the “distance” between “unlikely” and “somewhat likely” may be shorter than the distance between “somewhat likely” and “very likely”.
+
+```{r}
+dat <- read.csv("https://raw.githubusercontent.com/RWorkshop/workshopdatasets/master/ologit.csv")
+
+
+dat <- dat %>% mutate(apply = factor(apply))
+
+```
+
+```{r}
+## one at a time, table apply, pared, and public
+lapply(dat[, c("apply", "pared", "public")], table)
+
+## three way cross tabs (xtabs) and flatten the table
+ftable(xtabs(~ public + apply + pared, data = dat))
+ 
+```
+
+
+
+```{r}
+ 
+summary(dat$gpa)
+```
+
+```{r}
+
+ggplot(dat, aes(x = apply, y = gpa)) +
+  geom_boxplot(size = .75) +
+  geom_jitter(alpha = .5) +
+  facet_grid(pared ~ public, margins = TRUE) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+
+```
+
+Below we use the polr command from the MASS package to estimate an ordered logistic regression model. The command name comes from proportional odds logistic regression, highlighting the proportional odds assumption in our model. polr uses the standard formula interface in R for specifying a regression model with outcome followed by predictors. We also specify Hess=TRUE to have the model return the observed information matrix from optimization (called the Hessian) which is used to get standard errors.
+
+```{r}
+
+## fit ordered logit model and store results 'm'
+m <- polr(apply ~ pared + public + gpa, data = dat, Hess=TRUE)
+
+```
+
+```{r}
+## view a summary of the model
+summary(m)
+```
+
+```{r}
+
+## store table
+(ctable <- coef(summary(m)))
+
+```
+
+```{r}
+## calculate and store p values
+p <- pnorm(abs(ctable[, "t value"]), lower.tail = FALSE) * 2
+```
+
+```{r}
+## combined table
+(ctable <- cbind(ctable, "p value" = p))
+```
+
+```{r}
+
+(ci <- confint(m)) # default method gives profiled CIs
+ 
+
+ 
+confint.default(m) # CIs assuming normality
+```
+
+```{r}
+
+## odds ratios
+exp(coef(m))
+ 
+##  pared public    gpa 
+## 2.8511 0.9429 1.8514
+ 
+## OR and CI
+exp(cbind(OR = coef(m), ci))
+```
+
+```{r}
+
+
+sf <- function(y) {
+  c('Y>=1' = qlogis(mean(y >= 1)),
+    'Y>=2' = qlogis(mean(y >= 2)),
+    'Y>=3' = qlogis(mean(y >= 3)))
+}
+
+(s <- with(dat, summary(as.numeric(apply) ~ pared + public + gpa, fun=sf)))
+
+glm(I(as.numeric(apply) >= 2) ~ pared, family="binomial", data = dat)
+ 
+```
+
+```{r}
+ 
+glm(I(as.numeric(apply) >= 3) ~ pared, family="binomial", data = dat)
+```
+
+```{r}
+newdat <- data.frame(
+  pared = rep(0:1, 200),
+  public = rep(0:1, each = 200),
+  gpa = rep(seq(from = 1.9, to = 4, length.out = 100), 4))
+
+newdat <- cbind(newdat, predict(m, newdat, type = "probs"))
+
+##show first few rows
+head(newdat)
+lnewdat <- melt(newdat, id.vars = c("pared", "public", "gpa"),
+  variable.name = "Level", value.name="Probability")
+## view first few rows
+head(lnewdat)
+ 
+```
+
+```{r}
+ggplot(lnewdat, aes(x = gpa, y = Probability, colour = Level)) +
+  geom_line() + facet_grid(pared ~ public, labeller="label_both")
+```
