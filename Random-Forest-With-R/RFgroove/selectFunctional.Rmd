@@ -1,0 +1,66 @@
+---
+title: "``selectFunctional``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(RFgroove)
+```
+
+### Grouped variable selection procedure for functional data
+
+#### Description
+Backward variable selection procedure for multivariate functional data which is a set of p functional
+covariates and n observations of dimension N.
+
+#### Usage
+<pre><code>
+selectFunctional( FDlist, ydata, normalize=TRUE,
+dimensionReductionMethod=c("fpca", "wave"),
+nbasisInit, verbose=TRUE, ...)
+</code></pre>
+
+#### Arguments
+* FDlist A p-dimensional list containing the set of functional variables which are matrices
+of size n x N.
+* ydata The outcome data. Must be a factor for classification.
+* normalize Should the functions be normalized ?
+* dimensionReductionMethod: The dimension reduction method, ‘fpca’ for Functional Principal Component Analysis or ‘wave’ for the multiple wavelet thresholding.
+* nbasisInit The number of initial spline coefficients.
+* verbose Should the details be printed.
+* ... further arguments passed to or from other methods.
+
+
+#### Examples
+```{r}
+data(toyRegFD)
+varSel <- selectFunctional( toyRegFD$FDlist, toyRegFD$Y, normalize=FALSE,
+dimensionReductionMethod="fpca", nbasisInit=16,
+verbose=FALSE, ntree=10)
+```
+```{r}
+summary(varSel)
+plot(varSel)
+```
+#### Value
+An object of class fRFE which is a list with the following components:
+* nselected The number of selected functional variables ;
+* selection The selected functional variables ;
+* selectionIndexes The indexes of selected functional variables in the input data ‘FDlist’ ;
+* error The prediction error computed in each iteration of the backward procedure ;
+* typeRF The type of the forests, classification or regression ;
+* ranking The final ranking of the functional variables ;
+* rankingIndexes The final ranking indexes of the functional variables.
+
+#### Author(s)
+Baptiste Gregorutti
+
+#### References
+Gregorutti, B., Michel, B. and Saint Pierre, P. (2015). Grouped variable importance with random
+forests and application to multiple functional data analysis, Computational Statistics and Data Analysis
+90, 15-35.
+
+####See Also
+selectGroup,varImpGroup
+selectGroup 9

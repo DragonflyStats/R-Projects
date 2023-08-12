@@ -1,0 +1,18 @@
+## veteran Veteran’s Administration Lung Cancer Trial
+
+#### Description
+* Randomized trial of two treatment regimens for lung cancer. 
+* This is a standard survival analysis data set.
+
+
+#### Examples
+```{r}
+data(veteran, package = "randomForestSRC")
+```
+
+#### Source
+Kalbfleisch and Prentice, The Statistical Analysis of Failure Time Data.
+
+#### References
+Kalbfleisch J. and Prentice R, (1980) The Statistical Analysis of Failure Time Data. New York:
+Wiley.

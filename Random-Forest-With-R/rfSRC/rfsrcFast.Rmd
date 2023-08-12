@@ -1,0 +1,108 @@
+## ``rfsrcFast`` Fast Random Forests
+
+#### Description 
+
+Fast approximate random forests using subsampling with forest options set to encourage computational
+speed. Applies to all families.
+
+#### Usage 
+ <pre><code>
+## S3 method for class 'rfsrc'
+rfsrcFast(formula, data,
+ntree = 500,
+nsplit = 10,
+bootstrap = "by.root",
+ensemble = "oob",
+sampsize = function(x){min(x * .632, max(150, sqrt(x)))},
+samptype = "swor",
+samp = NULL,
+ntime = 50,
+forest = FALSE,
+...)
+</code></pre>
+#### Arguments 
+
+* ``formula``: A symbolic description  of the model to be fit. If missing, unsupervised splitting
+is implemented.
+data Data frame containing the y-outcome and x-variables.
+ntree Number of trees.
+nsplit Non-negative integer value specifying number of random split points used to
+*``split``:  a node  (deterministic splitting corresponds to the value zero and is much
+slower).
+* bootstrap Bootstrap protocol used in growing a tree.
+* ensemble Specifies the type of ensemble. We request only out-of-sample which corresponds to "oob".
+*``sampsize``: Function specifying requested size of subsampled data relative to the original
+data. The requested sample size can also be passed in as a number.
+*``samptype ``:   Type of bootstrap used.
+
+*``samp``:   Bootstrap specification when "by.user" is used.
+* ntime Integer value used for survival to constrain ensemble calculations to a grid of
+ntime time points.
+* forest Should the forest object be returned?
+* ... Further arguments to be passed to rfsrc.
+
+#### Details
+
+Calls rfsrc under various options (including subsampling) to encourage computational speeds.
+This will provide a good approximation but will not be as good as default settings of rfsrc.
+
+
+
+#### Examples 
+ ```{r}
+## ------------------------------------------------------------
+## Iowa housing regression example
+## ------------------------------------------------------------
+## load the Iowa housing data
+data(housing, package = "randomForestSRC")
+## do quick and *dirty* imputation
+housing2 <- impute(SalePrice ~ ., housing,
+ntree = 50, nimpute = 1, splitrule = "random")
+## grow a fast forest
+o1 <- rfsrcFast(SalePrice ~ ., housing2)
+o2 <- rfsrcFast(SalePrice ~ ., housing2, nodesize = 1)
+print(o1)
+print(o2)
+```
+
+```{r}
+## grow a fast bivariate forest
+o3 <- rfsrcFast(cbind(SalePrice,Overall.Qual) ~ ., housing2)
+print(o3)
+```
+
+```{r}
+## ------------------------------------------------------------
+## White wine classification example
+## ------------------------------------------------------------
+rfsrcSyn 63
+data(wine, package = "randomForestSRC")
+wine$quality <- factor(wine$quality)
+o <- rfsrcFast(quality ~ ., wine)
+print(o)
+```
+
+```{r}
+## ------------------------------------------------------------
+## pbc survival example
+## ------------------------------------------------------------
+data(pbc, package = "randomForestSRC")
+o <- rfsrcFast(Surv(days, status) ~ ., pbc)
+print(o)
+```
+
+```{r}
+## ------------------------------------------------------------
+## WIHS competing risk example
+## ------------------------------------------------------------
+data(wihs, package = "randomForestSRC")
+o <- rfsrcFast(Surv(time, status) ~ ., wihs)
+print(o)
+```
+
+#### Value
+An object of class (rfsrc, grow).
+Author(s)
+Hemant Ishwaran and Udaya B. Kogalur
+See Also
+rfsrc

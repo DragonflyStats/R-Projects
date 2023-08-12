@@ -1,0 +1,29 @@
+## plot.competing.risk Plots for Competing Risks
+
+#### Description
+Plot the ensemble cumulative incidence function (CIF) and cause-specific cumulative hazard function
+(CSCHF) from a competing risk analysis.
+
+#### Usage 
+<pre><code>
+## S3 method for class 'rfsrc'
+plot.competing.risk(x, plots.one.page = FALSE, ...)
+</code></pre> 
+#### Arguments 
+ 
+x An object of class (rfsrc, grow) or (rfsrc, predict).
+plots.one.page Should plots be placed on one page?
+... Further arguments  passed to or from other methods.
+Details
+Ensemble ensemble CSCHF and CIF functions for each event type. Does not apply to rightcensored
+data. Whenever possible, out-of-bag (OOB) values are displayed.
+Author(s)
+Hemant Ishwaran and Udaya B. Kogalur
+
+#### References
+
+Ishwaran H., Gerds T.A., Kogalur U.B., Moore R.D., Gange S.J. and Lau B.M. (2014). Random
+survival forests for competing risks. Biostatistics, 15(4):757-773.
+See Also
+follic, hd, rfsrc, wihs
+

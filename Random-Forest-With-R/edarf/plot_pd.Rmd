@@ -1,0 +1,46 @@
+---
+title: "``plot_pd``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(edarf)
+```
+
+
+### Plot partial dependence from random forests
+
+#### Description
+Plot partial dependence from random forests
+
+#### Usage
+<pre><code>
+plot_pd(pd, facet = NULL)
+</code></pre>
+
+#### Arguments
+
+* ``pd``: object of class ``c("pd", "data.frame")`` as returned by ``partial_dependence``
+
+* ``facet``: a character vector indicating the variable that should be used to facet on if interaction is plotted.
+
+* ``...``: If not specified the variable with less unique values is chosen.
+
+#### Value
+a ggplot2 object
+
+#### Examples
+```{r}
+library(randomForest)
+library(edarf)
+data(iris)
+fit = randomForest(Species ~ ., iris)
+pd = partial_dependence(fit, "Petal.Width", data = iris)
+plot_pd(pd)
+```
+
+```{r}
+pd = partial_dependence(fit, "Sepal.Width", data = iris)
+plot_pd(pd)
+```

@@ -1,0 +1,40 @@
+---
+title: "``missForest::prodNA``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(missForest)
+```
+
+
+Introduce Missing Values Completely at Random
+
+#### Description
+``prodNA`` artificially introduces missing values. Entries in the given dataframe are deleted com-
+pletely at random up to the specified amount.
+
+#### Usage
+<pre><code>
+prodNA(x, noNA = 0.1)
+</code></pre>
+
+#### Arguments
+* ``x``: dataframe subjected to missing value introduction.
+* ``noNA``: proportion of missing values w.r.t. the number of entries of ``x``.
+
+#### Value
+dataframe with missing values.
+
+#### Examples
+```{r}
+data(iris)
+## Introduce 5% of missing values to the iris data set
+iris.mis <- prodNA(iris, 0.05)
+summary(iris.mis)
+```
+
+
+#### Author(s)
+Daniel J. Stekhoven, <stekhoven@stat.math.ethz.ch>

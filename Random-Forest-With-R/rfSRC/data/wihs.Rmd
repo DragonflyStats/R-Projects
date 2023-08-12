@@ -1,0 +1,32 @@
+wihs Women’s Interagency HIV Study (WIHS)
+
+#### Description
+
+Competing risk data set involving AIDS in women.
+
+#### Format
+A data frame containing:
+* time time to event
+* status censoring status: 0=censoring, 1=HAART initiation, 2=AIDS/Death before HAART
+* ageatfda age in years at time of FDA approval of first protease inhibitor
+* idu history of IDU: 0=no history, 1=history
+* black race: 0=not African-American; 1=African-American
+* cd4nadir CD4 count (per 100 cells/ul)
+
+
+#### Source
+Study included 1164 women enrolled in WIHS, who were alive, infected with HIV, and free of clinical
+AIDS on December, 1995, when the first protease inhibitor (saquinavir mesylate) was approved
+by the Federal Drug Administration. Women were followed until the first of the following occurred:
+treatment initiation, AIDS diagnosis, death, or administrative censoring (September, 2006). Variables
+included history of injection drug use at WIHS enrollment, whether an individual was African
+American, age, and CD4 nadir prior to baseline.
+
+#### References
+Bacon M.C, von Wyl V., Alden C., et al. (2005). The Women’s Interagency HIV Study: an observational
+cohort brings clinical sciences to the bench, Clin Diagn Lab Immunol, 12(9):1013-1019.
+
+#### Examples
+data(wihs, package = "randomForestSRC")
+wihs.obj <- rfsrc(Surv(time, status) ~ ., wihs, nsplit = 3, ntree = 100)
+

@@ -1,0 +1,20 @@
+## `toyRegFD A functional dataset for regression
+
+#### Description
+
+A set of 20 functional variables for regression. Only the 8 first variables are predictive.
+
+#### Usage 
+
+data(toyRegFD)
+
+#### Format
+A list of two components:
+* FDlist: a list containing the p functional variables, i.e. p matrices of size n × N with n the
+number of N-dimensional curves ;
+* Y: the outcome drawn from the Gaussian distribution.
+
+#### References
+Gregorutti, B., Michel, B. and Saint Pierre, P. (2014). Grouped variable importance with random
+forests and application to multivariate functional data analysis. arXiv:1411.4170
+

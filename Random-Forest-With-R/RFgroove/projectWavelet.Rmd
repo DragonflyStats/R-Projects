@@ -1,0 +1,47 @@
+---
+title: "``projectWavelet``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(RFgroove)
+```
+
+
+#### Description
+This function projects a set of curves on a wavelet basis.
+
+#### Usage
+<pre><code>
+projectWavelet(xdata, wavFilter="s8")
+</code></pre>
+
+#### Arguments
+* xdata A set of n curves of dimension N.
+* wavFilter A character string denoting the filter type. Supported types include:
+* .... EXTREMAL PHASE (daublet): "haar", "d2", "d4", "d6", "d8", "d10", "d12", "d14", "d16", "d18", "d20"
+* .... LEAST ASYMMETRIC (symmlet): "s2", "s4", "s6", "s8", "s10", "s12", "s14", "s16", "s18", "s20"
+* .... BEST LOCALIZED: "l2", "l4", "l6", "l14", "l18", "l20"
+* .... COIFLET: "c6", "c12", "c18", "c24", "c30"
+* .... Default: "s8".
+
+
+#### Examples
+```{r}
+data(toyRegFD)
+x <- toyRegFD$FDlist[[1]]
+design <- projectWavelet(xdata=x)
+print(colnames(design))
+```
+
+#### Value
+A matrix of size n × N containing the wavelet coefficients.
+Author(s)
+Baptiste Gregorutti
+
+#### References
+Percival, D. B. and Walden, A. T., Wavelet Methods for Time Series Analysis (2000), Cambridge
+University Press
+See Also
+hardThresholding,fpca

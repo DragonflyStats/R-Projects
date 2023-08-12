@@ -1,0 +1,32 @@
+---
+title: "ranger"
+author: "Kevin O Brien"
+date: "14 December 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+holdoutRF Hold-out random forests
+#### Description
+Grow two random forests on two cross-validation folds. Instead of out-of-bag data, the other fold
+is used to compute permutation importance. Related to the novel permutation variable importance
+by Janitza et al. (2015).
+#### Usage
+holdoutRF(...)
+Arguments
+... All arguments are passed to ranger() (except importance, case.weights,
+replace and holdout.).
+Value
+Hold-out random forests with variable importance.
+Author(s)
+Marvin N. Wright
+#### References
+Janitza, S., Celik, E. & Boulesteix, A.-L., (2015). A computationally fast variable importance test
+for random forests for high-dimensional data. Adv Data Anal Classif http://dx.doi.org/10.
+1007/s11634-016-0276-4.
+See Also
+ranger
+importance.ranger 5

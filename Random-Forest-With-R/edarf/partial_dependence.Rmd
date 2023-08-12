@@ -1,0 +1,71 @@
+---
+title: "``selectFunctional``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(RFgroove)
+```
+
+## ``partial_dependence`` Partial dependence using random forests
+
+#### Description
+Calculates the partial dependence of the response on an arbitrary dimensional set of predictors from
+a fitted random forest object from the party, randomForest, randomForestSRC, or ranger packages
+
+#### Usage
+
+<pre><code>
+partial_dependence(fit, vars, n, interaction, uniform, data, ...)
+</code></pre>
+
+#### Arguments
+
+* fit object of class ’RandomForest’, ’randomForest’, ’rfsrc’, or ‘ranger‘
+* vars a character vector of the predictors of interest
+* n two dimensional integer vector giving the resolution of the grid. the first element gives the grid on vars and the second on the other columns, which are subsampled.
+* interaction logical, if ’vars’ is a vector, does this specify an interaction or a list of bivariate partial dependence
+* uniform logical, indicates whether a uniform or random grid is to be construct partial dependence calculation
+* data the data.frame used to fit the model, only needed for ’randomForest’
+* ... additional arguments to be passed to marginalPrediction
+
+#### Value
+
+a data.frame with the partial dependence of ’vars’ if ’vars’ has length = 1 then the output will be a
+data.frame with a column for the predicted value at each value of ’vars’, averaged over the values of
+all other predictors. if ’vars’ has length > 1 and interaction is true or false then the output will be a
+data.frame with a column for each element of ’vars’ and the predicted value for each combination.
+
+
+### Examples
+```{r}
+library(randomForest)
+library(edarf)
+data(iris)
+data(swiss)
+```
+
+#### Classification Example
+
+```{r}
+fit = randomForest(Species ~ ., iris)
+pd = partial_dependence(fit, c("Sepal.Width", "Sepal.Length"),
+data = iris[, -ncol(iris)])
+pd_int = partial_dependence(fit, c("Petal.Width", "Sepal.Length"),
+interaction = TRUE, data = iris[, -ncol(iris)])
+```
+
+## Regression Example
+
+```{r}
+fit = randomForest(Fertility ~ ., swiss)
+pd = partial_dependence(fit, c("Education", "Examination"), data = swiss[, -1])
+pd_int = partial_dependence(fit, c("Education", "Examination"),
+interaction = TRUE, data = swiss[, -1])
+```
+#### References
+Friedman, Jerome H. "Greedy function approximation: a gradient boosting machine." Annals of
+statistics (2001): 1189-1232.
+See Also
+plot_pd for plotting partial_dependence.

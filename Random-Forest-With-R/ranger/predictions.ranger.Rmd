@@ -1,0 +1,37 @@
+---
+title: "``predictions.ranger``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ranger)
+```
+
+## Ranger predictions
+
+#### Description
+
+Extract training data predictions of Ranger object.
+
+#### Usage
+
+<pre><code>
+## S3 method for class 'ranger'
+predictions(x, ...)
+</code></pre>
+
+#### Arguments
+* ``x``: Ranger object.
+* ``...``: Further arguments passed to or from other methods.
+
+#### Value
+Predictions: Classes for Classification forests, Numerical values for Regressions forests and the
+estimated survival functions for all individuals for Survival forests.
+
+#### Author(s)
+Marvin N. Wright
+
+#### See Also
+ranger
+predictions.ranger.prediction

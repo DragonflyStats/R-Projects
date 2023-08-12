@@ -1,0 +1,46 @@
+---
+title: "``edarf::variable_importance``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(edarf)
+```
+## variable_importance Variable importance using random forests
+
+#### Description
+Computes local or aggregate variable importance for a set of predictors from a fitted random forest
+object from the party, randomForest, randomForestSRC, or ranger package
+
+#### Usage 
+<pre><code>
+variable_importance(fit, vars, interaction, nperm, data, ...)
+</code></pre>
+
+#### Arguments
+* ``fit``: object of class "RandomForest", "randomForest", "rfsrc", or "ranger"
+* ``vars``: character, variables to find the importance of
+* ``interaction``: logcal, compute the joint and additive importance for observations (type = "local")
+or variables type = "aggregate"
+* ``nperm``: positive integer giving the number of times to permute the indicated variables
+(default 10)
+* ``data``: optional (unless using randomForest) data.frame with which to calculate importance
+* ``...``: additional arguments to be passed to permutationImportance.
+
+
+#### Examples
+```{r}
+library(randomForest)
+data(iris)
+fit = randomForest(Species ~ ., iris)
+variable_importance(fit, nperm = 2, data = iris)
+```
+#### Value 
+a named list of vars with the return from permutationImportance for each.
+
+#### References
+Breiman, Leo. "Random forests." Machine learning 45.1 (2001): 5-32.
+See Also
+plot_imp for plotting the results of variable_importance.
+

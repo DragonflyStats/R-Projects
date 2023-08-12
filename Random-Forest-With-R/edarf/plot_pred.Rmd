@@ -1,0 +1,52 @@
+---
+title: "``edarf::plot_pred``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(edarf)
+```
+## ``plot_pred Plot`` predicted versus observed values
+
+#### Description
+Plot predicted versus observed values
+
+#### Usage
+<pre><code>
+plot_pred(predicted, observed, perfect_line = TRUE, outlier_idx = NULL,
+labs = NULL, xlab = "Observed", ylab = "Predicted", title = "")
+<code></pre>
+
+#### Arguments
+
+* ``predicted``: numeric vector of predictions
+* ``observed``: numeric vector of observations
+* ``perfect_line``: logical whether to plot a blue 45 degree line on which perfect predictions would fall
+* ``outlier_idx``: integer indices of outliers to be labelled between the predicted and observed
+* ``value``: pairs are labeled an outlier
+* ``labs``: character labels for points, applied to a subset determined by the ``outlier_criterion``
+* ``xlab``: character label for the x-axis, defaults to "Observed"
+* ``ylab``: character label for the y-axis, defaults to "Predicted"
+* ``title``: character title defaults to ""
+
+#### Value
+a ggplot object
+
+#### Examples
+```{r}
+library(randomForest)
+library(edarf)
+fit = randomForest(hp ~ ., mtcars)
+
+```
+
+```{r}
+pred = predict(fit, newdata = mtcars)
+```
+
+```{r}
+plot_pred(pred, mtcars$hp,
+  outlier_idx = which(abs(pred - mtcars$hp) > .5 * sd(mtcars$hp)),
+ labs = row.names(mtcars))
+```

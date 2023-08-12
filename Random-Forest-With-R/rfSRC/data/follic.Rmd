@@ -1,0 +1,25 @@
+follic Follicular Cell Lymphoma
+
+#### Description
+Competing risk data set involving follicular cell lymphoma.
+Format
+A data frame containing:
+age age
+hgb hemoglobin (g/l)
+clinstg clinical stage: 1=stage I, 2=stage II
+ch chemotherapy
+hd 9
+rt radiotherapy
+time first failure time
+status censoring status: 0=censored, 1=relapse, 2=death
+Source
+Table 1.4b, Competing Risks: A Practical Perspective.
+
+#### References
+
+Pintilie M., (2006) Competing Risks: A Practical Perspective. West Sussex: John Wiley and Sons.
+
+#### Examples 
+```{r}
+data(follic, package = "randomForestSRC")
+follic.obj <- rfsrc(Surv(time, status) ~ ., follic, nsplit = 3, ntree = 100)

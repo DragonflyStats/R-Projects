@@ -1,0 +1,18 @@
+print.fRFE Print function for object of class fRFE
+
+#### Description
+A print function of an object of class fRFE which is the result of the functions selectFunctional,
+selectGroup and selectLevel.
+
+#### Usage
+<pre><code>
+## S3 method for class 'fRFE'
+print(x, ...)
+</code></pre>
+
+#### Arguments
+* x An object of class fRFE.
+* ... optional parameters to be passed to the function ‘summary’.
+
+#### Author(s)
+Baptiste Gregorutti

@@ -1,0 +1,44 @@
+---
+title: "``edarf::plot_imp``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(edarf)
+```
+
+
+## ``plot_imp`` Plot variable importance from random forests
+
+#### Description
+
+Plot variable importance from random forests
+
+#### Usage
+
+<pre><code>
+plot_imp(imp, sort = "decreasing")
+</code></pre>
+
+#### Arguments
+* ``imp`` : object of class ``c("importance", "data.frame")`` as returned by ``variable_importance``.
+* ``sort``: character indicating if sorting of the output is to be done. can be "ascending", or "descending."
+
+
+
+#### Examples
+
+```{r}
+library(randomForest)
+data(iris)
+fit = randomForest(Species ~ ., iris)
+imp = variable_importance(fit, nperm = 2, data = iris)
+```
+
+```{r}
+plot_imp(imp)
+```
+
+#### Value
+a ggplot2 object

@@ -1,0 +1,34 @@
+## Package ‘MultivariateRandomForest’
+May 1, 2017
+
+#### Type Package
+Title Models Multivariate Cases Using Random Forests
+Version 1.1.5
+#### Date 2017-04-05
+Author Raziur Rahman
+#### Maintainer Raziur Rahman <razeeebuet@gmail.com>
+Description Models and predicts multiple output features in single random forest considering the
+linear relation among the output features, see details in Rahman
+et al (2017)<doi:10.1093/bioinformatics/btw765>.
+
+* License GPL (>= 2)
+* RoxygenNote 6.0.1
+* Depends R (>= 2.10)
+* Imports Rcpp, bootstrap, stats
+* LinkingTo Rcpp
+* NeedsCompilation yes
+* Repository CRAN
+* Date/Publication 2017-05-01 10:20:31 UTC
+
+#### R topics documented:
+
+build_forest_predict . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+build_single_tree . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+CrossValidation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+Imputation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+Node_cost . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+predicting . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+single_tree_prediction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+splitt2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+split_node . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+variable_importance_measure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11

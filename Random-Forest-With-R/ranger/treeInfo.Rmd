@@ -1,0 +1,48 @@
+## ``treeInfo`` Tree information in human readable format
+
+#### Description
+
+Extract tree information of a ranger object.
+
+#### Usage
+<pre><code>
+treeInfo(object, tree = 1)
+</code></pre>
+
+#### Arguments
+* object ranger object.
+* tree Number of the tree of interest.
+
+#### Details
+* Node and variable ID’s are 0-indexed, i.e., node 0 is the root node. If the formula interface is used
+in the ranger call, the variable ID’s are usually different to the original data used to grow the tree.
+Refer to the variable name instead to be sure.
+* Splitting at unordered factors (nominal variables) depends on the option respect.unordered.factors
+in the ranger call. For the "ignore" and "order" approaches, all values smaller or equal the
+splitval value go to the left and all values larger go to the right, as usual. However, with "order"
+the values correspond to the order in object$forest$covariate.levels instead of the original
+order (usually alphabetical). In the "partition" mode, the splitval values for unordered factor are
+comma separated lists of values, representing the factor levels (in the original order) going to the
+right.
+
+#### Value
+A data.frame with the columns
+* ``nodeID`` The nodeID, 0-indexed.
+* ``leftChild``: ID of the left child node, 0-indexed.
+* ``rightChild``: ID of the right child node, 0-indexed.
+* ``splitvarID``: ID of the splitting variable, 0-indexed. Caution, the variable order changes if the formula interface is used.
+* ``splitvarName``: Name of the splitting variable.
+* ``splitval``: The splitting value. For numeric or ordinal variables, all values smaller or equal go to the left, larger values to the right. For unordered factor variables see above.
+* ``terminal``: Logical, TRUE for terminal nodes.
+* ``prediction``: One column with the predicted class (factor) for classification and the predicted numerical value for regression. One probability per class for probability estimation in several columns. Nothing for survival, refer to object$forest$chf for the CHF node predictions.
+
+#### Author(s)
+Marvin N. Wright
+See Also
+ranger
+#### Examples
+```{r}
+require(ranger)
+rf <- ranger(Species ~ ., data = iris)
+treeInfo(rf, 1)
+```

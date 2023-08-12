@@ -1,0 +1,31 @@
+
+
+hd Hodgkin’s Disease
+
+#### Description
+Competing risk data set involving Hodgkin’s disease.
+
+#### Format
+A data frame containing:
+*  age age
+* sex gender
+* trtgiven treatment: RT=radition, CMT=Chemotherapy and radiation
+* medwidsi mediastinum involvement: N=no, S=small, L=Large
+* extranod extranodal disease: Y=extranodal disease, N=nodal disease
+* clinstg clinical stage: 1=stage I, 2=stage II
+* time first failure time
+* status censoring status: 0=censored, 1=relapse, 2=death
+
+
+#### Examples 
+```{r}
+data(hd, package = "randomForestSRC")
+```
+
+#### Source
+Table 1.6b, Competing Risks: A Practical Perspective.
+
+#### References
+
+Pintilie M., (2006) Competing Risks: A Practical Perspective. West Sussex: John Wiley and Sons.
+10 impute

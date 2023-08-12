@@ -1,0 +1,14 @@
+summary.fRFE Summary function for object of class fRFE
+#### Description
+A summary function of an object of class fRFE which is the result of the functions selectFunctional,
+selectGroup and selectLevel.
+#### Usage 
+<pre><code>
+## S3 method for class 'fRFE'
+summary(object, ...)
+</code></pre>
+#### Arguments
+* object An object of class fRFE.
+* ... further arguments passed to or from other methods.
+#### Author(s)
+Baptiste Gregorutti

@@ -1,0 +1,22 @@
+print.rfsrc 39
+print.rfsrc Print Summary Output of a RF-SRC Analysis
+Description
+Print summary output from a RF-SRC analysis. This is the default print method for the package.
+Usage
+## S3 method for class 'rfsrc'
+print(x, outcome.target = NULL, ...)
+
+##### Arguments
+x An object of class (rfsrc, grow), (rfsrc, synthetic), or (rfsrc, predict).
+outcome.target Character value for multivariate families specifying the target outcome to be
+used. The default is to use the first coordinate.
+... Further arguments passed to or from other methods.
+Author(s)
+Hemant Ishwaran and Udaya B. Kogalur
+#### References
+Ishwaran H. and Kogalur U.B. (2007). Random survival forests for R, Rnews, 7/2:25-31.
+See Also
+rfsrc, rfsrcSyn, predict.rfsrc
+Examples
+iris.obj <- rfsrc(Species ~., data = iris, ntree=100)
+print(iris.obj)

@@ -1,0 +1,15 @@
+## toyClassif A toy data of classification
+
+#### Description
+A toy data of classification drawn from a mixture Gaussian distribution. Only the three first variables
+are discriminant.
+
+#### Usage 
+<pre><code>
+data(toyClassif)
+</code><pre>
+
+#### Format
+A list of two components:
+* X: the design matrix of size n × p drawn from a mixture Gaussian distribution ;
+* Y: the class labels.

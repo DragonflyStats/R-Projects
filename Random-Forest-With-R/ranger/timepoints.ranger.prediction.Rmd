@@ -1,0 +1,20 @@
+## ``timepoints.ranger.prediction``: Ranger timepoints
+
+#### Description
+Extract unique death times of Ranger Survival prediction object.
+#### Usage
+<pre><code>
+## S3 method for class 'ranger.prediction'
+timepoints(x, ...)
+</code></pre>
+
+#### Arguments
+* ``x`` : Ranger Survival prediction object.
+* ``...``: Further arguments passed to or from other methods.
+
+#### Value
+Unique death times
+
+#### Author(s)
+Marvin N. Wright
+

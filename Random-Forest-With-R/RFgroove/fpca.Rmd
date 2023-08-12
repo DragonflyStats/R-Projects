@@ -1,0 +1,67 @@
+---
+title: "fpca: Functional Principal Component Analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(RFgroove)
+```
+
+
+
+#### Description
+
+Compute the functional PCA from a set of curves.
+
+#### Usage
+
+<pre><code>
+fpca( x, nbasisInit, propVar = 0.9, reconstruct = FALSE,
+      varName = NULL, verbose = FALSE)
+</code></pre>
+
+#### Arguments
+* ``x``: The set of curves.
+* ``nbasisInit``: The number of initial spline coefficients.
+* ``propVar``: The proportion of explained variance.
+* ``reconstruct``: Should the data be reconstruct after dimension reduction ?
+* ``varName``: The name of the current functional variable.
+* ``verbose``: Should the details be printed.
+
+#### Details
+The Functional PCA is performed in two steps. First we express each discretized curves as a linear
+combination of 'nbasisInit' spline basis functions. Then a multivariate PCA is computed on the spline coefficients. The final number of principal components is chosen such that the proportion of explained variance is larger than 'propVar'.
+
+#### Value
+A list with two components:
+* design The matrix of the principal components ;
+* smoothData The reconstructed data if 'reconstruct == TRUE'.
+
+
+#### Examples
+
+```{r}
+data(toyRegFD)
+x <- toyRegFD$FDlist[[1]]
+dim(x)
+```
+
+```{r}
+PCs <- fpca(x=x, nbasisInit=32, propVar=.9, reconstruct=TRUE)
+summary(PCs)
+```
+
+```{r}
+plot(x[1,])
+lines(PCs$smoothData[1,], col=2)
+```
+
+#### Author(s)
+Baptiste Gregorutti
+
+#### References
+Ramsay, J. O., and Silverman, B. W. (2006), Functional Data Analysis, 2nd ed., Springer, New
+York.
+See Also
+hardThresholding

@@ -1,0 +1,31 @@
+---
+title: "``plot.importance``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(RFgroove)
+```
+
+
+###  Plot function for object of class importance
+
+#### Description
+
+Plot the values of the grouped variable importance which is the result of the function varImpGroup.
+
+#### Usage
+<pre><code>
+## S3 method for class 'importance'
+plot(x, type, horiz, ...)
+</code></pre>
+
+#### Arguments
+* ``x``: An object of class importance.
+* ``type``: A string denoting the plot type. Supported types include ***dotchart*** or ***bar***.
+* ``horiz``: For barplot only. Should the bars be displayed horizontally (default: TRUE).
+* ``...``: optional graphical parameters.
+
+#### Author(s)
+Baptiste Gregorutti

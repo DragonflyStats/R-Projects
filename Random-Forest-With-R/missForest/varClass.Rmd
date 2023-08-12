@@ -1,0 +1,30 @@
+#### varClass
+Extract Variable Types from a Dataframe
+#### Description
+’varClass’ returns the variable types of a dataframe. It is used internally in several functions of the
+’missForest’-package.
+
+#### Usage
+varClass(x)
+
+#### Arguments
+x
+data frame with variables in the columns.
+
+#### Value
+a vector of length p where p denotes the number of columns in ’x’. The entries are "numeric" for
+continuous variables and "factor" for categorical variables.
+
+#### Note
+This function is internally used by missForest and mixError.
+
+#### Author(s)
+Daniel J. Stekhoven, <stekhoven@stat.math.ethz.ch>
+See Also
+missForest, mixError, nrmse
+Examples
+```{r}
+data(iris)
+varClass(iris)
+## We have four continuous and one categorical variable.Index
+```

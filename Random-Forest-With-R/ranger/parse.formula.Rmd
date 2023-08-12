@@ -1,0 +1,21 @@
+---
+title: "parse.formula"
+author: "Kevin O Brien"
+date: "14 December 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+parse.formula Parse formula
+#### Description
+Parse formula and return dataset containing selected columns. Interactions are supported for numerical
+columns only. An interaction column is the product of all interacting columns.
+#### Usage
+parse.formula(formula, data)
+Arguments
+formula Object of class formula or character describing the model to fit.
+data Training data of class data.frame.
+Value
+Dataset including selected columns and interactions.

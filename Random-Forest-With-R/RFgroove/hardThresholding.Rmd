@@ -1,0 +1,57 @@
+---
+title: "hardThresholding Wavelets hard-thresholding rule for independents processes"
+
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(RFgroove)
+```
+
+#### Description
+This function projects n indepedent processes on a common wavelet basis and shrinks to zero the n
+coefficients whose `2-norm is lower than a threshold.
+
+#### Usage
+
+<pre><code>
+hardThresholding(xdata, delta, verbose = FALSE, varName = NULL, wavFilter="s8")
+</code></pre>
+
+#### Arguments
+* ``xdata`` The matrix of n independent curves of dimension N = 2J, where J is the number of maximum wavelet level.
+* ``delta`` The desired threshold. If missing, an automatic threshold is computed.
+* ``verbose`` Should the details be printed.
+* ``varName`` The name of the current functional variable.
+* ``wavFilter`` A character string denoting the filter type. Supported types include:
+ - EXTREMAL PHASE (daublet): 'haar', 'd2', 'd4', 'd6', 'd8', 'd10', 'd12','d14', 'd16', 'd18', 'd20'
+ - LEAST ASYMMETRIC (symmlet): 's2', 's4', 's6', 's8', 's10', 's12', 's14','s16', 's18', 's20'
+ - BEST LOCALIZED: 'l2', 'l4', 'l6', 'l14', 'l18', 'l20'
+ - COIFLET: 'c6', 'c12', 'c18', 'c24', 'c30'
+ - Default: 's8'.
+
+
+#### Examples
+```{r}
+data(toyRegFD)
+x <- toyRegFD$FDlist[[1]]
+newDesignMatrix <- hardThresholding(xdata=x, verbose=TRUE)
+```
+  
+#### Value
+
+A list with two components
+* mht.names The names of the common wavelet basis after thresholding the coefficients.
+* estimatedDesign
+The new design matrix after thresholding.
+
+#### Author(s)
+
+Baptiste Gregorutti
+
+#### References
+
+Gregorutti, B., Michel, B. and Saint Pierre, P. (2015). Grouped variable importance with random
+forests and application to multiple functional data analysis, Computational Statistics and Data Analysis
+90, 15-35.

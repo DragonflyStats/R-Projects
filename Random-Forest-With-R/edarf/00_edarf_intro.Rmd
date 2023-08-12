@@ -1,0 +1,32 @@
+* Version 1.1.1
+
+* Date 2017-03-05
+
+* Title ***Exploratory Data Analysis using Random Forests***
+
+* Description Functions useful for exploratory data analysis using random forests which can be used to compute multivariate partial
+dependence, observation, class, and variable-wise marginal and joint permutation importance as well as observation-specific measures of distance (supervised or unsupervised). All of the aforementioned functions are accompanied by 'ggplot2' plotting functions.
+
+* Author Zachary M. Jones <zmj@zmjones.com> and Fridolin Linder <fridolin.linder@gmail.com>
+* Maintainer Zachary M. Jones <zmj@zmjones.com>
+* License MIT + file LICENSE
+* Depends R (>= 2.10)
+* Imports data.table, ggplot2, mmpf
+* Suggests party, randomForest, randomForestSRC, ranger, testthat, rmarkdown, knitr
+* LazyData true
+* BugReports https://github.com/zmjones/edarf
+* RoxygenNote 6.0.1
+* VignetteBuilder knitr
+* NeedsCompilation no
+* Repository CRAN
+
+### Topics
+
+1. extract_proximity 
+2. partial_dependence 
+3. plot_imp 
+4. extract_proximity
+5. plot_pd 
+6. plot_pred 
+7. plot_prox
+8. variable_importance

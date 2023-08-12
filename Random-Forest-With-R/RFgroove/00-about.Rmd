@@ -1,0 +1,52 @@
+Package ‘RFgroove’
+March 17, 2016
+Type Package
+Title Importance Measure and Selection for Groups of Variables with
+Random Forests
+Version 1.1
+Date 2016-03-16
+Author Baptiste Gregorutti
+Maintainer Baptiste Gregorutti <baptiste.gregorutti@safety-line.fr>
+Description Variable selection tools for groups of variables and functional
+data based on a new grouped variable importance with random forests.
+License GPL (>= 2.0)
+Depends randomForest, wmtsa, fda
+NeedsCompilation yes
+Repository CRAN
+Date/Publication 2016-03-17 13:20:10
+R topics documented:
+RFgroove-package . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+fpca . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+hardThresholding . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+plot.fRFE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+plot.importance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+print.fRFE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+projectWavelet . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+selectFunctional . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+selectGroup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+selectLevel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+summary.fRFE . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+toyClassif . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+toyReg . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+toyRegFD . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+varImpGroup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+1
+2 fpca
+Index 16
+RFgroove-package Importance Measure and Selection for Groups of Variables with Random
+Forests
+Description
+Variable selection tools for groups of variables and multivariate functional data based on a new
+grouped variable importance with Random Forests.
+Details
+Package: RFgroove
+Type: Package
+Version: 1.1
+Date: 2016-03-16
+License: GPL (>=2.0)
+Author(s)
+Baptiste Gregorutti Maintainer: Baptiste Gregorutti <baptiste.gregorutti@safety-line.fr>
+References
+Gregorutti, B., Michel, B. and Saint Pierre, P. (2015). Grouped variable importance with random
+forests and application to multiple functional data analysis, Computational Statistics and Data Analysis
+90, 15-35.

@@ -1,0 +1,18 @@
+## rfsrc.news Show the NEWS file
+
+#### Description 
+
+Show the NEWS file of the randomForestSRC package.
+
+#### Usage 
+ <pre><code>
+rfsrc.news(...)
+</code></pre>
+#### Arguments 
+
+... Further arguments  passed to or from other methods.
+rfsrcFast 61
+Value
+None.
+Author(s)
+Hemant Ishwaran and Udaya B. Kogalur

@@ -1,0 +1,64 @@
+---
+title: "``selectLevel``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(RFgroove)
+```
+
+
+### Wavelet levels selection procedure
+
+#### Description
+A grouped backward variable selection procedure for selecting the most significant wavelet levels
+of a functional variable. The groups are the wavelet coefficients belonging to the same frequency
+level.
+#### Usage 
+<pre><code>
+selectLevel(design, ydata, typeRF = ifelse(is.factor(ydata), "classif", "reg"),
+            verbose = TRUE, ntree = 500, ...)
+</code></pre>
+
+#### Arguments
+* ``design``: The design matrix of a functional variable.
+* ``ydata``: The outcome data. Must be a factor for classification.
+* ``typeRF``: The type of forest we want to construct, "classif" for classification or "reg" for regression.
+* ``verbose``: Should the details be printed.
+* ``ntree``: The number of trees in the forests (default: 500).
+* ``...``: optional parameters to be passed to the "varImpGroup" function.
+
+
+#### Examples
+```{r}
+data(toyRegFD)
+x <- toyRegFD$FDlist[[1]]
+y <- toyRegFD$Y
+design <- projectWavelet(xdata=x)
+summary(levSel <- selectLevel(design, y, ntree=100, verbose=TRUE))
+plot(levSel)
+```
+
+#### Value
+
+An object of class fRFE which is a list with the following components:
+
+* ``nselected``: The number of selected wavelet levels.
+* ``selection``: The selected wavelet levels.
+* ``selectionIndexes``: The indexes of selected wavelet levels in the input matrix design.
+* ``error``: The prediction error computed in each iteration of the backward procedure.
+* ``typeRF``: The type of the forests, classification or regression.
+* ``ranking``: The final ranking of the wavelet levels.
+* ``rankingIndexes``: The final ranking indexes of the wavelet levels.
+
+
+#### Author(s)
+Baptiste Gregorutti
+
+#### References
+Gregorutti, B., Michel, B. and Saint Pierre, P. (2015). Grouped variable importance with random
+forests and application to multiple functional data analysis, Computational Statistics and Data Analysis
+90, 15-35.
+See Also
+selectGroup,selectFunctional,varImpGroup

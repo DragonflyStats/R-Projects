@@ -1,0 +1,13 @@
+
+print.ranger.forest Print Ranger forest
+#### Description
+Print contents of Ranger forest object.
+#### Usage
+## S3 method for class 'ranger.forest'
+print(x, ...)
+Arguments
+x Object of class ’ranger.forest’.
+... further arguments passed to or from other methods.
+Author(s)
+Marvin N. Wright
+14 ranger

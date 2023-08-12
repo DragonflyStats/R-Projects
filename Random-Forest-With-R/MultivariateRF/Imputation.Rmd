@@ -1,0 +1,19 @@
+## ``Imputation`` Imputation of a numerical vector
+
+#### Description
+Imputes the values of the vector that are NaN
+
+#### Usage
+<pre><code>
+Imputation(XX)
+</code></pre>
+
+#### Arguments
+* XX a vector of size N x 1
+
+#### Details
+If a value is missing, it will be replaced by an imputed value that is an average of previous and next
+value. If previous or next value is also missing, the closest value is used as the imputed value.
+
+#### Value
+Imputed vector of size N x 1

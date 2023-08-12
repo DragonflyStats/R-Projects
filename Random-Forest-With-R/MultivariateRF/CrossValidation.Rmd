@@ -1,0 +1,29 @@
+## CrossValidation 5
+Generate training and testing samples for cross validation
+
+#### Description
+Generates Cross Validation Input Matrices and Output Vectors for training and testing, where number
+of folds in cross validation is user defined.
+
+#### Usage
+<pre><code>
+CrossValidation(X, Y, F)
+</code></pre>
+
+#### Arguments
+* ``X``: M x N Input matrix, M is the number of samples and N is the number of features
+* ``Y``: output responses as column vector
+* ``F``: Number of Folds
+
+#### Value
+List with the following components:
+* TrainingData List of matrices where each matrix contains a fold of Cross Validation Training
+Data, where the number of matrices is equal to F
+* TestingData List of matrices where each matrix contains a fold of Cross Validation Testing
+Data, where the number of matrices is equal to F
+* OutputTrain List of matrices where each matrix contains a fold of Cross Validation Training
+* Output Feature Data, where the number of matrices is equal to F
+* OutputTest List of matrices where each matrix contains a fold of Cross Validation Testing
+* Output Feature Data, where the number of matrices is equal to F
+* FoldedIndex Index of Different Folds. (e.g., for Sample Index 1:6 and 3 fold, FoldedIndex
+are [1 2 3 4], [1 2 5 6], [3 4 5 6])

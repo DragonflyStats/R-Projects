@@ -1,0 +1,32 @@
+---
+title: "``timepoints.ranger``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ranger)
+```
+
+#### Description
+
+Extract unique death times of Ranger Survival forest
+
+#### Usage
+
+<pre><code>
+## S3 method for class 'ranger'
+timepoints(x, ...)
+</code></pre>
+
+#### Arguments
+
+* ``x``: Ranger Survival forest object.
+* ``...``: Further arguments passed to or from other methods.
+
+#### Value
+Unique death times
+Author(s)
+Marvin N. Wright
+See Also
+ranger

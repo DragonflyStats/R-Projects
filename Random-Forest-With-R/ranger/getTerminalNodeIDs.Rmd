@@ -1,0 +1,27 @@
+---
+title: "ranger"
+author: "Kevin O Brien"
+date: "14 December 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+getTerminalNodeIDs Get terminal node IDs (deprecated)
+#### Description
+This function is deprecated. Please use predict() with type = "terminalNodes" instead. This
+function calls predict() now.
+#### Usage
+getTerminalNodeIDs(rf, dat)
+Arguments
+rf ranger object.
+dat New dataset. Terminal node IDs for this dataset are obtained.
+4 holdoutRF
+Value
+Matrix with terminal nodeIDs for all observations in dataset and trees.
+Examples
+library(ranger)
+rf <- ranger(Species ~ ., data = iris, num.trees = 5, write.forest = TRUE)
+getTerminalNodeIDs(rf, iris)

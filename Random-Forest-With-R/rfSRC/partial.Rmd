@@ -1,0 +1,133 @@
+
+partial Acquire Partial Effect of a Variable
+
+#### Description
+Acquire the partial effect of a variable on the ensembles.
+
+#### Usage 
+<pre><code>
+partial.rfsrc(object, oob = TRUE, m.target = NULL,
+partial.type = NULL, partial.xvar = NULL, partial.values = NULL,
+partial.xvar2 = NULL, partial.values2 = NULL,
+partial.time = NULL, seed = NULL, do.trace = FALSE, ...)
+18 partial
+</code></pre> 
+#### Arguments 
+ 
+* ``object``: An object of class (rfsrc, grow).
+oob By default out-of-bag values are returned, but inbag values can be requested by
+setting this option to FALSE.
+m.target Character value for multivariate families specifying the target outcome to be
+used. If left unspecified, the algorithm will choose a default target.
+* ``partial.type``:  Character value of the type of predicted value. See details below.
+* ``partial.xvar  ``:  Character value specifying the single primary partial x-variable to be used.
+partial.values Vector of values that the primary partialy x-variable will assume.
+* ``partial.xvar2 ``:  Vector of character values specifying the second order x-variables to be used.
+partial.values2
+Vector of values that the second order x-variables will assume. Each second order
+x-variable can only assume a single value. This the length of partial.xvar2
+and partial.values2 will be the same. In addition, the user must do the appropriate
+conversion for factors, and represent a value as a numeric element.
+* ``partial.time  ``:  For survival families, the time at which the predicted survival value is evaluated
+at (depends on partial.type).
+seed Negative integer specifying seed for the random number generator.
+do.trace Number of seconds between updates to the user on approximate time to completion.
+... Further arguments passedto or from other methods.
+Details
+Out-of-bag (OOB) values are returned by default.
+A list of length equal to the number of outcomes (length is one for univariate families) with entries
+depending on the underlying family:
+1. For regression, the predicted response is returned of dim [n] x [length(partial.values)].
+2. For classification, the predicted probabilities are returned of dim [n] x [1 + yvar.nlevels[.]] x [length(partial.values)].
+3. For survival, the choices are:
+• Relative frequency of mortality (rel.freq) or mortality (mort) is of dim [n] x [length(partial.values)].
+• The cumulative hazard function (chf) is of dim [n] x [length(partial.time)] x
+[length(partial.values)].
+• The survival function (surv) is of dim [n] x [length(partial.time)] x [length(partial.values)].
+4. For competing risks, the choices are:
+• The expected number of life years lost (years.lost) is of dim [n] x [length(event.info$event.type)] x
+[length(partial.values)].
+• The cumulative incidence function (cif) is of dim [n] x [length(partial.time)] x
+[length(event.info$event.type)] x [length(partial.values)].
+• The cumulative hazard function (chf) is of dim [n] x [length(partial.time)] x [length(event.info$event.type)]
+x [length(partial.values)].
+partial 19
+Author(s)
+Hemant Ishwaran and Udaya B. Kogalur
+
+#### References
+
+* Ishwaran H., Kogalur U.B. (2007). Random survival forests for R, Rnews, 7(2):25-31.
+* Ishwaran H., Kogalur U.B., Blackstone E.H. and Lauer M.S. (2008). Random survival forests, Ann.
+App. Statist., 2:841-860.
+See Also
+plot.variable.rfsrc
+
+#### Examples 
+```{r}
+## ------------------------------------------------------------
+## survival/competing risk
+## ------------------------------------------------------------
+## survival
+data(veteran, package = "randomForestSRC")
+v.obj <- rfsrc(Surv(time,status)~., veteran, nsplit = 10, ntree = 100)
+partial.obj <- partial(v.obj,
+partial.type = "rel.freq",
+partial.xvar = "age",
+partial.values = v.obj$xvar[, "age"],
+partial.time = v.obj$time.interest)
+## competing risks
+data(follic, package = "randomForestSRC")
+follic.obj <- rfsrc(Surv(time, status) ~ ., follic, nsplit = 3, ntree = 100)
+partial.obj <- partial(follic.obj,
+partial.type = "cif",
+partial.xvar = "age",
+partial.values = follic.obj$xvar[, "age"],
+partial.time = follic.obj$time.interest)
+## regression
+airq.obj <- rfsrc(Ozone ~ ., data = airquality)
+partial.obj <- partial(airq.obj,
+partial.xvar = "Wind",
+partial.values = airq.obj$xvar[, "Wind"],
+oob = FALSE)
+## classification
+iris.obj <- rfsrc(Species ~., data = iris)
+partial.obj <- partial(iris.obj,
+partial.xvar = "Sepal.Length",
+partial.values = iris.obj$xvar[, "Sepal.Length"])
+20 pbc
+## multivariate mixed outcomes
+mtcars2 <- mtcars
+mtcars2$carb <- factor(mtcars2$carb)
+mtcars2$cyl <- factor(mtcars2$cyl)
+mtcars.mix <- rfsrc(Multivar(carb, mpg, cyl) ~ ., data = mtcars2)
+partial.obj <- partial(mtcars.mix,
+partial.xvar = "disp",
+partial.values = mtcars.mix$xvar[, "disp"])
+## second order variable specification
+mtcars.obj <- rfsrc(mpg ~., data = mtcars)
+partial.obj <- partial(mtcars.obj,
+partial.xvar = "cyl",
+partial.values = c(4, 8),
+partial.xvar2 = c("gear", "disp", "carb"),
+partial.values2 = c(4, 200, 3))
+
+#### Examples 
+```{r}
+## ------------------------------------------------------------
+## follicular cell lymphoma
+## ------------------------------------------------------------
+data(follic, package = "randomForestSRC")
+follic.obj <- rfsrc(Surv(time, status) ~ ., follic, nsplit = 3, ntree = 100)
+plot.competing.risk(follic.obj)
+22 plot.rfsrc
+## ------------------------------------------------------------
+## competing risk analysis of pbc data from the survival package
+## events are transplant (1) and death (2)
+## ------------------------------------------------------------
+if (library("survival", logical.return = TRUE)) {
+data(pbc, package = "survival")
+pbc$id <- NULL
+plot.competing.risk(rfsrc(Surv(time, status) ~ ., pbc))
+}
+```
