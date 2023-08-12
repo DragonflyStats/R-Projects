@@ -1,0 +1,32 @@
+## retweets: Functions to work with retweets 
+These functions can be used to return retweets or users who retweeted a tweet 
+
+### Keywords
+~kwd1 , ~kwd2 
+Usage
+retweets(id, n = 20, ...)
+
+#### Arguments
+* id
+The ID of the tweet to get retweet information on
+* n
+The number of results to return, up to 100
+* ...
+Further arguments to pass on to httr
+
+### Value
+
+For retweets the n most recent retweets of the original tweet.
+For retweeters the n most recent users who have retweeted this tweet. 
+
+See Also
+showStatus 
+### Examples
+<pre><code>
+  ## Not run: 
+#      retweets("21947795900469248")
+#      
+#      st = showStatus("21947795900469248")
+#      retweeters(st$getId())
+#   ## End(Not run)
+</code></pre>

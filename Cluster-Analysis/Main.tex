@@ -1,0 +1,107 @@
+\tableofcontents
+% http://www.dataperspective.info/2013/12/cluster-analysis-using-r.html
+
+\section{Cluster Analysis}
+
+\subsection{Introduction to Cluster Analysis (optional)}
+
+
+%----------------------------------------------%
+% 1  Clustering Techniques
+
+Much of the history of cluster analysis is concerned with developing algorithms that were not too computer intensive, since early computers were not nearly as powerful as they are today. Accordingly, computational shortcuts have traditionally been used in many cluster analysis algorithms. These algorithms have proven to be very useful, and can be found in most computer software.
+More recently, many of these older methods have been revisited and updated to reflect the fact that certain computations that once would have overwhelmed the available computers can now be performed routinely. In R, a number of these updated versions of cluster analysis algorithms are available through the cluster library, providing us with a large selection of methods to perform cluster analysis, and the possibility of comparing the old methods with the new to see if they really provide an advantage.
+One of the oldest methods of cluster analysis is known as k-means cluster analysis, and is available in R through the kmeans function. The first step (and certainly not a trivial one) when using k-means cluster analysis is to specify the number of clusters (k) that will be formed in the final solution. The process begins by choosing k observations to serve as centers for the clusters. Then, the distance from each of the other observations is calculated for each of the k clusters, and observations are put in the cluster to which they are the closest. After each observation has been put in a cluster, the center of the clusters is recalculated, and every observation is checked to see if it might be closer to a different cluster, now that the centers have been recalculated. The process continues until no observations switch clusters.
+Looking on the good side, the k-means technique is fast, and doesn't require calculating all of the distances between each observation and every other observation. It can be written to efficiently deal with very large data sets, so it may be useful in cases where other methods fail. On the down side, if you rearrange your data, it's very possible that you'll get a different solution every time you change the ordering of your data. Another criticism of this technique is that you may try, for example, a 3 cluster solution that seems to work pretty well, but when you look for the 4 cluster solution, all of the structure that the 3 cluster solution revealed is gone. This makes the procedure somewhat unattractive if you don't know exactly how many clusters you should have in the first place.
+
+
+
+%--------------------------------------------------------------------%
+
+\subsubsection{Application Areas}
+
+\newpage
+\subsection{Key Concepts}
+
+
+\subsubsection{Supervised Learning v Unsupervised Learning}
+
+\subsubsection{Agglomerative vs Divisive Clustering}
+\subsubsection{Distance Matrix}
+
+%----------------------------------------------%
+
+
+
+
+
+%-------------------------------------------------------------------%
+\newpage
+\section{AGNES: Agglomerative Nesting}
+
+As an example of using the agnes function from the cluster package, consider the famous Fisher iris data, available as the dataframe iris in R. First let's look at some of the data:
+\begin{framed}
+\begin{verbatim}
+> head(iris)
+  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa
+\end{verbatim}
+\end{framed}
+We will only consider the numeric variables in the cluster analysis. As mentioned previously, there are two functions to compute the distance matrix: dist and daisy. It should be mentioned that for data that's all numeric, using the function's defaults, the two methods will give the same answers. We can demonstrate this as follows:
+\begin{framed}
+\begin{verbatim}
+> iris.use = subset(iris,select=-Species)
+> d = dist(iris.use)
+> library(cluster)
+> d1 = daisy(iris.use)
+> sum(abs(d - d1))
+[1] 1.072170e-12
+\end{verbatim}
+\end{framed}
+Of course, if we choose a non-default metric for dist, the answers will be different:
+\begin{framed}
+\begin{verbatim}
+> dd = dist(iris.use,method='manhattan')
+> sum(abs(as.matrix(dd) - as.matrix(d1)))
+[1] 38773.86
+\end{verbatim}
+\end{framed}
+The values are very different!
+Continuing with the cluster example, we can calculate the cluster solution as follows:
+\begin{framed}
+\begin{verbatim}
+> z = agnes(d)
+\end{verbatim}
+\end{framed}
+The plotting method for agnes objects presents two different views of the cluster solution. When we plot such an object, the plotting function sets the graphics parameter ask=TRUE, and the following appears in your R session each time a plot is to be drawn:
+Hit <Return> to see next plot: 
+
+If you know you want a particular plot, you can pass the which.plots= argument an integer telling which plot you want.
+The first plot that is displayed is known as a banner plot. The banner plot for the iris data is shown below:
+
+The white area on the left of the banner plot represents the unclustered data while the white lines that stick into the red are show the heights at which the clusters were formed. Since we don't want to include too many clusters that joined together at similar heights, it looks like three clusters, at a height of about 2 is a good solution. It's clear from the banner plot that if we lowered the height to, say 1.5, we'd create a fourth cluster with only a few observations.
+The banner plot is just an alternative to the dendogram, which is the second plot that's produced from an agnes object:
+
+The dendogram shows the same relationships, and it's a matter of individual preference as to which one is easier to use.
+Let's see how well the clusters do in grouping the irises by species:
+\begin{framed}
+\begin{verbatim}
+> table(cutree(z,3),iris$Species)
+   
+    setosa versicolor virginica
+  1     50          0         0
+  2      0         50        14
+  3      0          0        36
+\end{verbatim}
+\end{framed}
+We were able to classify all the setosa and versicolor varieties correctly. The following plot gives some insight into why we were so successful:
+\begin{framed}
+\begin{verbatim}
+> splom(~iris,groups=iris$Species,auto.key=TRUE)
+\end{verbatim}
+\end{framed}
