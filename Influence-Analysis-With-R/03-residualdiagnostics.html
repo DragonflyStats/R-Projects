@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>OSUN R Users Community</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# OSUN R Users Community
+## Kevin O’Brien
+
+---
+
+
+### Regression Diagnostics:avPlots
+
+#### &lt;tt&gt;avPlots&lt;/tt&gt;
+
+*  Graphs outcome vs predictor variables holding the rest constant (also called partial-regression plots)
+*  Help identify the effect(or influence) of an observation on the regression coefficient of the predictor variable
+
+---
+
+### Regression Diagnostics:avPlots
+
+
+```r
+library(car)
+reg1 &lt;-lm(prestige ~ education + income + type, data = Prestige)
+avPlots(reg1)
+```
+---
+
+### Regression Diagnostics:avPlots
+
+![](03-residualdiagnostics_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+---
+
+### Regression Diagnostics: &lt;tt&gt;influenceIndexPlot()&lt;/tt&gt;
+
+
+#### &lt;tt&gt;influenceIndexPlot()&lt;/tt&gt;
+
+*  Cook's distance measures how much an observation influences the overall model or predicted values
+*  Studentizided residuals are the residuals divided by their estimated standard deviation as a way to standardized
+*  Bonferronitest to identify outliers
+*  Hat-points identify influential observations (have a high impact on the predictor variables)
+
+
+---
+
+### Regression Diagnostics: &lt;tt&gt;influenceIndexPlot()&lt;/tt&gt;
+
+
+#### &lt;tt&gt;influenceIndexPlot()&lt;/tt&gt;
+
+
+```r
+library(car)
+reg1 &lt;-lm(prestige ~ education + income + type, data = Prestige)
+influenceIndexPlot(reg1)
+```
+
+---
+
+### Regression Diagnostics: &lt;tt&gt;influenceIndexPlot()&lt;/tt&gt;
+
+
+#### &lt;tt&gt;influenceIndexPlot()&lt;/tt&gt;
+
+![](03-residualdiagnostics_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+
+
+---
+
+#### `influencePlot`
+
+*  &lt;tt&gt;influencePlot()&lt;/tt&gt; creates a bubble-plot combining the display of Studentizedresiduals, hat-values, and Cook's distance (represented in the circles).
+
+
+
+
+```r
+library(car)
+reg1 &lt;-lm(prestige ~ education + income + type, data = Prestige)
+influencePlot(reg1)
+```
+
+---
+
+
+![](03-residualdiagnostics_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+```
+##                        StudRes        Hat       CookD
+## general.managers    -1.3134574 0.33504477 0.172503975
+## physicians          -0.3953204 0.22420309 0.009115491
+## medical.technicians  2.8210910 0.06858836 0.109052582
+## electronic.workers   2.2251940 0.02701237 0.026372394
+```
+
+---
+### Alcohol and Tobacco Data
+
+This example is for exposition only. We will ignore the fact that this may not be a great way of modeling the this particular set of data!
+
+
+
+```r
+alctob &lt;- data.frame( cbind(
+Alcohol = c(6.47, 6.13, 6.19, 4.89, 5.63, 4.52, 
+            5.89, 4.79, 5.27, 6.08, 4.02),
+Tobacco = c(4.03, 3.76, 3.77, 3.34, 3.47, 2.92, 
+            3.20, 2.71, 3.53, 4.51, 4.56)),
+row.names = c("North", "Yorkshire", "Northeast", 
+"East Midlands", "West Midlands", "East Anglia", 
+"Southeast", "Southwest", "Wales", 
+"Scotland", "N. Ireland"))
+```
+
+---
+
+
+
+```r
+alctobwo &lt;- subset(alctob,rownames(alctob)!="N. Ireland") 
+#without North Ireland
+
+plot(alctob$Tobacco, alctob$Alcohol,
+main="Weekly Household Spending on Alcohol vs. Tobacco",
+xlab="Tobacco Spending (GBP)",
+ylab="Alcohol Spending (GBP)",
+pch=16,col="red",cex=1.5,font.lab=2) 
+```
+
+&lt;img src="03-residualdiagnostics_files/figure-html/unnamed-chunk-8-1.png" width="80%" /&gt;
+
+```r
+#note N. Ireland in the bottom-right
+```
+
+---
+
+
+```r
+fit1 &lt;- lm( Alcohol ~ Tobacco, data = alctob)
+fit2 &lt;- lm( Alcohol ~ Tobacco, data = alctobwo)
+```
+
+---
+
+All Observations
+
+
+
+```r
+summary(fit1)
+```
+
+```
+## 
+## Call:
+## lm(formula = Alcohol ~ Tobacco, data = alctob)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.7080 -0.4245  0.2311  0.6081  0.9020 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)   4.3512     1.6067   2.708   0.0241 *
+## Tobacco       0.3019     0.4388   0.688   0.5087  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.8196 on 9 degrees of freedom
+## Multiple R-squared:  0.04998,	Adjusted R-squared:  -0.05557 
+## F-statistic: 0.4735 on 1 and 9 DF,  p-value: 0.5087
+```
+---
+
+Outlier Removed
+
+
+```r
+summary(fit2)
+```
+
+```
+## 
+## Call:
+## lm(formula = Alcohol ~ Tobacco, data = alctobwo)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.51092 -0.42434  0.06056  0.34406  0.62991 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)   2.0412     1.0014   2.038  0.07586 . 
+## Tobacco       1.0059     0.2813   3.576  0.00723 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.446 on 8 degrees of freedom
+## Multiple R-squared:  0.6151,	Adjusted R-squared:  0.567 
+## F-statistic: 12.78 on 1 and 8 DF,  p-value: 0.007234
+```
+
+
+
+### Outliers
+
+
+
+The conservative outlier test uses the
+Bonferonni inequality to calculate the p-values we associate with the
+Student's-t test. 
+
+In R, we can use the &lt;tt&gt;outlierTest()&lt;/tt&gt; command to perform this
+test on our model. 
+
+Remember that when we test for influence, we are testing
+the effect of an observation on model coefficients. 
+
+---
+
+Therefore we need to
+give the &lt;tt&gt;outlierTest&lt;/tt&gt; command a linear model as its input.
+
+
+```r
+outlierTest(fit1)
+```
+
+```
+##             rstudent unadjusted p-value Bonferroni p
+## N. Ireland -4.732091          0.0014789     0.016268
+```
+
+---
+
+We can also use R to calculate Cook's distance. 
+Here we label any observation with Cook's distance greater than 1 as influential.
+
+
+```r
+cooks.distance(fit1)
+```
+
+```
+##         North     Yorkshire     Northeast East Midlands West Midlands 
+##   0.114101051   0.036517838   0.043728951   0.023600304   0.004740759 
+##   East Anglia     Southeast     Southwest         Wales      Scotland 
+##   0.147326647   0.046646563   0.077488350   0.001821694   0.068921892 
+##    N. Ireland 
+##   1.747233521
+```
+
+---
+
+### Influence Plots
+
+
+Finally, one of the easier ways to evaluate our residuals and look for
+for influential points is through plots. 
+
+
+
+```r
+#qq plot for studentized resid 
+qqPlot(fit1, main="QQ Plot",pch=18, lim=c(-3,2)) 
+```
+
+&lt;img src="03-residualdiagnostics_files/figure-html/unnamed-chunk-14-1.png" width="80%" /&gt;
+
+```
+##      North N. Ireland 
+##          1         11
+```
+
+
+---
+
+### Influence Plots
+
+
+
+```r
+# leverage plots
+leveragePlots(fit1) 
+```
+
+&lt;img src="03-residualdiagnostics_files/figure-html/unnamed-chunk-15-1.png" width="80%" /&gt;
+
+
+
+
+
+
+---
+
+### Influence Plots
+
+
+```r
+# Influential Observations
+# added variable plots 
+avPlots(fit1)
+```
+
+---
+
+### Influence Plots
+
+![](03-residualdiagnostics_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+---
+
+### Influence Plots
+
+
+```r
+# Cook's D plot
+# identify D values &gt; 4/(n-k-1) 
+cutoff &lt;- 4/((nrow(mtcars)-length(fit1$coefficients)-2)) 
+plot(fit, which=4, cook.levels=cutoff)
+```
+
+---
+
+### Influence Plots
+
+![](03-residualdiagnostics_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
+
+---
+
+### Influence Plots
+
+
+```r
+# Influence Plot 
+influencePlot(fit1,id.method="identify", 
+main="Influence Plot", 
+col="red",
+sub="Circle size is proportial to Cook's Distance" )
+```
+---
+
+### Influence Plots
+
+![](03-residualdiagnostics_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+
+```
+##                StudRes       Hat      CookD
+## North        1.2178081 0.1395123 0.11410105
+## East Anglia -0.9904538 0.2306073 0.14732665
+## Southwest   -0.5417970 0.3272829 0.07748835
+## N. Ireland  -4.7320908 0.3451163 1.74723352
+```
+---
+
+
+
+### Non-constant Error Variance
+
+
+
+```r
+# Evaluate homoscedasticity
+# non-constant error variance test
+ncvTest(fit)
+```
+
+```
+## Non-constant Variance Score Test 
+## Variance formula: ~ fitted.values 
+## Chisquare = 3.311276, Df = 1, p = 0.068806
+```
+
+---
+
+### Non-constant Error Variance
+
+
+```r
+# plot studentized residuals vs. fitted values 
+spreadLevelPlot(fit)
+```
+
+---
+
+### Non-constant Error Variance
+
+![](03-residualdiagnostics_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
+
+```
+## 
+## Suggested power transformation:  -5.624329
+```
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>OSUN R Users Community</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# OSUN R Users Community
+## Kevin O’Brien
+
+---
+
+
+Linear modelling with R (Cheeses)
+======================================================
+
+#### Cheddar Cheese taste
+
+* As cheese ages, various chemical processes take place that determine the taste of the final product. 
+* This dataset contains concentrations of various chemicals in 30 samples of mature cheddar cheese, and a subjective measure of taste for each sample. 
+*The variables "Acetic" and "H2S" are the natural logarithm of the concentration of acetic asid and hydrogen sulfide respectively. 
+* The variable "Lactic" has not been transformed.
+
+#### Reference: 
+
+* Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics.
+
+---
+
+Linear modelling with R (Cheeses)
+======================================================
+
+* Number of cases: 30
+
+#### Variable Names:
+
+* **Case**: Sample number
+* **taste**: Subjective taste test score, obtained by combining the scores of several tasters
+* **Acetic**: Natural log of concentration of acetic acid
+* **H2S**: Natural log of concentration of hydrogen sulfide
+* **Lactic**: Concentration of lactic acid
+
+
+---
+
+Linear modelling with R (Cheeses)
+======================================================
+
+
+
+```r
+library(tidyverse)
+library(magrittr)
+library(faraway)
+data(cheddar)
+
+
+head(cheddar)
+```
+
+```
+##   taste Acetic   H2S Lactic
+## 1  12.3  4.543 3.135   0.86
+## 2  20.9  5.159 5.043   1.53
+## 3  39.0  5.366 5.438   1.57
+## 4  47.9  5.759 7.496   1.81
+## 5   5.6  4.663 3.807   0.99
+## 6  25.9  5.697 7.601   1.09
+```
+
+
+--
+
+Linear modelling with R (Cheeses)
+======================================================
+
+
+
+
+```r
+Fit_1 &lt;- lm(taste ~ Acetic + Lactic, data = cheddar)
+Fit_2 &lt;- lm(taste ~ Acetic + H2S, data = cheddar)
+Fit_3 &lt;- lm(taste ~ H2S + Lactic, data = cheddar)
+
+Fit_4 &lt;- lm(taste ~ Acetic + H2S + Lactic, data = cheddar)
+```
+
+---
+
+Linear modelling with R (Cheeses)
+======================================================
+class:smaller-95
+
+#### Aikaike Information Criterion
+
+
+```r
+AIC(Fit_1)
+```
+
+```
+## [1] 237.3884
+```
+
+```r
+AIC(Fit_2)
+```
+
+```
+## [1] 233.2438
+```
+
+```r
+AIC(Fit_3)
+```
+
+```
+## [1] 227.7838
+```
+
+```r
+AIC(Fit_4)
+```
+
+```
+## [1] 229.7775
+```
+
+---
+
+{modelr}
+=======================
+Compute model quality for a given dataset
+
+Three summaries are immediately interpretible on the scale of the response variable:
+
+* ``rmse()`` is the root-mean-squared-error
+* ``mae()`` is the mean absolute error
+* ``qae()`` is quantiles of absolute error.
+
+---
+
+{modelr}
+=======================
+
+### Root Mean Square Error
+
+
+```r
+library(modelr)
+rmse(Fit_4,cheddar)
+```
+
+```
+## [1] 9.431174
+```
+
+
+---
+
+### mean absolute error
+
+
+```r
+mae(Fit_4,cheddar)
+```
+
+```
+## [1] 7.586727
+```
+
+---
+
+{modelr}
+=======================
+
+
+```r
+qae(Fit_4,cheddar)
+```
+
+```
+##        5%       25%       50%       75%       95% 
+##  1.051164  4.087882  5.238398 10.848030 16.609669
+```
+
+---
+
+{modelr}
+=======================
+Other summaries
+
+* ``mape()`` mean absolute percentage error.
+* ``rsae()`` is the relative sum of absolute errors.
+* ``mse()`` is the mean-squared-error.
+* ``rsquare()`` is the variance of the predictions divided by the variance of the response.
+
+---
+
+{modelr}
+=======================
+
+
+```r
+rsquare(Fit_4,cheddar)
+```
+
+```
+## [1] 0.6517747
+```
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

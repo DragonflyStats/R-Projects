@@ -1,0 +1,112 @@
+---
+title: "OSUN R Users Community"
+subtitle: "Kevin O'Brien"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      countIncrementalSlides: false
+---
+
+```{r warning=FALSE,message=FALSE,echo=FALSE}
+library(tidyverse)
+library(magrittr)
+library(faraway)
+data(cheddar)
+
+
+Fit_1 <- lm(taste ~ Acetic + Lactic, data = cheddar)
+Fit_2 <- lm(taste ~ Acetic + H2S, data = cheddar)
+Fit_3 <- lm(taste ~ H2S + Lactic, data = cheddar)
+
+Fit_4 <- lm(taste ~ Acetic + H2S + Lactic, data = cheddar)
+```
+
+### {gvlma}
+
+#### Global Validation of Linear Model Assumptions
+
+* The {gvlma} package is a comprehensive, automatic testing suite for many of the assumptions of general linear models. 
+
+* Perform a single global test to assess the linear model assumptions, as well as perform specific
+directional tests designed to detect skewness, kurtosis, a nonlinear link function, and heteroscedasticity
+
+* It does both statistical tests and diagnostic plots using an extremely simple implementation for powerful results.
+
+
+
+
+---
+
+### {gvlma}
+
+The package is an implementation of a paper by Pena & Slate called ***Global Validation of Linear Model Assumptions*** and allows you to quickly check for:
+
+* ***Linearity*** - the Global Stat tests for the null hypothesis that our model is a linear combination of its predictors.
+
+* ***Homoscedasticity*** - the respective stat tests for the null that the residial variance is relatively constant over the range of values.
+
+* ***Normality*** - skewness and kurtosis tests help you understand if the residuals fits a normal distribution. 
+
+* If the null is rejected you probably need to transform your data in some way (like a log transform). 
+This can also be assessed by looking at the normal probability plot it generates.	
+
+
+---
+
+### {gvlma}
+
+```{r echo=FALSE,include=FALSE}
+model <- Fit_4
+```
+
+```{r message=FALSE}
+  library("gvlma")
+
+  # model <- lm(y ~ x, data)
+  
+  
+  summary(gvlma(model))
+```
+
+
+---
+
+### {gvlma}
+
+![GVLMA](images/gvlma-output.png)
+
+---
+
+### {gvlma}
+
+* Global Stat checks whether the relationship between the dependent and independent relationship roughly linear.
+
+* Skewness and kurtosis assumptions show that the distribution of the residuals are normal.
+
+* Link function checks to see if the dependent variable is continuous or categorical. 
+
+---
+
+### {gvlma}
+
+* The diagnostic plots also let you understand the relation between your data and these assumptions visually. 
+* Other useful capabilities are the link function test which is used for understanding whether the underlying data is categorical or continuous.
+
+
+---
+
+### {gvlma}
+
+
+```{r out.width = "80%" }
+
+  plot(gvlma(model))
+
+```
+
+
+
+
+

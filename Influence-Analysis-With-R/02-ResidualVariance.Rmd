@@ -1,0 +1,117 @@
+---
+title: "OSUN R Users Community"
+subtitle: "Kevin O'Brien"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      countIncrementalSlides: false
+---
+
+```{r warning=FALSE,message=FALSE,echo=FALSE}
+library(tidyverse)
+library(magrittr)
+library(faraway)
+data(cheddar)
+
+
+Fit_1 <- lm(taste ~ Acetic + Lactic, data = cheddar)
+Fit_2 <- lm(taste ~ Acetic + H2S, data = cheddar)
+Fit_3 <- lm(taste ~ H2S + Lactic, data = cheddar)
+
+Fit_4 <- lm(taste ~ Acetic + H2S + Lactic, data = cheddar)
+```
+
+---
+
+### Recall: Assumption of Constant Variance
+
+#### Homoscedasticity
+
+* ***Homoscedascity*** is the technical term to describe the variance of the residuals being constant across the range of predicted values. 
+
+* ***Heteroscedascity*** is the converse scenario : the variance differs along the range of values.
+
+
+
+#### Diagnostic Plots
+
+Suppose you plot the individual residuals against the predicted value, the variance of the residuals predicted value should be constant (Diagnostic Plot 1). 
+
+
+
+```{r include=FALSE,echo=FALSE}
+
+fit <- Fit_4
+```
+
+---
+
+### {car} R Package
+
+Cheeses Data
+
+```{r warning=FALSE,message=FALSE}	
+
+# Evaluate homoscedasticity
+
+# non-constant error variance test
+
+library(car)
+ncvTest(fit)
+```
+
+---
+
+### +residual plots
+
+
+* component+residual plots, also called partial-residual plots, for linear and generalized linear models.
+
+* a graphical technique that attempts to show the relationship between a given independent variable and the response variable given that other independent variables are also in the model.
+
+* Ceres plots are a generalization of component+residual (partial residual) plots that are less prone to leakage of nonlinearity among the predictors. 
+
+---
+
+### Nonlinearity
+
+#### component + residual plot 
+
+```{r out.width = "70%" }	
+
+crPlots(fit)
+```
+
+---
+
+### Nonlinearity
+
+#### ceres plot
+
+```{r out.width = "70%" }
+
+ceresPlots(fit)
+```
+
+---
+
+### Nonlinearity
+
+
+Test for Autocorrelated Errors
+
+```{r}
+
+durbinWatsonTest(fit)
+
+```
+
+---
+
+### avplot & av plots
+
+* The avplot command is short for added-variable plot and draws exactly that. 
+
+* The other name for added variable plot is a partial-regression leverage plot. 

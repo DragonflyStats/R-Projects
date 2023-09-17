@@ -1,0 +1,15 @@
+
+Nonlinearity
+==============================================================
+
+
+```{r}
+
+# Evaluate Nonlinearity
+# component + residual plot 
+crPlots(fit)
+# Ceres plots 
+ceresPlots(fit)
+
+
+```

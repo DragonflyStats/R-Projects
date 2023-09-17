@@ -1,0 +1,71 @@
+---
+title: "OSUN R Users Community"
+subtitle: "Kevin O'Brien"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      countIncrementalSlides: false
+---
+
+```{r include=FALSE, echo=FALSE}
+library(tidyverse)
+library(magrittr)
+library(faraway)
+library(knitr)
+data(cheddar)
+
+
+Fit_1 <- lm(taste ~ Acetic + Lactic, data = cheddar)
+Fit_2 <- lm(taste ~ Acetic + H2S, data = cheddar)
+Fit_3 <- lm(taste ~ H2S + Lactic, data = cheddar)
+
+Fit_4 <- lm(taste ~ Acetic + H2S + Lactic, data = cheddar)
+```
+
+
+
+### {broom} R package
+
+
+* <tt>tidy()</tt> summarizes information about model components such as coefficients of a regression. 
+* <tt>glance()</tt> reports information about an entire model, such as goodness of fit measures like AIC and BIC. 
+* <tt>augment()</tt> adds information about individual observations to a dataset, such as fitted values or influence measures.
+
+---
+
+### <tt>tidy()</tt>
+
+```{r message=FALSE, warning=FALSE}
+library(broom)
+tidy(Fit_4)  %>%
+  kable( format = "markdown",digits=4)
+```
+
+
+---
+
+### <tt>glance()</tt>
+
+```{r}
+glance(Fit_4) %>%
+  dplyr::select(1:7) %>%
+  kable( format = "markdown",digits=3)
+```
+
+
+```{r}
+glance(Fit_4) %>%
+  dplyr::select(6:12) %>%
+  kable( format = "markdown",digits=4)
+```
+
+---
+
+### <tt>augment()</tt>
+
+```{r}
+augment(Fit_4,interval = "confidence") %>%
+  kable( format = "markdown",digits=4)
+```

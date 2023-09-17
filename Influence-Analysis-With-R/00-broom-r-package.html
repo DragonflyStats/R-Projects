@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>OSUN R Users Community</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# OSUN R Users Community
+## Kevin O’Brien
+
+---
+
+
+
+
+
+
+### {broom} R package
+
+
+* &lt;tt&gt;tidy()&lt;/tt&gt; summarizes information about model components such as coefficients of a regression. 
+* &lt;tt&gt;glance()&lt;/tt&gt; reports information about an entire model, such as goodness of fit measures like AIC and BIC. 
+* &lt;tt&gt;augment()&lt;/tt&gt; adds information about individual observations to a dataset, such as fitted values or influence measures.
+
+---
+
+### &lt;tt&gt;tidy()&lt;/tt&gt;
+
+
+```r
+library(broom)
+tidy(Fit_4)  %&gt;%
+  kable( format = "markdown",digits=4)
+```
+
+
+
+|term        | estimate| std.error| statistic| p.value|
+|:-----------|--------:|---------:|---------:|-------:|
+|(Intercept) | -28.8768|   19.7354|   -1.4632|  0.1554|
+|Acetic      |   0.3277|    4.4598|    0.0735|  0.9420|
+|H2S         |   3.9118|    1.2484|    3.1334|  0.0042|
+|Lactic      |  19.6705|    8.6291|    2.2796|  0.0311|
+
+
+---
+
+### &lt;tt&gt;glance()&lt;/tt&gt;
+
+
+```r
+glance(Fit_4) %&gt;%
+  dplyr::select(1:7) %&gt;%
+  kable( format = "markdown",digits=3)
+```
+
+
+
+| r.squared| adj.r.squared|  sigma| statistic| p.value| df|   logLik|
+|---------:|-------------:|------:|---------:|-------:|--:|--------:|
+|     0.652|         0.612| 10.131|    16.221|       0|  3| -109.889|
+
+
+
+```r
+glance(Fit_4) %&gt;%
+  dplyr::select(6:12) %&gt;%
+  kable( format = "markdown",digits=4)
+```
+
+
+
+| df|    logLik|      AIC|      BIC| deviance| df.residual| nobs|
+|--:|---------:|--------:|--------:|--------:|-----------:|----:|
+|  3| -109.8888| 229.7775| 236.7835| 2668.411|          26|   30|
+
+---
+
+### &lt;tt&gt;augment()&lt;/tt&gt;
+
+
+```r
+augment(Fit_4,interval = "confidence") %&gt;%
+  kable( format = "markdown",digits=4)
+```
+
+
+
+| taste| Acetic|    H2S| Lactic| .fitted|  .lower|  .upper|   .resid|   .hat|  .sigma| .cooksd| .std.resid|
+|-----:|------:|------:|------:|-------:|-------:|-------:|--------:|------:|-------:|-------:|----------:|
+|  12.3|  4.543|  3.135|   0.86|  1.7924| -6.9253| 10.5102|  10.5076| 0.1753| 10.0688|  0.0693|     1.1421|
+|  20.9|  5.159|  5.043|   1.53| 22.6374| 16.8992| 28.3756|  -1.7374| 0.0759| 10.3250|  0.0007|    -0.1784|
+|  39.0|  5.366|  5.438|   1.57| 25.0372| 19.9388| 30.1356|  13.9628| 0.0599|  9.9217|  0.0322|     1.4215|
+|  47.9|  5.759|  7.496|   1.81| 37.9375| 31.7498| 44.1252|   9.9625| 0.0883| 10.1184|  0.0257|     1.0299|
+|   5.6|  4.663|  3.807|   0.99|  7.0177| -0.4556| 14.4910|  -1.4177| 0.1288| 10.3269|  0.0008|    -0.1499|
+|  25.9|  5.697|  7.601|   1.09| 24.1652| 14.1704| 34.1600|   1.7348| 0.2304| 10.3238|  0.0029|     0.1952|
+|  37.3|  5.892|  8.726|   1.29| 32.5640| 23.0874| 42.0406|   4.7360| 0.2071| 10.2764|  0.0180|     0.5250|
+|  21.9|  6.078|  7.966|   1.78| 39.2905| 33.2790| 45.3021| -17.3905| 0.0833|  9.6716|  0.0731|    -1.7930|
+|  18.1|  4.898|  3.850|   1.29| 13.1641|  7.1680| 19.1602|   4.9359| 0.0829| 10.2798|  0.0059|     0.5088|
+|  21.0|  5.242|  4.174|   1.58| 20.2487| 13.0309| 27.4665|   0.7513| 0.1201| 10.3301|  0.0002|     0.0791|
+|  34.9|  5.740|  6.142|   1.68| 30.0775| 24.7554| 35.3996|   4.8225| 0.0653| 10.2831|  0.0042|     0.4924|
+|  57.2|  6.446|  7.908|   1.90| 41.5447| 33.4986| 49.5908|  15.6553| 0.1493|  9.7577|  0.1232|     1.6755|
+|   0.7|  4.477|  2.996|   1.06|  5.1612| -2.8557| 13.1781|  -4.4612| 0.1482| 10.2860|  0.0099|    -0.4771|
+|  25.9|  5.236|  4.942|   1.30| 17.7433| 13.4087| 22.0779|   8.1567| 0.0433| 10.1958|  0.0077|     0.8232|
+|  54.9|  6.151|  6.752|   1.52| 29.4511| 23.2038| 35.6984|  25.4489| 0.0900|  8.8469|  0.1715|     2.6334|
+|  40.9|  6.365|  9.588|   1.74| 44.9428| 36.8364| 53.0491|  -4.0428| 0.1515| 10.2940|  0.0084|    -0.4332|
+|  15.9|  4.787|  3.912|   1.16| 10.8131|  4.5887| 17.0375|   5.0869| 0.0893| 10.2762|  0.0068|     0.5262|
+|   6.4|  5.412|  4.700|   1.49| 20.5917| 15.4070| 25.7764| -14.1917| 0.0620|  9.9070|  0.0346|    -1.4464|
+|  18.0|  5.247|  6.174|   1.63| 29.0576| 23.0764| 35.0388| -11.0576| 0.0825| 10.0700|  0.0292|    -1.1395|
+|  38.9|  5.438|  9.064|   1.99| 47.5068| 36.8827| 58.1309|  -8.6068| 0.2603| 10.1356|  0.0858|    -0.9878|
+|  14.0|  4.564|  4.949|   1.15| 14.5999|  6.6645| 22.5353|  -0.5999| 0.1452| 10.3305|  0.0002|    -0.0640|
+|  15.2|  5.298|  5.220|   1.33| 19.4412| 15.3223| 23.5602|  -4.2412| 0.0391| 10.2950|  0.0019|    -0.4271|
+|  32.0|  5.455|  9.242|   1.44| 37.3899| 27.9509| 46.8288|  -5.3899| 0.2055| 10.2603|  0.0230|    -0.5969|
+|  56.7|  5.855| 10.199|   2.01| 52.4768| 42.4157| 62.5380|   4.2232| 0.2334| 10.2862|  0.0173|     0.4761|
+|  16.8|  5.366|  3.664|   1.31| 12.9833|  6.9454| 19.0211|   3.8167| 0.0841| 10.3005|  0.0036|     0.3937|
+|  11.6|  6.043|  3.219|   1.46| 14.4150|  3.6737| 25.1563|  -2.8150| 0.2661| 10.3104|  0.0095|    -0.3243|
+|  26.5|  6.458|  6.962|   1.72| 34.3074| 26.2494| 42.3653|  -7.8074| 0.1497| 10.1916|  0.0308|    -0.8358|
+|   0.7|  5.328|  3.912|   1.25| 12.7607|  7.2369| 18.2845| -12.0607| 0.0704| 10.0239|  0.0288|    -1.2347|
+|  13.4|  5.802|  6.685|   1.08| 20.4196| 11.1492| 29.6900|  -7.0196| 0.1982| 10.2117|  0.0370|    -0.7738|
+|   5.5|  6.176|  4.787|   1.25| 16.4615|  6.8181| 26.1049| -10.9615| 0.2145| 10.0309|  0.1017|    -1.2208|
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
