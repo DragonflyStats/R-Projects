@@ -1,0 +1,20 @@
+
+---
+
+## **What This Workshop Is About**
+
+**Statistical Practice in Epidemiology using R**  
+A hands‑on, data‑driven workshop designed to build practical skills for medical and public‑health research. Participants learn how to use **R** to manage, analyse, and interpret epidemiological data, with a focus on real‑world applications.
+
+**You will explore:**
+- Working with population‑level health datasets in R  
+- Core epidemiological methods and study designs  
+- Statistical modelling for medical research (e.g., regression, survival analysis)  
+- Data cleaning, wrangling, and reproducible workflows  
+- Creating clear, publication‑ready visualisations and reports  
+
+**Overall aim:**  
+To equip researchers, clinicians, and analysts with the tools and confidence to apply R effectively in modern epidemiological practice.
+
+---
+
